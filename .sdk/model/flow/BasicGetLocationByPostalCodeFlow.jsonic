@@ -1,0 +1,27 @@
+# BasicGetLocationByPostalCodeFlow
+
+main: kit: flow: BasicGetLocationByPostalCodeFlow:
+{
+  entity: "get_location_by_postal_code",
+  kind: "basic",
+  name: "BasicGetLocationByPostalCodeFlow",
+  step: [
+    {
+      match: {
+        country: "country01",
+        postal_code: "postal_code01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "get_location_by_postal_code_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGetLocationByPostalCodeFlow"
+}

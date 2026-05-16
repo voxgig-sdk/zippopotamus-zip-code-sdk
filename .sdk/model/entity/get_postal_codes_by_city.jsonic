@@ -1,0 +1,89 @@
+# Entity: get_postal_codes_by_city
+
+main: kit: entity: get_postal_codes_by_city: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "latitude"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "longitude"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "place_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "post_code"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "get_postal_codes_by_city"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "Beverly Hills"
+                kind: "param"
+                name: "city"
+                orig: "city"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                example: "US"
+                kind: "param"
+                name: "country"
+                orig: "country"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                example: "CA"
+                kind: "param"
+                name: "state"
+                orig: "state"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/{country}/{state}/{city}"
+          parts: [
+            "{country}"
+            "{state}"
+            "{city}"
+          ]
+          select: {
+            exist: [
+              "city"
+              "country"
+              "state"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

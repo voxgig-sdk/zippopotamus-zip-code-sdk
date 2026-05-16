@@ -1,0 +1,295 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Zippopotamus Zip Code API",
+    "description": "The Zippopotamus API provides postal and zip code data for over 60 countries, allowing users to easily access detailed location information. It is particularly useful for form auto-completion and supports JSON response format for seamless integration.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Zippopotamus API",
+      "url": "https://www.zippopotam.us/"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.zippopotam.us",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/{country}/{postal-code}": {
+      "get": {
+        "summary": "Get location information by postal code",
+        "description": "Retrieves detailed location information for a given postal code in a specified country. Returns place name, state, latitude, longitude and other geographical data.",
+        "operationId": "getLocationByPostalCode",
+        "parameters": [
+          {
+            "name": "country",
+            "in": "path",
+            "description": "ISO 3166-1 alpha-2 country code (e.g., US, GB, DE, FR, CA)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Z]{2}$",
+              "example": "US"
+            }
+          },
+          {
+            "name": "postal-code",
+            "in": "path",
+            "description": "Postal code or zip code to query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "90210"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with location data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LocationResponse"
+                },
+                "example": {
+                  "post code": "90210",
+                  "country": "United States",
+                  "country abbreviation": "US",
+                  "places": [
+                    {
+                      "place name": "Beverly Hills",
+                      "longitude": "-118.4065",
+                      "state": "California",
+                      "state abbreviation": "CA",
+                      "latitude": "34.0901"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Postal code not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Postal Code Lookup"
+        ]
+      }
+    },
+    "/{country}/{state}/{city}": {
+      "get": {
+        "summary": "Get postal codes by city and state",
+        "description": "Retrieves postal code information for a given city in a specified state and country. Returns all postal codes associated with the city along with geographical data.",
+        "operationId": "getPostalCodesByCity",
+        "parameters": [
+          {
+            "name": "country",
+            "in": "path",
+            "description": "ISO 3166-1 alpha-2 country code (e.g., US, GB, DE, FR, CA)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[A-Z]{2}$",
+              "example": "US"
+            }
+          },
+          {
+            "name": "state",
+            "in": "path",
+            "description": "State or province name/abbreviation",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "CA"
+            }
+          },
+          {
+            "name": "city",
+            "in": "path",
+            "description": "City name",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "Beverly Hills"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with postal codes for the city",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CityResponse"
+                },
+                "example": {
+                  "country": "United States",
+                  "country abbreviation": "US",
+                  "places": [
+                    {
+                      "place name": "Beverly Hills",
+                      "longitude": "-118.4065",
+                      "post code": "90210",
+                      "latitude": "34.0901"
+                    },
+                    {
+                      "place name": "Beverly Hills",
+                      "longitude": "-118.4065",
+                      "post code": "90211",
+                      "latitude": "34.0901"
+                    }
+                  ],
+                  "state": "California",
+                  "state abbreviation": "CA"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "City not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "City Lookup"
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "LocationResponse": {
+        "type": "object",
+        "properties": {
+          "post code": {
+            "type": "string",
+            "description": "The postal code that was queried"
+          },
+          "country": {
+            "type": "string",
+            "description": "Full country name"
+          },
+          "country abbreviation": {
+            "type": "string",
+            "description": "ISO 3166-1 alpha-2 country code"
+          },
+          "places": {
+            "type": "array",
+            "description": "Array of places associated with this postal code",
+            "items": {
+              "$ref": "#/components/schemas/Place"
+            }
+          }
+        }
+      },
+      "CityResponse": {
+        "type": "object",
+        "properties": {
+          "country": {
+            "type": "string",
+            "description": "Full country name"
+          },
+          "country abbreviation": {
+            "type": "string",
+            "description": "ISO 3166-1 alpha-2 country code"
+          },
+          "state": {
+            "type": "string",
+            "description": "Full state or province name"
+          },
+          "state abbreviation": {
+            "type": "string",
+            "description": "State or province abbreviation"
+          },
+          "places": {
+            "type": "array",
+            "description": "Array of postal codes for this city",
+            "items": {
+              "$ref": "#/components/schemas/CityPlace"
+            }
+          }
+        }
+      },
+      "Place": {
+        "type": "object",
+        "properties": {
+          "place name": {
+            "type": "string",
+            "description": "Name of the place/city"
+          },
+          "longitude": {
+            "type": "string",
+            "description": "Longitude coordinate"
+          },
+          "state": {
+            "type": "string",
+            "description": "Full state or province name"
+          },
+          "state abbreviation": {
+            "type": "string",
+            "description": "State or province abbreviation"
+          },
+          "latitude": {
+            "type": "string",
+            "description": "Latitude coordinate"
+          }
+        }
+      },
+      "CityPlace": {
+        "type": "object",
+        "properties": {
+          "place name": {
+            "type": "string",
+            "description": "Name of the place/city"
+          },
+          "longitude": {
+            "type": "string",
+            "description": "Longitude coordinate"
+          },
+          "post code": {
+            "type": "string",
+            "description": "Postal code for this location"
+          },
+          "latitude": {
+            "type": "string",
+            "description": "Latitude coordinate"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Postal Code Lookup",
+      "description": "Operations for looking up location information by postal code"
+    },
+    {
+      "name": "City Lookup",
+      "description": "Operations for looking up postal codes by city and state"
+    }
+  ]
+}

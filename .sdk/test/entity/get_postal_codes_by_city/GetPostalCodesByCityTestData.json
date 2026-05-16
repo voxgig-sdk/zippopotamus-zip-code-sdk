@@ -1,0 +1,43 @@
+{
+  "existing": {
+    "get_postal_codes_by_city": {
+      "GET_POSTAL_CODES_BY_CITY00": {
+        "latitude": "s28",
+        "longitude": "s29",
+        "place_name": "s2a",
+        "post_code": "s2b",
+        "city": "CITY01",
+        "country": "COUNTRY01",
+        "state": "STATE01"
+      },
+      "GET_POSTAL_CODES_BY_CITY01": {
+        "latitude": "s50",
+        "longitude": "s51",
+        "place_name": "s52",
+        "post_code": "s53",
+        "city": "CITY01",
+        "country": "COUNTRY01",
+        "state": "STATE01"
+      },
+      "GET_POSTAL_CODES_BY_CITY02": {
+        "latitude": "s78",
+        "longitude": "s79",
+        "place_name": "s7a",
+        "post_code": "s7b",
+        "city": "CITY01",
+        "country": "COUNTRY01",
+        "state": "STATE01"
+      }
+    }
+  },
+  "new": {
+    "get_postal_codes_by_city": {
+      "get_postal_codes_by_city_ref01": {
+        "latitude": "sa0",
+        "longitude": "sa1",
+        "place_name": "sa2",
+        "post_code": "sa3"
+      }
+    }
+  }
+}

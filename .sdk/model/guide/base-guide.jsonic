@@ -1,0 +1,21 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 2
+  metrics: count: path: 2
+  metrics: count: method: 2
+
+  entity: get_location_by_postal_code: {
+    path: "/{country}/{postal-code}": {
+      rename: param: "postal-code": *"postal_code"
+      op: list: method: *GET
+    }
+  }
+
+  entity: get_postal_codes_by_city: {
+    path: "/{country}/{state}/{city}": {
+      op: list: method: *GET
+    }
+  }
+
+}

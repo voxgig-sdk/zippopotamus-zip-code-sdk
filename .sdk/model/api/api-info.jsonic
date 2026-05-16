@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "Zippopotamus API"
+        url: "https://www.zippopotam.us/"
+      }
+      description: "The Zippopotamus API provides postal and zip code data for over 60 countries, allowing users to easily access detailed location information. It is particularly useful for form auto-completion and supports JSON response format for seamless integration."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://api.zippopotam.us"
+        }
+      ]
+      title: "Zippopotamus Zip Code API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

@@ -1,0 +1,28 @@
+# BasicGetPostalCodesByCityFlow
+
+main: kit: flow: BasicGetPostalCodesByCityFlow:
+{
+  entity: "get_postal_codes_by_city",
+  kind: "basic",
+  name: "BasicGetPostalCodesByCityFlow",
+  step: [
+    {
+      match: {
+        city: "city01",
+        country: "country01",
+        state: "state01"
+      }
+
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "get_postal_codes_by_city_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGetPostalCodesByCityFlow"
+}

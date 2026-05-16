@@ -1,0 +1,89 @@
+# Entity: get_location_by_postal_code
+
+main: kit: entity: get_location_by_postal_code: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "latitude"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "longitude"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "place_name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "state"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "state_abbreviation"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "get_location_by_postal_code"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "US"
+                kind: "param"
+                name: "country"
+                orig: "country"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                example: "90210"
+                kind: "param"
+                name: "postal_code"
+                orig: "postal_code"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/{country}/{postal-code}"
+          parts: [
+            "{country}"
+            "{postal_code}"
+          ]
+          rename: {
+            param: {
+              "postal-code": "postal_code"
+            }
+          }
+          select: {
+            exist: [
+              "country"
+              "postal_code"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
