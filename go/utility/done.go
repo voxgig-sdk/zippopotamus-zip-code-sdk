@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/zippopotamus-zip-code-sdk/core"
+import "github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go/core"
 
 func doneUtil(ctx *core.Context) (any, error) {
 	if ctx.Ctrl.Explain != nil {

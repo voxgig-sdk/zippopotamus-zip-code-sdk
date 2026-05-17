@@ -1,9 +1,9 @@
 package utility
 
 import (
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go/utility/struct"
 
-	"github.com/voxgig-sdk/zippopotamus-zip-code-sdk/core"
+	"github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go/core"
 )
 
 func prepareParamsUtil(ctx *core.Context) map[string]any {

@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/zippopotamus-zip-code-sdk"
-	"github.com/voxgig-sdk/zippopotamus-zip-code-sdk/core"
+	sdk "github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go"
+	"github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go/core"
 )
 
 func TestGetLocationByPostalCodeDirect(t *testing.T) {

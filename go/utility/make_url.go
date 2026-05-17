@@ -3,9 +3,9 @@ package utility
 import (
 	"regexp"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go/utility/struct"
 
-	"github.com/voxgig-sdk/zippopotamus-zip-code-sdk/core"
+	"github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go/core"
 )
 
 func makeUrlUtil(ctx *core.Context) (string, error) {

@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/zippopotamus-zip-code-sdk/core"
+	"github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go/core"
 )
 
 type BaseFeature struct {

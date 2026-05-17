@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/zippopotamus-zip-code-sdk/core"
+	"github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go/utility/struct"
 )
 
 type GetLocationByPostalCodeEntity struct {

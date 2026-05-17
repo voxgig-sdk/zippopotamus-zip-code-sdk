@@ -1,10 +1,10 @@
 package voxgigzippopotamuszipcodesdk
 
 import (
-	"github.com/voxgig-sdk/zippopotamus-zip-code-sdk/core"
-	"github.com/voxgig-sdk/zippopotamus-zip-code-sdk/entity"
-	"github.com/voxgig-sdk/zippopotamus-zip-code-sdk/feature"
-	_ "github.com/voxgig-sdk/zippopotamus-zip-code-sdk/utility"
+	"github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go/core"
+	"github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go/entity"
+	"github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go/feature"
+	_ "github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

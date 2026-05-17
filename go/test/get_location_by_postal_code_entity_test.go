@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/zippopotamus-zip-code-sdk"
-	"github.com/voxgig-sdk/zippopotamus-zip-code-sdk/core"
+	sdk "github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go"
+	"github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go/utility/struct"
 )
 
 func TestGetLocationByPostalCodeEntity(t *testing.T) {
