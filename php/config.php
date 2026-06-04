@@ -20,9 +20,6 @@ class ZippopotamusZipCodeConfig
             ],
             "options" => [
                 "base" => "https://api.zippopotam.us",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],

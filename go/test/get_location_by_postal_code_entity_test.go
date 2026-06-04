@@ -122,7 +122,6 @@ func get_location_by_postal_codeBasicSetup(extra map[string]any) *entityTestSetu
 		"ZIPPOPOTAMUSZIPCODE_TEST_GET_LOCATION_BY_POSTAL_CODE_ENTID": idmap,
 		"ZIPPOPOTAMUSZIPCODE_TEST_LIVE":      "FALSE",
 		"ZIPPOPOTAMUSZIPCODE_TEST_EXPLAIN":   "FALSE",
-		"ZIPPOPOTAMUSZIPCODE_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["ZIPPOPOTAMUSZIPCODE_TEST_GET_LOCATION_BY_POSTAL_CODE_ENTID"])
@@ -133,7 +132,6 @@ func get_location_by_postal_codeBasicSetup(extra map[string]any) *entityTestSetu
 	if env["ZIPPOPOTAMUSZIPCODE_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["ZIPPOPOTAMUSZIPCODE_APIKEY"],
 			},
 			extra,
 		})

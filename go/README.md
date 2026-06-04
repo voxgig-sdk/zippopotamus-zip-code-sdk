@@ -28,16 +28,13 @@ package main
 
 import (
     "fmt"
-    "os"
 
     sdk "github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go"
     "github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go/core"
 )
 
 func main() {
-    client := sdk.NewZippopotamusZipCodeSDK(map[string]any{
-        "apikey": os.Getenv("ZIPPOPOTAMUS-ZIP-CODE_APIKEY"),
-    })
+    client := sdk.NewZippopotamusZipCodeSDK(map[string]any{})
 ```
 
 ### 2. List getlocationbypostalcodes
@@ -140,7 +137,6 @@ Create a `.env.local` file at the project root:
 
 ```
 ZIPPOPOTAMUS-ZIP-CODE_TEST_LIVE=TRUE
-ZIPPOPOTAMUS-ZIP-CODE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -162,7 +158,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `"apikey"` | `string` | API key for authentication. |
 | `"base"` | `string` | Base URL of the API server. |
 | `"prefix"` | `string` | URL path prefix prepended to all requests. |
 | `"suffix"` | `string` | URL path suffix appended to all requests. |

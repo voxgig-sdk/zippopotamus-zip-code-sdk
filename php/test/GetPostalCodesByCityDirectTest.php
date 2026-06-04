@@ -92,14 +92,12 @@ function get_postal_codes_by_city_direct_setup($mockres)
     $env = Runner::env_override([
         "ZIPPOPOTAMUSZIPCODE_TEST_GET_POSTAL_CODES_BY_CITY_ENTID" => [],
         "ZIPPOPOTAMUSZIPCODE_TEST_LIVE" => "FALSE",
-        "ZIPPOPOTAMUSZIPCODE_APIKEY" => "NONE",
     ]);
 
     $live = $env["ZIPPOPOTAMUSZIPCODE_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["ZIPPOPOTAMUSZIPCODE_APIKEY"],
         ];
         $client = new ZippopotamusZipCodeSDK($merged_opts);
         return [

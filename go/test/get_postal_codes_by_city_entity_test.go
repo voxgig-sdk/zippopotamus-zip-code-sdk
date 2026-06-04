@@ -123,7 +123,6 @@ func get_postal_codes_by_cityBasicSetup(extra map[string]any) *entityTestSetup {
 		"ZIPPOPOTAMUSZIPCODE_TEST_GET_POSTAL_CODES_BY_CITY_ENTID": idmap,
 		"ZIPPOPOTAMUSZIPCODE_TEST_LIVE":      "FALSE",
 		"ZIPPOPOTAMUSZIPCODE_TEST_EXPLAIN":   "FALSE",
-		"ZIPPOPOTAMUSZIPCODE_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["ZIPPOPOTAMUSZIPCODE_TEST_GET_POSTAL_CODES_BY_CITY_ENTID"])
@@ -134,7 +133,6 @@ func get_postal_codes_by_cityBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["ZIPPOPOTAMUSZIPCODE_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["ZIPPOPOTAMUSZIPCODE_APIKEY"],
 			},
 			extra,
 		})

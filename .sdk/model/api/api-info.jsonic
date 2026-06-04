@@ -17,8 +17,31 @@ main: {
       ]
       title: "Zippopotamus Zip Code API"
       version: "1.0.0"
+      tagline: "Look up postal/zip codes and their locations across 60+ countries with a simple JSON API"
+      homepage: "https://api.zippopotam.us"
+      docs_url: "https://api.zippopotam.us"
+      license_short: "Open Database License (ODbL) 1.0; data sourced from GeoNames"
+      license_md: `- Database licensed under the [Open Database License (ODbL) 1.0](http://opendatacommons.org/licenses/odbl/1.0/)
+- Individual record contents are made available under the Database Contents License
+- Underlying postal data is sourced from [GeoNames](https://www.geonames.org/)
+- Attribution to Zippopotam.us / GeoNames is expected when redistributing data`
+      about_md: `[Zippopotam.us](https://api.zippopotam.us) is a free, open-source API that returns postal-code and place data as JSON. The project is community-maintained and draws its underlying data from the [GeoNames](https://www.geonames.org/) postal dataset.
+
+What you get from the API:
+
+- Forward lookup: given a country code and a postal/zip code, get the matching places (e.g. \`/us/90210\`, \`/ch/3007\`)
+- Reverse lookup: given a country, state/region and city name, get the postal codes for that city (e.g. \`/us/ma/belmont\`)
+- Per-place fields: place name, state / province, state abbreviation, latitude, longitude
+- Top-level fields: post code, country name and country abbreviation
+
+Coverage spans 60+ countries, including large datasets for the United States, Spain, France, Germany, Japan, Brazil, Canada, Australia, India and Russia.
+
+Operational notes: responses are JSON over plain HTTP GET, with no API key required. CORS is not enabled, so browser-side use generally needs a proxy. There are no formally documented rate limits — the service is free and best-effort.`
+      entity_desc: {
+        get_location_by_postal_code: "Forward postal-code lookup that resolves a country + postal code into one or more place records with names, state info and coordinates, served from paths like `/{country}/{postal_code}` (e.g. `/us/90210`)."
+        get_postal_codes_by_city: "Reverse lookup that returns the postal codes associated with a given city, served from paths like `/{country}/{state}/{city}` (e.g. `/us/ma/belmont`)."
+      }
+      auth: false
     }
   }
-}
-
 }

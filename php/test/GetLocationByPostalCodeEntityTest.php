@@ -89,7 +89,6 @@ function get_location_by_postal_code_basic_setup($extra)
         "ZIPPOPOTAMUSZIPCODE_TEST_GET_LOCATION_BY_POSTAL_CODE_ENTID" => $idmap,
         "ZIPPOPOTAMUSZIPCODE_TEST_LIVE" => "FALSE",
         "ZIPPOPOTAMUSZIPCODE_TEST_EXPLAIN" => "FALSE",
-        "ZIPPOPOTAMUSZIPCODE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -101,7 +100,6 @@ function get_location_by_postal_code_basic_setup($extra)
     if ($env["ZIPPOPOTAMUSZIPCODE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ZIPPOPOTAMUSZIPCODE_APIKEY"],
             ],
             $extra ?? [],
         ]);

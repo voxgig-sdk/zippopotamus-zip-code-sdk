@@ -23,12 +23,9 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from zippopotamuszipcode_sdk import ZippopotamusZipCodeSDK
 
-client = ZippopotamusZipCodeSDK({
-    "apikey": os.environ.get("ZIPPOPOTAMUS-ZIP-CODE_APIKEY"),
-})
+client = ZippopotamusZipCodeSDK({})
 ```
 
 ### 2. List getlocationbypostalcodes
@@ -121,7 +118,6 @@ Create a `.env.local` file at the project root:
 
 ```
 ZIPPOPOTAMUS-ZIP-CODE_TEST_LIVE=TRUE
-ZIPPOPOTAMUS-ZIP-CODE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -145,7 +141,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |
