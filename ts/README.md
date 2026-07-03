@@ -10,7 +10,7 @@ The TypeScript SDK for the ZippopotamusZipCode API — a type-safe, entity-orien
 
 ## Install
 ```bash
-npm install zippopotamus-zip-code
+npm install @voxgig-sdk/zippopotamus-zip-code
 ```
 ## Tutorial: your first API call
 

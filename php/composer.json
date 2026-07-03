@@ -1,8 +1,17 @@
 {
   "name": "voxgig-sdk/zippopotamus-zip-code",
-  "description": "ZippopotamusZipCode SDK for PHP",
+  "description": "Unofficial generated PHP SDK for the Zippopotamus Zip Code public API. Not affiliated with or endorsed by the upstream API provider.",
   "type": "library",
+  "keywords": ["voxgig", "sdk", "generated-sdk", "openapi", "api-client", "zippopotamus-zip-code"],
+  "homepage": "https://github.com/voxgig-sdk/zippopotamus-zip-code-sdk",
   "license": "MIT",
+  "authors": [
+    { "name": "Voxgig", "homepage": "https://voxgig.com" }
+  ],
+  "support": {
+    "issues": "https://github.com/voxgig-sdk/zippopotamus-zip-code-sdk/issues",
+    "source": "https://github.com/voxgig-sdk/zippopotamus-zip-code-sdk"
+  },
   "minimum-stability": "stable",
   "require": {
     "php": ">=8.2"

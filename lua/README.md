@@ -10,7 +10,7 @@ The Lua SDK for the ZippopotamusZipCode API — an entity-oriented client using 
 
 ## Install
 ```bash
-luarocks install zippopotamus-zip-code-sdk
+luarocks install voxgig-sdk-zippopotamus-zip-code
 ```
 
 If the module is not yet published, add the source directory to

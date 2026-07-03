@@ -10,7 +10,7 @@ The Python SDK for the ZippopotamusZipCode API — an entity-oriented client fol
 
 ## Install
 ```bash
-pip install zippopotamus-zip-code-sdk
+pip install voxgig-sdk-zippopotamus-zip-code
 ```
 
 Or install from source:

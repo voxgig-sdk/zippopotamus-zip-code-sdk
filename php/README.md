@@ -10,7 +10,7 @@ The PHP SDK for the ZippopotamusZipCode API — an entity-oriented client using 
 
 ## Install
 ```bash
-composer require voxgig/zippopotamus-zip-code-sdk
+composer require voxgig-sdk/zippopotamus-zip-code
 ```
 
 

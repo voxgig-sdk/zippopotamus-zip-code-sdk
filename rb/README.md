@@ -10,13 +10,13 @@ The Ruby SDK for the ZippopotamusZipCode API — an entity-oriented client using
 
 ## Install
 ```bash
-gem install zippopotamus-zip-code-sdk
+gem install voxgig-sdk-zippopotamus-zip-code
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "zippopotamus-zip-code-sdk"
+gem "voxgig-sdk-zippopotamus-zip-code"
 ```
 
 Then run:

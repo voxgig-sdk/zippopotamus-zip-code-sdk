@@ -8,12 +8,14 @@ source = {
   dir = "zippopotamus-zip-code-sdk/lua"
 }
 description = {
-  summary = "ZippopotamusZipCode SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the Zippopotamus Zip Code public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/zippopotamus-zip-code-sdk",
+  issues_url = "https://github.com/voxgig-sdk/zippopotamus-zip-code-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "zippopotamus-zip-code" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {
