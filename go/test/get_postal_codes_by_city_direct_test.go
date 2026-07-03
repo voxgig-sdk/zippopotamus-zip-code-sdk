@@ -134,12 +134,14 @@ func get_postal_codes_by_cityDirectSetup(mockres any) *get_postal_codes_by_cityD
 	env := envOverride(map[string]any{
 		"ZIPPOPOTAMUSZIPCODE_TEST_GET_POSTAL_CODES_BY_CITY_ENTID": map[string]any{},
 		"ZIPPOPOTAMUSZIPCODE_TEST_LIVE":    "FALSE",
+		"ZIPPOPOTAMUSZIPCODE_APIKEY":       "NONE",
 	})
 
 	live := env["ZIPPOPOTAMUSZIPCODE_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["ZIPPOPOTAMUSZIPCODE_APIKEY"],
 		}
 		client := sdk.NewZippopotamusZipCodeSDK(mergedOpts)
 

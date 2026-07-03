@@ -82,12 +82,14 @@ function get_location_by_postal_code_direct_setup(mockres)
   local env = runner.env_override({
     ["ZIPPOPOTAMUSZIPCODE_TEST_GET_LOCATION_BY_POSTAL_CODE_ENTID"] = {},
     ["ZIPPOPOTAMUSZIPCODE_TEST_LIVE"] = "FALSE",
+    ["ZIPPOPOTAMUSZIPCODE_APIKEY"] = "NONE",
   })
 
   local live = env["ZIPPOPOTAMUSZIPCODE_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["ZIPPOPOTAMUSZIPCODE_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

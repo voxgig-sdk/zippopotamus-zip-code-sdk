@@ -15,6 +15,9 @@ def make_config():
         },
         "options": {
             "base": "https://api.zippopotam.us",
+            "auth": {
+                "prefix": "Bearer",
+            },
             "headers": {
         "content-type": "application/json",
       },
@@ -27,66 +30,68 @@ def make_config():
       "get_location_by_postal_code": {
         "fields": [
           {
+            "active": True,
             "name": "latitude",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "longitude",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "place_name",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "state",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 3,
           },
           {
+            "active": True,
             "name": "state_abbreviation",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 4,
           },
         ],
         "name": "get_location_by_postal_code",
         "op": {
           "list": {
+            "input": "data",
             "name": "list",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "example": "US",
                       "kind": "param",
                       "name": "country",
                       "orig": "country",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": "90210",
                       "kind": "param",
                       "name": "postal_code",
                       "orig": "postal_code",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -111,11 +116,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "list",
           },
         },
@@ -126,68 +129,70 @@ def make_config():
       "get_postal_codes_by_city": {
         "fields": [
           {
+            "active": True,
             "name": "latitude",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "longitude",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "place_name",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "post_code",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 3,
           },
         ],
         "name": "get_postal_codes_by_city",
         "op": {
           "list": {
+            "input": "data",
             "name": "list",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "example": "Beverly Hills",
                       "kind": "param",
                       "name": "city",
                       "orig": "city",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": "US",
                       "kind": "param",
                       "name": "country",
                       "orig": "country",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                     {
+                      "active": True,
                       "example": "CA",
                       "kind": "param",
                       "name": "state",
                       "orig": "state",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -209,11 +214,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "list",
           },
         },

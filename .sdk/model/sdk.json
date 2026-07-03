@@ -1,41 +1,13 @@
 {
-  "name": "zippopotamus-zip-code",
-  "origin": "voxgig-sdk",
   "def": "zippopotamus-zip-code_0.1.0.json",
   "main": {
+    "def": {
+      "desc": ""
+    },
     "kit": {
-      "info": {
-        "contact": {
-          "name": "Zippopotamus API",
-          "url": "https://www.zippopotam.us/"
-        },
-        "description": "The Zippopotamus API provides postal and zip code data for over 60 countries, allowing users to easily access detailed location information. It is particularly useful for form auto-completion and supports JSON response format for seamless integration.",
-        "servers": [
-          {
-            "description": "Production server",
-            "url": "https://api.zippopotam.us"
-          }
-        ],
-        "title": "Zippopotamus Zip Code API",
-        "version": "1.0.0",
-        "tagline": "Look up postal/zip codes and their locations across 60+ countries with a simple JSON API",
-        "homepage": "https://api.zippopotam.us",
-        "docs_url": "https://api.zippopotam.us",
-        "license_short": "Open Database License (ODbL) 1.0; data sourced from GeoNames",
-        "license_md": "- Database licensed under the [Open Database License (ODbL) 1.0](http://opendatacommons.org/licenses/odbl/1.0/)\n- Individual record contents are made available under the Database Contents License\n- Underlying postal data is sourced from [GeoNames](https://www.geonames.org/)\n- Attribution to Zippopotam.us / GeoNames is expected when redistributing data",
-        "about_md": "[Zippopotam.us](https://api.zippopotam.us) is a free, open-source API that returns postal-code and place data as JSON. The project is community-maintained and draws its underlying data from the [GeoNames](https://www.geonames.org/) postal dataset.\n\nWhat you get from the API:\n\n- Forward lookup: given a country code and a postal/zip code, get the matching places (e.g. `/us/90210`, `/ch/3007`)\n- Reverse lookup: given a country, state/region and city name, get the postal codes for that city (e.g. `/us/ma/belmont`)\n- Per-place fields: place name, state / province, state abbreviation, latitude, longitude\n- Top-level fields: post code, country name and country abbreviation\n\nCoverage spans 60+ countries, including large datasets for the United States, Spain, France, Germany, Japan, Brazil, Canada, Australia, India and Russia.\n\nOperational notes: responses are JSON over plain HTTP GET, with no API key required. CORS is not enabled, so browser-side use generally needs a proxy. There are no formally documented rate limits — the service is free and best-effort.",
-        "entity_desc": {
-          "get_location_by_postal_code": "Forward postal-code lookup that resolves a country + postal code into one or more place records with names, state info and coordinates, served from paths like `/{country}/{postal_code}` (e.g. `/us/90210`).",
-          "get_postal_codes_by_city": "Reverse lookup that returns the postal codes associated with a given city, served from paths like `/{country}/{state}/{city}` (e.g. `/us/ma/belmont`)."
-        },
-        "auth": false
-      },
       "config": {
         "auth": {
           "prefix": "Bearer"
-        },
-        "headers": {
-          "content-type": "application/json"
         },
         "docs_order": [
           "ts",
@@ -44,70 +16,76 @@
           "go",
           "rb",
           "lua"
-        ]
+        ],
+        "headers": {
+          "content-type": "application/json"
+        }
       },
       "entity": {
         "get_location_by_postal_code": {
+          "active": true,
           "alias": {
             "field": {}
           },
           "fields": [
             {
+              "active": true,
               "name": "latitude",
               "req": false,
-              "type": "`$STRING`",
-              "active": true
+              "type": "`$STRING`"
             },
             {
+              "active": true,
               "name": "longitude",
               "req": false,
-              "type": "`$STRING`",
-              "active": true
+              "type": "`$STRING`"
             },
             {
+              "active": true,
               "name": "place_name",
               "req": false,
-              "type": "`$STRING`",
-              "active": true
+              "type": "`$STRING`"
             },
             {
+              "active": true,
               "name": "state",
               "req": false,
-              "type": "`$STRING`",
-              "active": true
+              "type": "`$STRING`"
             },
             {
+              "active": true,
               "name": "state_abbreviation",
               "req": false,
-              "type": "`$STRING`",
-              "active": true
+              "type": "`$STRING`"
             }
           ],
           "name": "get_location_by_postal_code",
           "op": {
             "list": {
+              "input": "data",
               "name": "list",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "params": [
                       {
+                        "active": true,
                         "example": "US",
                         "kind": "param",
                         "name": "country",
                         "orig": "country",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "90210",
                         "kind": "param",
                         "name": "postal_code",
                         "orig": "postal_code",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -131,82 +109,82 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
           "relations": {
             "ancestors": []
           }
         },
         "get_postal_codes_by_city": {
+          "active": true,
           "alias": {
             "field": {}
           },
           "fields": [
             {
+              "active": true,
               "name": "latitude",
               "req": false,
-              "type": "`$STRING`",
-              "active": true
+              "type": "`$STRING`"
             },
             {
+              "active": true,
               "name": "longitude",
               "req": false,
-              "type": "`$STRING`",
-              "active": true
+              "type": "`$STRING`"
             },
             {
+              "active": true,
               "name": "place_name",
               "req": false,
-              "type": "`$STRING`",
-              "active": true
+              "type": "`$STRING`"
             },
             {
+              "active": true,
               "name": "post_code",
               "req": false,
-              "type": "`$STRING`",
-              "active": true
+              "type": "`$STRING`"
             }
           ],
           "name": "get_postal_codes_by_city",
           "op": {
             "list": {
+              "input": "data",
               "name": "list",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "params": [
                       {
+                        "active": true,
                         "example": "Beverly Hills",
                         "kind": "param",
                         "name": "city",
                         "orig": "city",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "US",
                         "kind": "param",
                         "name": "country",
                         "orig": "country",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       },
                       {
+                        "active": true,
                         "example": "CA",
                         "kind": "param",
                         "name": "state",
                         "orig": "state",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -227,14 +205,11 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
           "relations": {
             "ancestors": []
           }
@@ -242,9 +217,6 @@
       },
       "feature": {
         "test": {
-          "name": "test",
-          "title": "In-memory mock transport for testing without a live server",
-          "version": "0.0.1",
           "active": true,
           "config": {
             "options": {
@@ -252,6 +224,14 @@
             }
           },
           "hook": {
+            "GetData": {
+              "active": true,
+              "await": false
+            },
+            "GetMatch": {
+              "active": true,
+              "await": false
+            },
             "PostConstruct": {
               "active": true,
               "await": false
@@ -260,25 +240,11 @@
               "active": true,
               "await": false
             },
-            "SetData": {
-              "active": true,
-              "await": false
-            },
-            "GetData": {
-              "active": true,
-              "await": false
-            },
-            "SetMatch": {
-              "active": true
-            },
-            "GetMatch": {
-              "active": true,
+            "PostOperation": {
+              "active": false,
               "await": false
             },
             "PrePoint": {
-              "active": true
-            },
-            "PreSpec": {
               "active": true,
               "await": false
             },
@@ -294,20 +260,32 @@
               "active": true,
               "await": false
             },
+            "PreSpec": {
+              "active": true,
+              "await": false
+            },
             "PreTarget": {
               "active": false,
               "await": false
             },
-            "PostOperation": {
-              "active": false,
+            "SetData": {
+              "active": true,
+              "await": false
+            },
+            "SetMatch": {
+              "active": true,
               "await": false
             }
           },
+          "name": "test",
           "target": {
-            "ts": {
+            "go": {
               "deps": {}
             },
-            "go": {
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
               "deps": {}
             },
             "lua": {
@@ -322,27 +300,33 @@
             "rb": {
               "deps": {}
             },
-            "go-cli": {
-              "deps": {}
-            },
-            "go-mcp": {
+            "ts": {
               "deps": {}
             }
-          }
+          },
+          "title": "In-memory mock transport for testing without a live server",
+          "version": "0.0.1"
         }
       },
       "flow": {
         "BasicGetLocationByPostalCodeFlow": {
+          "active": true,
           "entity": "get_location_by_postal_code",
+          "key$": "BasicGetLocationByPostalCodeFlow",
           "kind": "basic",
           "name": "BasicGetLocationByPostalCodeFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
+              "input": {},
               "match": {
                 "country": "country01",
                 "postal_code": "postal_code01"
               },
               "op": "list",
+              "spec": [],
               "valid": [
                 {
                   "apply": "ItemExists",
@@ -350,29 +334,29 @@
                     "ref": "get_location_by_postal_code_ref01"
                   }
                 }
-              ],
+              ]
+            }
+          ]
+        },
+        "BasicGetPostalCodesByCityFlow": {
+          "active": true,
+          "entity": "get_postal_codes_by_city",
+          "key$": "BasicGetPostalCodesByCityFlow",
+          "kind": "basic",
+          "name": "BasicGetPostalCodesByCityFlow",
+          "param": {},
+          "step": [
+            {
               "active": true,
               "data": {},
               "input": {},
-              "spec": []
-            }
-          ],
-          "key$": "BasicGetLocationByPostalCodeFlow",
-          "active": true,
-          "param": {}
-        },
-        "BasicGetPostalCodesByCityFlow": {
-          "entity": "get_postal_codes_by_city",
-          "kind": "basic",
-          "name": "BasicGetPostalCodesByCityFlow",
-          "step": [
-            {
               "match": {
                 "city": "city01",
                 "country": "country01",
                 "state": "state01"
               },
               "op": "list",
+              "spec": [],
               "valid": [
                 {
                   "apply": "ItemExists",
@@ -380,28 +364,53 @@
                     "ref": "get_postal_codes_by_city_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "data": {},
-              "input": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicGetPostalCodesByCityFlow",
-          "active": true,
-          "param": {}
+          ]
         }
       },
+      "info": {
+        "contact": {
+          "name": "Zippopotamus API",
+          "url": "https://www.zippopotam.us/"
+        },
+        "description": "The Zippopotamus API provides postal and zip code data for over 60 countries, allowing users to easily access detailed location information. It is particularly useful for form auto-completion and supports JSON response format for seamless integration.",
+        "servers": [
+          {
+            "description": "Production server",
+            "url": "https://api.zippopotam.us"
+          }
+        ],
+        "title": "Zippopotamus Zip Code API",
+        "version": "1.0.0"
+      },
+      "option": {},
       "target": {
-        "go-cli": {
-          "title": "Go CLI",
-          "ext": "go",
+        "go": {
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "zippopotamus-zip-code"
           },
+          "name": "go",
+          "srcfeature": false,
+          "title": "Golang"
+        },
+        "go-cli": {
+          "active": true,
+          "comment": {
+            "line": "//"
+          },
+          "deps": {},
+          "ext": "go",
+          "module": {
+            "name": "zippopotamus-zip-code"
+          },
+          "name": "go-cli",
           "phase": {
             "entity": {
               "active": false
@@ -416,19 +425,19 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-cli",
-          "active": true
+          "title": "Go CLI"
         },
         "go-mcp": {
-          "title": "Go MCP server",
-          "ext": "go",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "zippopotamus-zip-code"
           },
+          "name": "go-mcp",
           "phase": {
             "entity": {
               "active": false
@@ -443,138 +452,120 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-mcp",
-          "active": true
-        },
-        "ts": {
-          "title": "TypeScript",
-          "ext": "ts",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "zippopotamus-zip-code"
-          },
-          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
-          "deps": {
-            "dotenv": {
-              "active": true,
-              "version": "^17.4.2",
-              "kind": "dev"
-            },
-            "typescript": {
-              "active": true,
-              "version": "^5.9.3",
-              "kind": "dev"
-            },
-            "@types/node": {
-              "active": true,
-              "version": "^25.6.0",
-              "kind": "dev"
-            }
-          },
-          "name": "ts",
-          "active": true
-        },
-        "go": {
-          "title": "Golang",
-          "ext": "go",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "zippopotamus-zip-code"
-          },
-          "srcfeature": false,
-          "deps": {},
-          "name": "go",
-          "active": true
+          "title": "Go MCP server"
         },
         "lua": {
-          "title": "Lua",
-          "ext": "lua",
+          "active": true,
           "comment": {
             "line": "--"
           },
-          "module": {
-            "name": "zippopotamus-zip-code"
-          },
-          "srcfeature": false,
           "deps": {
             "dkjson": {
               "active": true,
-              "version": "2.5",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.5"
             }
           },
+          "ext": "lua",
+          "module": {
+            "name": "zippopotamus-zip-code"
+          },
           "name": "lua",
-          "active": true
+          "srcfeature": false,
+          "title": "Lua"
         },
         "php": {
-          "title": "PHP",
-          "ext": "php",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "php",
           "module": {
             "name": "zippopotamus-zip-code"
           },
-          "srcfeature": false,
-          "deps": {},
           "name": "php",
-          "active": true
+          "srcfeature": false,
+          "title": "PHP"
         },
         "py": {
-          "title": "Python",
-          "ext": "py",
+          "active": true,
           "comment": {
             "line": "#"
           },
-          "module": {
-            "name": "zippopotamus-zip-code"
-          },
-          "srcfeature": false,
           "deps": {
             "requests": {
               "active": true,
-              "version": "2.33",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.33"
             }
           },
-          "name": "py",
-          "active": true
-        },
-        "rb": {
-          "title": "Ruby",
-          "ext": "rb",
-          "comment": {
-            "line": "#"
-          },
+          "ext": "py",
           "module": {
             "name": "zippopotamus-zip-code"
           },
+          "name": "py",
           "srcfeature": false,
+          "title": "Python"
+        },
+        "rb": {
+          "active": true,
+          "comment": {
+            "line": "#"
+          },
           "deps": {
-            "voxgig-struct": {
-              "active": true,
-              "version": "0.0.10",
-              "kind": "prod"
-            },
             "json": {
               "active": true,
-              "version": "0",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "0"
+            },
+            "voxgig-struct": {
+              "active": true,
+              "kind": "prod",
+              "version": "0.0.10"
             }
           },
+          "ext": "rb",
+          "module": {
+            "name": "zippopotamus-zip-code"
+          },
           "name": "rb",
-          "active": true
+          "srcfeature": false,
+          "title": "Ruby"
+        },
+        "ts": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {
+            "@types/node": {
+              "active": true,
+              "kind": "dev",
+              "version": "^25.6.0"
+            },
+            "dotenv": {
+              "active": true,
+              "kind": "dev",
+              "version": "^17.4.2"
+            },
+            "typescript": {
+              "active": true,
+              "kind": "dev",
+              "version": "^5.9.3"
+            }
+          },
+          "ext": "ts",
+          "module": {
+            "name": "zippopotamus-zip-code"
+          },
+          "name": "ts",
+          "title": "TypeScript"
         }
-      },
-      "option": {}
-    },
-    "def": {
-      "desc": ""
+      }
     }
-  }
+  },
+  "name": "zippopotamus-zip-code",
+  "origin": "voxgig-sdk"
 }

@@ -14,6 +14,9 @@ local function make_config()
     },
     options = {
       base = "https://api.zippopotam.us",
+      auth = {
+        prefix = "Bearer",
+      },
       headers = {
         ["content-type"] = "application/json",
       },
@@ -26,66 +29,68 @@ local function make_config()
       ["get_location_by_postal_code"] = {
         ["fields"] = {
           {
+            ["active"] = true,
             ["name"] = "latitude",
             ["req"] = false,
             ["type"] = "`$STRING`",
-            ["active"] = true,
             ["index$"] = 0,
           },
           {
+            ["active"] = true,
             ["name"] = "longitude",
             ["req"] = false,
             ["type"] = "`$STRING`",
-            ["active"] = true,
             ["index$"] = 1,
           },
           {
+            ["active"] = true,
             ["name"] = "place_name",
             ["req"] = false,
             ["type"] = "`$STRING`",
-            ["active"] = true,
             ["index$"] = 2,
           },
           {
+            ["active"] = true,
             ["name"] = "state",
             ["req"] = false,
             ["type"] = "`$STRING`",
-            ["active"] = true,
             ["index$"] = 3,
           },
           {
+            ["active"] = true,
             ["name"] = "state_abbreviation",
             ["req"] = false,
             ["type"] = "`$STRING`",
-            ["active"] = true,
             ["index$"] = 4,
           },
         },
         ["name"] = "get_location_by_postal_code",
         ["op"] = {
           ["list"] = {
+            ["input"] = "data",
             ["name"] = "list",
             ["points"] = {
               {
+                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
+                      ["active"] = true,
                       ["example"] = "US",
                       ["kind"] = "param",
                       ["name"] = "country",
                       ["orig"] = "country",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["example"] = "90210",
                       ["kind"] = "param",
                       ["name"] = "postal_code",
                       ["orig"] = "postal_code",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["active"] = true,
                     },
                   },
                 },
@@ -110,11 +115,9 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["active"] = true,
                 ["index$"] = 0,
               },
             },
-            ["input"] = "data",
             ["key$"] = "list",
           },
         },
@@ -125,68 +128,70 @@ local function make_config()
       ["get_postal_codes_by_city"] = {
         ["fields"] = {
           {
+            ["active"] = true,
             ["name"] = "latitude",
             ["req"] = false,
             ["type"] = "`$STRING`",
-            ["active"] = true,
             ["index$"] = 0,
           },
           {
+            ["active"] = true,
             ["name"] = "longitude",
             ["req"] = false,
             ["type"] = "`$STRING`",
-            ["active"] = true,
             ["index$"] = 1,
           },
           {
+            ["active"] = true,
             ["name"] = "place_name",
             ["req"] = false,
             ["type"] = "`$STRING`",
-            ["active"] = true,
             ["index$"] = 2,
           },
           {
+            ["active"] = true,
             ["name"] = "post_code",
             ["req"] = false,
             ["type"] = "`$STRING`",
-            ["active"] = true,
             ["index$"] = 3,
           },
         },
         ["name"] = "get_postal_codes_by_city",
         ["op"] = {
           ["list"] = {
+            ["input"] = "data",
             ["name"] = "list",
             ["points"] = {
               {
+                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
+                      ["active"] = true,
                       ["example"] = "Beverly Hills",
                       ["kind"] = "param",
                       ["name"] = "city",
                       ["orig"] = "city",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["example"] = "US",
                       ["kind"] = "param",
                       ["name"] = "country",
                       ["orig"] = "country",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["active"] = true,
                     },
                     {
+                      ["active"] = true,
                       ["example"] = "CA",
                       ["kind"] = "param",
                       ["name"] = "state",
                       ["orig"] = "state",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
-                      ["active"] = true,
                     },
                   },
                 },
@@ -208,11 +213,9 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["active"] = true,
                 ["index$"] = 0,
               },
             },
-            ["input"] = "data",
             ["key$"] = "list",
           },
         },

@@ -1,23 +1,8 @@
 # ZippopotamusZipCode SDK
 
-Look up postal/zip codes and their locations across 60+ countries with a simple JSON API
+Zippopotamus Zip Code API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Zippopotamus Zip Code API
-
-[Zippopotam.us](https://api.zippopotam.us) is a free, open-source API that returns postal-code and place data as JSON. The project is community-maintained and draws its underlying data from the [GeoNames](https://www.geonames.org/) postal dataset.
-
-What you get from the API:
-
-- Forward lookup: given a country code and a postal/zip code, get the matching places (e.g. `/us/90210`, `/ch/3007`)
-- Reverse lookup: given a country, state/region and city name, get the postal codes for that city (e.g. `/us/ma/belmont`)
-- Per-place fields: place name, state / province, state abbreviation, latitude, longitude
-- Top-level fields: post code, country name and country abbreviation
-
-Coverage spans 60+ countries, including large datasets for the United States, Spain, France, Germany, Japan, Brazil, Canada, Australia, India and Russia.
-
-Operational notes: responses are JSON over plain HTTP GET, with no API key required. CORS is not enabled, so browser-side use generally needs a proxy. There are no formally documented rate limits — the service is free and best-effort.
 
 ## Try it
 
@@ -51,29 +36,31 @@ gem install zippopotamus-zip-code-sdk
 luarocks install zippopotamus-zip-code-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { ZippopotamusZipCodeSDK } from 'zippopotamus-zip-code'
 
-const client = new ZippopotamusZipCodeSDK({})
+const client = new ZippopotamusZipCodeSDK({
+  apikey: process.env.ZIPPOPOTAMUS-ZIP-CODE_APIKEY,
+})
 
 // List all getlocationbypostalcodes
 const getlocationbypostalcodes = await client.GetLocationByPostalCode().list()
+console.log(getlocationbypostalcodes.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -103,8 +90,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **GetLocationByPostalCode** | Forward postal-code lookup that resolves a country + postal code into one or more place records with names, state info and coordinates, served from paths like `/{country}/{postal_code}` (e.g. `/us/90210`). | `/{country}/{postal-code}` |
-| **GetPostalCodesByCity** | Reverse lookup that returns the postal codes associated with a given city, served from paths like `/{country}/{state}/{city}` (e.g. `/us/ma/belmont`). | `/{country}/{state}/{city}` |
+| **GetLocationByPostalCode** |  | `/{country}/{postal-code}` |
+| **GetPostalCodesByCity** |  | `/{country}/{state}/{city}` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -114,12 +101,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from zippopotamuszipcode_sdk import ZippopotamusZipCodeSDK
 
-client = ZippopotamusZipCodeSDK({})
+client = ZippopotamusZipCodeSDK({
+    "apikey": os.environ.get("ZIPPOPOTAMUS-ZIP-CODE_APIKEY"),
+})
 
 # List all getlocationbypostalcodes
-getlocationbypostalcodes, err = client.GetLocationByPostalCode(None).list(None, None)
+getlocationbypostalcodes, err = client.GetLocationByPostalCode().list()
+print(getlocationbypostalcodes)
 ```
 
 ### PHP
@@ -128,10 +119,13 @@ getlocationbypostalcodes, err = client.GetLocationByPostalCode(None).list(None, 
 <?php
 require_once 'zippopotamuszipcode_sdk.php';
 
-$client = new ZippopotamusZipCodeSDK([]);
+$client = new ZippopotamusZipCodeSDK([
+    "apikey" => getenv("ZIPPOPOTAMUS-ZIP-CODE_APIKEY"),
+]);
 
 // List all getlocationbypostalcodes
-[$getlocationbypostalcodes, $err] = $client->GetLocationByPostalCode(null)->list(null, null);
+[$getlocationbypostalcodes, $err] = $client->GetLocationByPostalCode()->list();
+print_r($getlocationbypostalcodes);
 ```
 
 ### Golang
@@ -139,10 +133,13 @@ $client = new ZippopotamusZipCodeSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go"
 
-client := sdk.NewZippopotamusZipCodeSDK(map[string]any{})
+client := sdk.NewZippopotamusZipCodeSDK(map[string]any{
+    "apikey": os.Getenv("ZIPPOPOTAMUS-ZIP-CODE_APIKEY"),
+})
 
 // List all getlocationbypostalcodes
 getlocationbypostalcodes, err := client.GetLocationByPostalCode(nil).List(nil, nil)
+fmt.Println(getlocationbypostalcodes)
 ```
 
 ### Ruby
@@ -150,10 +147,13 @@ getlocationbypostalcodes, err := client.GetLocationByPostalCode(nil).List(nil, n
 ```ruby
 require_relative "ZippopotamusZipCode_sdk"
 
-client = ZippopotamusZipCodeSDK.new({})
+client = ZippopotamusZipCodeSDK.new({
+  "apikey" => ENV["ZIPPOPOTAMUS-ZIP-CODE_APIKEY"],
+})
 
 # List all getlocationbypostalcodes
-getlocationbypostalcodes, err = client.GetLocationByPostalCode(nil).list(nil, nil)
+getlocationbypostalcodes, err = client.GetLocationByPostalCode().list
+puts getlocationbypostalcodes
 ```
 
 ### Lua
@@ -161,10 +161,13 @@ getlocationbypostalcodes, err = client.GetLocationByPostalCode(nil).list(nil, ni
 ```lua
 local sdk = require("zippopotamus-zip-code_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("ZIPPOPOTAMUS-ZIP-CODE_APIKEY"),
+})
 
 -- List all getlocationbypostalcodes
-local getlocationbypostalcodes, err = client:GetLocationByPostalCode(nil):list(nil, nil)
+local getlocationbypostalcodes, err = client:GetLocationByPostalCode():list()
+print(getlocationbypostalcodes)
 ```
 
 ## Unit testing in offline mode
@@ -183,25 +186,21 @@ const result = await client.GetLocationByPostalCode().load({ id: 'test01' })
 ### Python
 
 ```python
-client = ZippopotamusZipCodeSDK.test(None, None)
-result, err = client.GetLocationByPostalCode(None).load(
-    {"id": "test01"}, None
-)
+client = ZippopotamusZipCodeSDK.test()
+result, err = client.GetLocationByPostalCode().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = ZippopotamusZipCodeSDK::test(null, null);
-[$result, $err] = $client->GetLocationByPostalCode(null)->load(
-    ["id" => "test01"], null
-);
+$client = ZippopotamusZipCodeSDK::test();
+[$result, $err] = $client->GetLocationByPostalCode()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.GetLocationByPostalCode(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -210,19 +209,15 @@ result, err := client.GetLocationByPostalCode(nil).Load(
 ### Ruby
 
 ```ruby
-client = ZippopotamusZipCodeSDK.test(nil, nil)
-result, err = client.GetLocationByPostalCode(nil).load(
-  { "id" => "test01" }, nil
-)
+client = ZippopotamusZipCodeSDK.test
+result, err = client.GetLocationByPostalCode().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:GetLocationByPostalCode(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:GetLocationByPostalCode():load({ id = "test01" })
 ```
 
 ## How it works
@@ -326,15 +321,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Zippopotamus Zip Code API
-
-- Upstream: [https://api.zippopotam.us](https://api.zippopotam.us)
-
-- Database licensed under the [Open Database License (ODbL) 1.0](http://opendatacommons.org/licenses/odbl/1.0/)
-- Individual record contents are made available under the Database Contents License
-- Underlying postal data is sourced from [GeoNames](https://www.geonames.org/)
-- Attribution to Zippopotam.us / GeoNames is expected when redistributing data
 
 ---
 

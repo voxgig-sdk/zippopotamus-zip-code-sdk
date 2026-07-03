@@ -81,12 +81,14 @@ def get_location_by_postal_code_direct_setup(mockres)
   env = Runner.env_override({
     "ZIPPOPOTAMUSZIPCODE_TEST_GET_LOCATION_BY_POSTAL_CODE_ENTID" => {},
     "ZIPPOPOTAMUSZIPCODE_TEST_LIVE" => "FALSE",
+    "ZIPPOPOTAMUSZIPCODE_APIKEY" => "NONE",
   })
 
   live = env["ZIPPOPOTAMUSZIPCODE_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["ZIPPOPOTAMUSZIPCODE_APIKEY"],
     }
     client = ZippopotamusZipCodeSDK.new(merged_opts)
     return {

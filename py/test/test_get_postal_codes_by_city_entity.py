@@ -96,6 +96,7 @@ def _get_postal_codes_by_city_basic_setup(extra):
         "ZIPPOPOTAMUSZIPCODE_TEST_GET_POSTAL_CODES_BY_CITY_ENTID": idmap,
         "ZIPPOPOTAMUSZIPCODE_TEST_LIVE": "FALSE",
         "ZIPPOPOTAMUSZIPCODE_TEST_EXPLAIN": "FALSE",
+        "ZIPPOPOTAMUSZIPCODE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -106,6 +107,7 @@ def _get_postal_codes_by_city_basic_setup(extra):
     if env.get("ZIPPOPOTAMUSZIPCODE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("ZIPPOPOTAMUSZIPCODE_APIKEY"),
             },
             extra or {},
         ])
