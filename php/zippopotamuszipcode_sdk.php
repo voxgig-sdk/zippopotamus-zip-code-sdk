@@ -233,10 +233,10 @@ class ZippopotamusZipCodeSDK
 
     private $_get_location_by_postal_code = null;
 
-    // Idiomatic facade: $client->get_location_by_postal_code()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias GetLocationByPostalCode() (PHP method
-    // names are case-insensitive).
-    public function get_location_by_postal_code($data = null)
+    // Canonical facade: $client->GetLocationByPostalCode()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->get_location_by_postal_code()
+    // resolves here too.
+    public function GetLocationByPostalCode($data = null)
     {
         require_once __DIR__ . '/entity/get_location_by_postal_code_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class ZippopotamusZipCodeSDK
 
     private $_get_postal_codes_by_city = null;
 
-    // Idiomatic facade: $client->get_postal_codes_by_city()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias GetPostalCodesByCity() (PHP method
-    // names are case-insensitive).
-    public function get_postal_codes_by_city($data = null)
+    // Canonical facade: $client->GetPostalCodesByCity()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->get_postal_codes_by_city()
+    // resolves here too.
+    public function GetPostalCodesByCity($data = null)
     {
         require_once __DIR__ . '/entity/get_postal_codes_by_city_entity.php';
         if ($data === null) {

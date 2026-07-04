@@ -121,7 +121,7 @@ Alias for `ZippopotamusZipCodeSDK.test()`.
 ## GetLocationByPostalCodeEntity
 
 ```ts
-const get_location_by_postal_code = client.get_location_by_postal_code
+const get_location_by_postal_code = client.GetLocationByPostalCode()
 ```
 
 ### Fields
@@ -141,7 +141,7 @@ const get_location_by_postal_code = client.get_location_by_postal_code
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.get_location_by_postal_code.list()
+const results = await client.GetLocationByPostalCode().list()
 ```
 
 ### Common Methods
@@ -175,7 +175,7 @@ Return a copy of the entity options.
 ## GetPostalCodesByCityEntity
 
 ```ts
-const get_postal_codes_by_city = client.get_postal_codes_by_city
+const get_postal_codes_by_city = client.GetPostalCodesByCity()
 ```
 
 ### Fields
@@ -194,7 +194,7 @@ const get_postal_codes_by_city = client.get_postal_codes_by_city
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.get_postal_codes_by_city.list()
+const results = await client.GetPostalCodesByCity().list()
 ```
 
 ### Common Methods

@@ -26,9 +26,11 @@ import { ZippopotamusZipCodeSDK } from '@voxgig-sdk/zippopotamus-zip-code'
 
 const client = new ZippopotamusZipCodeSDK()
 
-// List all getlocationbypostalcodes
-const getlocationbypostalcodes = await client.getlocationbypostalcode.list()
-console.log(getlocationbypostalcodes.data)
+// List all getlocationbypostalcodes (returns GetLocationByPostalCode[])
+const getlocationbypostalcodes = await client.GetLocationByPostalCode().list()
+for (const getlocationbypostalcode of getlocationbypostalcodes) {
+  console.log(getlocationbypostalcode)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,9 +86,10 @@ from zippopotamuszipcode_sdk import ZippopotamusZipCodeSDK
 
 client = ZippopotamusZipCodeSDK()
 
-# List all getlocationbypostalcodes
-getlocationbypostalcodes = client.getlocationbypostalcode.list()
-print(getlocationbypostalcodes)
+# List all getlocationbypostalcodes (returns a list, raises on error)
+getlocationbypostalcodes = client.GetLocationByPostalCode().list({})
+for getlocationbypostalcode in getlocationbypostalcodes:
+    print(getlocationbypostalcode)
 ```
 
 ### PHP
@@ -97,8 +100,8 @@ require_once 'zippopotamuszipcode_sdk.php';
 
 $client = new ZippopotamusZipCodeSDK();
 
-// List all getlocationbypostalcodes (throws on error)
-$getlocationbypostalcodes = $client->getlocationbypostalcode()->list();
+// List all getlocationbypostalcodes (returns an array; throws on error)
+$getlocationbypostalcodes = $client->GetLocationByPostalCode()->list();
 print_r($getlocationbypostalcodes);
 ```
 
@@ -121,8 +124,8 @@ require_relative "ZippopotamusZipCode_sdk"
 
 client = ZippopotamusZipCodeSDK.new
 
-# List all getlocationbypostalcodes
-getlocationbypostalcodes = client.getlocationbypostalcode.list
+# List all getlocationbypostalcodes (returns an Array; raises on error)
+getlocationbypostalcodes = client.GetLocationByPostalCode.list
 puts getlocationbypostalcodes
 ```
 
@@ -134,7 +137,7 @@ local sdk = require("zippopotamus-zip-code_sdk")
 local client = sdk.new()
 
 -- List all getlocationbypostalcodes
-local getlocationbypostalcodes, err = client:getlocationbypostalcode():list()
+local getlocationbypostalcodes, err = client:GetLocationByPostalCode():list()
 print(getlocationbypostalcodes)
 ```
 
@@ -147,22 +150,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = ZippopotamusZipCodeSDK.test()
-const result = await client.getlocationbypostalcode.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const getlocationbypostalcode = await client.GetLocationByPostalCode().load({ id: 'test01' })
+// getlocationbypostalcode is a bare GetLocationByPostalCode populated with mock data
+console.log(getlocationbypostalcode)
 ```
 
 ### Python
 
 ```python
 client = ZippopotamusZipCodeSDK.test()
-result = client.getlocationbypostalcode.load({"id": "test01"})
+getlocationbypostalcode = client.GetLocationByPostalCode().load({"id": "test01"})
+print(getlocationbypostalcode)
 ```
 
 ### PHP
 
 ```php
-$client = ZippopotamusZipCodeSDK::test();
-$result = $client->getlocationbypostalcode()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = ZippopotamusZipCodeSDK::test([
+    "entity" => ["getlocationbypostalcode" => ["test01" => ["id" => "test01"]]],
+]);
+$getlocationbypostalcode = $client->GetLocationByPostalCode()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -177,15 +185,18 @@ result, err := client.GetLocationByPostalCode(nil).Load(
 ### Ruby
 
 ```ruby
-client = ZippopotamusZipCodeSDK.test
-result = client.getlocationbypostalcode.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = ZippopotamusZipCodeSDK.test({
+  "entity" => { "getlocationbypostalcode" => { "test01" => { "id" => "test01" } } },
+})
+getlocationbypostalcode = client.GetLocationByPostalCode.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:getlocationbypostalcode():load({ id = "test01" })
+local result, err = client:GetLocationByPostalCode():load({ id = "test01" })
 ```
 
 ## How it works
@@ -233,6 +244,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

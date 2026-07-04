@@ -28,16 +28,14 @@ require_relative "ZippopotamusZipCode_sdk"
 client = ZippopotamusZipCodeSDK.new
 ```
 
-### 2. List getlocationbypostalcodes
+### 2. List getlocationbypostalcode records
 
 ```ruby
 begin
-  result = client.getlocationbypostalcode.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of GetLocationByPostalCode records — iterate directly.
+  getlocationbypostalcodes = client.GetLocationByPostalCode.list
+  getlocationbypostalcodes.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -85,13 +83,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = ZippopotamusZipCodeSDK.test
+client = ZippopotamusZipCodeSDK.test({
+  "entity" => { "getlocationbypostalcode" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.getlocationbypostalcode.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+getlocationbypostalcode = client.GetLocationByPostalCode.load({ "id" => "test01" })
+puts getlocationbypostalcode
 ```
 
 ### Use a custom fetch function
@@ -241,7 +243,7 @@ API path: `/{country}/{state}/{city}`
 
 ### GetLocationByPostalCode
 
-Create an instance: `const get_location_by_postal_code = client.get_location_by_postal_code`
+Create an instance: `get_location_by_postal_code = client.GetLocationByPostalCode`
 
 #### Operations
 
@@ -261,14 +263,15 @@ Create an instance: `const get_location_by_postal_code = client.get_location_by_
 
 #### Example: List
 
-```ts
-const get_location_by_postal_codes = await client.get_location_by_postal_code.list()
+```ruby
+# list returns an Array of GetLocationByPostalCode records (raises on error).
+get_location_by_postal_codes = client.GetLocationByPostalCode.list
 ```
 
 
 ### GetPostalCodesByCity
 
-Create an instance: `const get_postal_codes_by_city = client.get_postal_codes_by_city`
+Create an instance: `get_postal_codes_by_city = client.GetPostalCodesByCity`
 
 #### Operations
 
@@ -287,8 +290,9 @@ Create an instance: `const get_postal_codes_by_city = client.get_postal_codes_by
 
 #### Example: List
 
-```ts
-const get_postal_codes_by_citys = await client.get_postal_codes_by_city.list()
+```ruby
+# list returns an Array of GetPostalCodesByCity records (raises on error).
+get_postal_codes_by_citys = client.GetPostalCodesByCity.list
 ```
 
 
@@ -363,7 +367,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-getlocationbypostalcode = client.getlocationbypostalcode
+getlocationbypostalcode = client.GetLocationByPostalCode
 getlocationbypostalcode.load({ "id" => "example_id" })
 
 # getlocationbypostalcode.data_get now returns the loaded getlocationbypostalcode data

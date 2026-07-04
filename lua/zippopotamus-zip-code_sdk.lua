@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:get_location_by_postal_code():list() / client:get_location_by_postal_code():load({ id = ... })
-function ZippopotamusZipCodeSDK:get_location_by_postal_code(data)
+-- Idiomatic facade: client:GetLocationByPostalCode():list() / client:GetLocationByPostalCode():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ZippopotamusZipCodeSDK:GetLocationByPostalCode(data)
   local EntityMod = require("entity.get_location_by_postal_code_entity")
   if data == nil then
     if self._get_location_by_postal_code == nil then
@@ -256,15 +257,10 @@ function ZippopotamusZipCodeSDK:get_location_by_postal_code(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:get_location_by_postal_code() instead.
-function ZippopotamusZipCodeSDK:GetLocationByPostalCode(data)
-  local EntityMod = require("entity.get_location_by_postal_code_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:get_postal_codes_by_city():list() / client:get_postal_codes_by_city():load({ id = ... })
-function ZippopotamusZipCodeSDK:get_postal_codes_by_city(data)
+-- Idiomatic facade: client:GetPostalCodesByCity():list() / client:GetPostalCodesByCity():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ZippopotamusZipCodeSDK:GetPostalCodesByCity(data)
   local EntityMod = require("entity.get_postal_codes_by_city_entity")
   if data == nil then
     if self._get_postal_codes_by_city == nil then
@@ -272,12 +268,6 @@ function ZippopotamusZipCodeSDK:get_postal_codes_by_city(data)
     end
     return self._get_postal_codes_by_city
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:get_postal_codes_by_city() instead.
-function ZippopotamusZipCodeSDK:GetPostalCodesByCity(data)
-  local EntityMod = require("entity.get_postal_codes_by_city_entity")
   return EntityMod.new(self, data)
 end
 

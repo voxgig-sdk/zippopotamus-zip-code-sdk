@@ -31,14 +31,16 @@ from zippopotamuszipcode_sdk import ZippopotamusZipCodeSDK
 client = ZippopotamusZipCodeSDK()
 ```
 
-### 2. List getlocationbypostalcodes
+### 2. List getlocationbypostalcode records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.getlocationbypostalcode.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    getlocationbypostalcodes = client.GetLocationByPostalCode().list({})
+    for getlocationbypostalcode in getlocationbypostalcodes:
+        print(getlocationbypostalcode)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -86,8 +88,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = ZippopotamusZipCodeSDK.test()
 
-result = client.getlocationbypostalcode.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+getlocationbypostalcode = client.GetLocationByPostalCode().load({"id": "test01"})
+# getlocationbypostalcode contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -238,7 +241,7 @@ API path: `/{country}/{state}/{city}`
 
 ### GetLocationByPostalCode
 
-Create an instance: `const get_location_by_postal_code = client.get_location_by_postal_code`
+Create an instance: `get_location_by_postal_code = client.GetLocationByPostalCode()`
 
 #### Operations
 
@@ -258,14 +261,14 @@ Create an instance: `const get_location_by_postal_code = client.get_location_by_
 
 #### Example: List
 
-```ts
-const get_location_by_postal_codes = await client.get_location_by_postal_code.list()
+```python
+get_location_by_postal_codes = client.GetLocationByPostalCode().list({})
 ```
 
 
 ### GetPostalCodesByCity
 
-Create an instance: `const get_postal_codes_by_city = client.get_postal_codes_by_city`
+Create an instance: `get_postal_codes_by_city = client.GetPostalCodesByCity()`
 
 #### Operations
 
@@ -284,8 +287,8 @@ Create an instance: `const get_postal_codes_by_city = client.get_postal_codes_by
 
 #### Example: List
 
-```ts
-const get_postal_codes_by_citys = await client.get_postal_codes_by_city.list()
+```python
+get_postal_codes_by_citys = client.GetPostalCodesByCity().list({})
 ```
 
 
@@ -359,7 +362,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-getlocationbypostalcode = client.getlocationbypostalcode
+getlocationbypostalcode = client.GetLocationByPostalCode()
 getlocationbypostalcode.load({"id": "example_id"})
 
 # getlocationbypostalcode.data_get() now returns the loaded getlocationbypostalcode data

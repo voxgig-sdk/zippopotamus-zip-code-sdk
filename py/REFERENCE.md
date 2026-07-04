@@ -84,7 +84,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## GetLocationByPostalCodeEntity
 
 ```python
-get_location_by_postal_code = client.get_location_by_postal_code
+get_location_by_postal_code = client.GetLocationByPostalCode()
 ```
 
 ### Fields
@@ -104,7 +104,9 @@ get_location_by_postal_code = client.get_location_by_postal_code
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.get_location_by_postal_code.list({})
+results = client.GetLocationByPostalCode().list({})
+for get_location_by_postal_code in results:
+    print(get_location_by_postal_code)
 ```
 
 ### Common Methods
@@ -139,7 +141,7 @@ Return the entity name.
 ## GetPostalCodesByCityEntity
 
 ```python
-get_postal_codes_by_city = client.get_postal_codes_by_city
+get_postal_codes_by_city = client.GetPostalCodesByCity()
 ```
 
 ### Fields
@@ -158,7 +160,9 @@ get_postal_codes_by_city = client.get_postal_codes_by_city
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.get_postal_codes_by_city.list({})
+results = client.GetPostalCodesByCity().list({})
+for get_postal_codes_by_city in results:
+    print(get_postal_codes_by_city)
 ```
 
 ### Common Methods

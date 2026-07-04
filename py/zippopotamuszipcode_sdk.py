@@ -220,41 +220,21 @@ class ZippopotamusZipCodeSDK:
         }
 
 
-    @property
-    def get_location_by_postal_code(self):
-        """Idiomatic facade: client.get_location_by_postal_code.list() / client.get_location_by_postal_code.load({"id": ...})."""
-        from entity.get_location_by_postal_code_entity import GetLocationByPostalCodeEntity
-        cached = getattr(self, "_get_location_by_postal_code", None)
-        if cached is None:
-            cached = GetLocationByPostalCodeEntity(self, None)
-            self._get_location_by_postal_code = cached
-        return cached
-
-    def GetLocationByPostalCode(self, data=None):
-        # Deprecated: use client.get_location_by_postal_code instead.
+    def GetLocationByPostalCode(self, data=None) -> "GetLocationByPostalCodeEntity":
+        """Entity factory: client.GetLocationByPostalCode().list({}) / client.GetLocationByPostalCode().load({"id": ...})."""
         from entity.get_location_by_postal_code_entity import GetLocationByPostalCodeEntity
         return GetLocationByPostalCodeEntity(self, data)
 
 
-    @property
-    def get_postal_codes_by_city(self):
-        """Idiomatic facade: client.get_postal_codes_by_city.list() / client.get_postal_codes_by_city.load({"id": ...})."""
-        from entity.get_postal_codes_by_city_entity import GetPostalCodesByCityEntity
-        cached = getattr(self, "_get_postal_codes_by_city", None)
-        if cached is None:
-            cached = GetPostalCodesByCityEntity(self, None)
-            self._get_postal_codes_by_city = cached
-        return cached
-
-    def GetPostalCodesByCity(self, data=None):
-        # Deprecated: use client.get_postal_codes_by_city instead.
+    def GetPostalCodesByCity(self, data=None) -> "GetPostalCodesByCityEntity":
+        """Entity factory: client.GetPostalCodesByCity().list({}) / client.GetPostalCodesByCity().load({"id": ...})."""
         from entity.get_postal_codes_by_city_entity import GetPostalCodesByCityEntity
         return GetPostalCodesByCityEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "ZippopotamusZipCodeSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -274,3 +254,10 @@ class ZippopotamusZipCodeSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.get_location_by_postal_code_entity import GetLocationByPostalCodeEntity
+    from entity.get_postal_codes_by_city_entity import GetPostalCodesByCityEntity

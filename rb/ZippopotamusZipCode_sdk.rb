@@ -208,26 +208,14 @@ class ZippopotamusZipCodeSDK
   end
 
 
-  # Idiomatic facade: client.get_location_by_postal_code.list / client.get_location_by_postal_code.load({ "id" => ... })
-  def get_location_by_postal_code
-    require_relative 'entity/get_location_by_postal_code_entity'
-    @get_location_by_postal_code ||= GetLocationByPostalCodeEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.get_location_by_postal_code instead.
+  # Canonical facade: client.GetLocationByPostalCode.list / client.GetLocationByPostalCode.load({ "id" => ... })
   def GetLocationByPostalCode(data = nil)
     require_relative 'entity/get_location_by_postal_code_entity'
     GetLocationByPostalCodeEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.get_postal_codes_by_city.list / client.get_postal_codes_by_city.load({ "id" => ... })
-  def get_postal_codes_by_city
-    require_relative 'entity/get_postal_codes_by_city_entity'
-    @get_postal_codes_by_city ||= GetPostalCodesByCityEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.get_postal_codes_by_city instead.
+  # Canonical facade: client.GetPostalCodesByCity.list / client.GetPostalCodesByCity.load({ "id" => ... })
   def GetPostalCodesByCity(data = nil)
     require_relative 'entity/get_postal_codes_by_city_entity'
     GetPostalCodesByCityEntity.new(self, data)

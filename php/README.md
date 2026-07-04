@@ -29,18 +29,16 @@ require_once 'zippopotamuszipcode_sdk.php';
 $client = new ZippopotamusZipCodeSDK();
 ```
 
-### 2. List getlocationbypostalcodes
+### 2. List getlocationbypostalcode records
 
 ```php
 try {
-    $result = $client->getlocationbypostalcode()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of GetLocationByPostalCode records — iterate directly.
+    $getlocationbypostalcodes = $client->GetLocationByPostalCode()->list();
+    foreach ($getlocationbypostalcodes as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -86,13 +84,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = ZippopotamusZipCodeSDK::test();
+$client = ZippopotamusZipCodeSDK::test([
+    "entity" => ["getlocationbypostalcode" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->getlocationbypostalcode()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$getlocationbypostalcode = $client->GetLocationByPostalCode()->load(["id" => "test01"]);
+print_r($getlocationbypostalcode);
 ```
 
 ### Use a custom fetch function
@@ -246,7 +248,7 @@ API path: `/{country}/{state}/{city}`
 
 ### GetLocationByPostalCode
 
-Create an instance: `const get_location_by_postal_code = client.get_location_by_postal_code`
+Create an instance: `$get_location_by_postal_code = $client->GetLocationByPostalCode();`
 
 #### Operations
 
@@ -266,14 +268,15 @@ Create an instance: `const get_location_by_postal_code = client.get_location_by_
 
 #### Example: List
 
-```ts
-const get_location_by_postal_codes = await client.get_location_by_postal_code.list()
+```php
+// list() returns an array of GetLocationByPostalCode records (throws on error).
+$get_location_by_postal_codes = $client->GetLocationByPostalCode()->list();
 ```
 
 
 ### GetPostalCodesByCity
 
-Create an instance: `const get_postal_codes_by_city = client.get_postal_codes_by_city`
+Create an instance: `$get_postal_codes_by_city = $client->GetPostalCodesByCity();`
 
 #### Operations
 
@@ -292,8 +295,9 @@ Create an instance: `const get_postal_codes_by_city = client.get_postal_codes_by
 
 #### Example: List
 
-```ts
-const get_postal_codes_by_citys = await client.get_postal_codes_by_city.list()
+```php
+// list() returns an array of GetPostalCodesByCity records (throws on error).
+$get_postal_codes_by_citys = $client->GetPostalCodesByCity()->list();
 ```
 
 
@@ -368,7 +372,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$getlocationbypostalcode = $client->getlocationbypostalcode();
+$getlocationbypostalcode = $client->GetLocationByPostalCode();
 $getlocationbypostalcode->load(["id" => "example_id"]);
 
 // $getlocationbypostalcode->dataGet() now returns the loaded getlocationbypostalcode data

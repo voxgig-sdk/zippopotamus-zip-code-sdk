@@ -89,7 +89,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## GetLocationByPostalCodeEntity
 
 ```php
-$get_location_by_postal_code = $client->get_location_by_postal_code();
+$get_location_by_postal_code = $client->GetLocationByPostalCode();
 ```
 
 ### Fields
@@ -109,7 +109,7 @@ $get_location_by_postal_code = $client->get_location_by_postal_code();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->get_location_by_postal_code()->list([]);
+$results = $client->GetLocationByPostalCode()->list([]);
 ```
 
 ### Common Methods
@@ -145,7 +145,7 @@ Return the entity name.
 ## GetPostalCodesByCityEntity
 
 ```php
-$get_postal_codes_by_city = $client->get_postal_codes_by_city();
+$get_postal_codes_by_city = $client->GetPostalCodesByCity();
 ```
 
 ### Fields
@@ -164,7 +164,7 @@ $get_postal_codes_by_city = $client->get_postal_codes_by_city();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->get_postal_codes_by_city()->list([]);
+$results = $client->GetPostalCodesByCity()->list([]);
 ```
 
 ### Common Methods

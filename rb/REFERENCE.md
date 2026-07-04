@@ -90,7 +90,7 @@ same parameters as `direct()`. Raises on error.
 ## GetLocationByPostalCodeEntity
 
 ```ruby
-get_location_by_postal_code = client.get_location_by_postal_code
+get_location_by_postal_code = client.GetLocationByPostalCode
 ```
 
 ### Fields
@@ -110,7 +110,7 @@ get_location_by_postal_code = client.get_location_by_postal_code
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.get_location_by_postal_code.list(nil)
+results = client.GetLocationByPostalCode.list(nil)
 ```
 
 ### Common Methods
@@ -146,7 +146,7 @@ Return the entity name.
 ## GetPostalCodesByCityEntity
 
 ```ruby
-get_postal_codes_by_city = client.get_postal_codes_by_city
+get_postal_codes_by_city = client.GetPostalCodesByCity
 ```
 
 ### Fields
@@ -165,7 +165,7 @@ get_postal_codes_by_city = client.get_postal_codes_by_city
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.get_postal_codes_by_city.list(nil)
+results = client.GetPostalCodesByCity.list(nil)
 ```
 
 ### Common Methods

@@ -87,7 +87,7 @@ same parameters as `direct()`.
 ## GetLocationByPostalCodeEntity
 
 ```lua
-local get_location_by_postal_code = client:get_location_by_postal_code(nil)
+local get_location_by_postal_code = client:GetLocationByPostalCode(nil)
 ```
 
 ### Fields
@@ -107,7 +107,7 @@ local get_location_by_postal_code = client:get_location_by_postal_code(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:get_location_by_postal_code():list()
+local results, err = client:GetLocationByPostalCode():list()
 ```
 
 ### Common Methods
@@ -143,7 +143,7 @@ Return the entity name.
 ## GetPostalCodesByCityEntity
 
 ```lua
-local get_postal_codes_by_city = client:get_postal_codes_by_city(nil)
+local get_postal_codes_by_city = client:GetPostalCodesByCity(nil)
 ```
 
 ### Fields
@@ -162,7 +162,7 @@ local get_postal_codes_by_city = client:get_postal_codes_by_city(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:get_postal_codes_by_city():list()
+local results, err = client:GetPostalCodesByCity():list()
 ```
 
 ### Common Methods
