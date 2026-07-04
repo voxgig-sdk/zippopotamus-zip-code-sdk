@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "https://api.zippopotam.us",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },
@@ -83,6 +80,7 @@ def make_config():
                       "orig": "country",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                     {
                       "active": True,
@@ -92,6 +90,7 @@ def make_config():
                       "orig": "postal_code",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 1,
                     },
                   ],
                 },
@@ -175,6 +174,7 @@ def make_config():
                       "orig": "city",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                     {
                       "active": True,
@@ -184,6 +184,7 @@ def make_config():
                       "orig": "country",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 1,
                     },
                     {
                       "active": True,
@@ -193,6 +194,7 @@ def make_config():
                       "orig": "state",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 2,
                     },
                   ],
                 },

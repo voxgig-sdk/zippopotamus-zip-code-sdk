@@ -115,7 +115,6 @@ function basicSetup(extra?: any) {
     'ZIPPOPOTAMUS_ZIP_CODE_TEST_GET_LOCATION_BY_POSTAL_CODE_ENTID': idmap,
     'ZIPPOPOTAMUS_ZIP_CODE_TEST_LIVE': 'FALSE',
     'ZIPPOPOTAMUS_ZIP_CODE_TEST_EXPLAIN': 'FALSE',
-    'ZIPPOPOTAMUS_ZIP_CODE_APIKEY': 'NONE',
   })
 
   idmap = env['ZIPPOPOTAMUS_ZIP_CODE_TEST_GET_LOCATION_BY_POSTAL_CODE_ENTID']
@@ -125,7 +124,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new ZippopotamusZipCodeSDK(merge([
       {
-        apikey: env.ZIPPOPOTAMUS_ZIP_CODE_APIKEY,
       },
       extra
     ]))

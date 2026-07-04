@@ -45,6 +45,7 @@ class GetLocationByPostalCodeEntity
     end
   end
 
+  # @return [GetLocationByPostalCode, Hash] the current GetLocationByPostalCode data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class GetLocationByPostalCodeEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of GetLocationByPostalCode fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class GetLocationByPostalCodeEntity
   
 
   
+  # List GetLocationByPostalCode items matching the given filter.
+  #
+  # @param reqmatch [GetLocationByPostalCodeListMatch, Hash, nil] match filter (any subset of GetLocationByPostalCode fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<GetLocationByPostalCode>, Array] the matching GetLocationByPostalCode items; raises ZippopotamusZipCodeError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

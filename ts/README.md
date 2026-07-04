@@ -9,9 +9,12 @@ The TypeScript SDK for the ZippopotamusZipCode API — a type-safe, entity-orien
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/zippopotamus-zip-code
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/zippopotamus-zip-code-sdk/releases](https://github.com/voxgig-sdk/zippopotamus-zip-code-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { ZippopotamusZipCodeSDK } from 'zippopotamus-zip-code'
+import { ZippopotamusZipCodeSDK } from '@voxgig-sdk/zippopotamus-zip-code'
 
-const client = new ZippopotamusZipCodeSDK({
-  apikey: process.env.ZIPPOPOTAMUS-ZIP-CODE_APIKEY,
-})
+const client = new ZippopotamusZipCodeSDK()
 ```
 
 ### 2. List getlocationbypostalcodes
 
 ```ts
-const result = await client.GetLocationByPostalCode().list()
+const result = await client.getlocationbypostalcode.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -81,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ZippopotamusZipCodeSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.getlocationbypostalcode.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -89,7 +90,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new ZippopotamusZipCodeSDK({ apikey: '...' })
+const client = new ZippopotamusZipCodeSDK()
 const testClient = client.tester()
 ```
 
@@ -98,7 +99,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.getlocationbypostalcode
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -125,7 +126,6 @@ const logger = {
 }
 
 const client = new ZippopotamusZipCodeSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -135,8 +135,7 @@ const client = new ZippopotamusZipCodeSDK({
 Create a `.env.local` file at the project root:
 
 ```
-ZIPPOPOTAMUS-ZIP-CODE_TEST_LIVE=TRUE
-ZIPPOPOTAMUS-ZIP-CODE_APIKEY=<your-key>
+ZIPPOPOTAMUS_ZIP_CODE_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -154,7 +153,6 @@ cd ts && npm test
 
 ```ts
 new ZippopotamusZipCodeSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -165,7 +163,6 @@ new ZippopotamusZipCodeSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -286,7 +283,7 @@ API path: `/{country}/{state}/{city}`
 
 ### GetLocationByPostalCode
 
-Create an instance: `const get_location_by_postal_code = client.GetLocationByPostalCode()`
+Create an instance: `const get_location_by_postal_code = client.get_location_by_postal_code`
 
 #### Operations
 
@@ -307,13 +304,13 @@ Create an instance: `const get_location_by_postal_code = client.GetLocationByPos
 #### Example: List
 
 ```ts
-const get_location_by_postal_codes = await client.GetLocationByPostalCode().list()
+const get_location_by_postal_codes = await client.get_location_by_postal_code.list()
 ```
 
 
 ### GetPostalCodesByCity
 
-Create an instance: `const get_postal_codes_by_city = client.GetPostalCodesByCity()`
+Create an instance: `const get_postal_codes_by_city = client.get_postal_codes_by_city`
 
 #### Operations
 
@@ -333,7 +330,7 @@ Create an instance: `const get_postal_codes_by_city = client.GetPostalCodesByCit
 #### Example: List
 
 ```ts
-const get_postal_codes_by_citys = await client.GetPostalCodesByCity().list()
+const get_postal_codes_by_citys = await client.get_postal_codes_by_city.list()
 ```
 
 
@@ -394,7 +391,7 @@ zippopotamus-zip-code/
 Import the SDK from the package root:
 
 ```ts
-import { ZippopotamusZipCodeSDK } from 'zippopotamus-zip-code'
+import { ZippopotamusZipCodeSDK } from '@voxgig-sdk/zippopotamus-zip-code'
 ```
 
 ### Entity state
@@ -404,11 +401,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const getlocationbypostalcode = client.getlocationbypostalcode
+await getlocationbypostalcode.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// getlocationbypostalcode.data() now returns the loaded getlocationbypostalcode data
+// getlocationbypostalcode.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

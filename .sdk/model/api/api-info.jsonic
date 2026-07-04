@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         name: "Zippopotamus API"
         url: "https://www.zippopotam.us/"

@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch GetLocationByPostalCodeListMatch
+---@param ctrl? table
+---@return GetLocationByPostalCode[]
+---@return string? err
 function GetLocationByPostalCodeEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

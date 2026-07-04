@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://api.zippopotam.us',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -114,7 +110,8 @@ class Config {
                     "name": "country",
                     "orig": "country",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   },
                   {
                     "active": true,
@@ -123,7 +120,8 @@ class Config {
                     "name": "postal_code",
                     "orig": "postal_code",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 1
                   }
                 ]
               },
@@ -206,7 +204,8 @@ class Config {
                     "name": "city",
                     "orig": "city",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   },
                   {
                     "active": true,
@@ -215,7 +214,8 @@ class Config {
                     "name": "country",
                     "orig": "country",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 1
                   },
                   {
                     "active": true,
@@ -224,7 +224,8 @@ class Config {
                     "name": "state",
                     "orig": "state",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 2
                   }
                 ]
               },

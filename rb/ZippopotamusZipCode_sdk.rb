@@ -13,6 +13,9 @@ require_relative 'config'
 require_relative 'feature/base_feature'
 require_relative 'features'
 
+# Load typed models (Struct value objects).
+require_relative 'ZippopotamusZipCode_types'
+
 
 class ZippopotamusZipCodeSDK
   attr_accessor :mode, :features, :options
@@ -131,7 +134,7 @@ class ZippopotamusZipCodeSDK
     end
 
     _, err = utility.prepare_auth.call(ctx)
-    return nil, err if err
+    raise err if err
 
     utility.make_fetch_def.call(ctx)
   end
@@ -139,8 +142,14 @@ class ZippopotamusZipCodeSDK
   def direct(fetchargs = {})
     utility = @_utility
 
-    fetchdef, err = prepare(fetchargs)
-    return { "ok" => false, "err" => err }, nil if err
+    # direct() is the raw-HTTP escape hatch: it always returns a result hash
+    # ({ "ok" => ..., ... }) and never raises. prepare() raises on error, so
+    # trap that and surface it in the hash.
+    begin
+      fetchdef = prepare(fetchargs)
+    rescue ZippopotamusZipCodeError => err
+      return { "ok" => false, "err" => err }
+    end
 
     fetchargs ||= {}
     ctrl = ZippopotamusZipCodeHelpers.to_map(VoxgigStruct.getprop(fetchargs, "ctrl")) || {}
@@ -153,13 +162,13 @@ class ZippopotamusZipCodeSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err }, nil if fetch_err
+    return { "ok" => false, "err" => fetch_err } if fetch_err
 
     if fetched.nil?
       return {
         "ok" => false,
         "err" => ctx.make_error("direct_no_response", "response: undefined"),
-      }, nil
+      }
     end
 
     if fetched.is_a?(Hash)
@@ -189,22 +198,36 @@ class ZippopotamusZipCodeSDK
         "status" => status,
         "headers" => headers,
         "data" => json_data,
-      }, nil
+      }
     end
 
     return {
       "ok" => false,
       "err" => ctx.make_error("direct_invalid", "invalid response type"),
-    }, nil
+    }
   end
 
 
+  # Idiomatic facade: client.get_location_by_postal_code.list / client.get_location_by_postal_code.load({ "id" => ... })
+  def get_location_by_postal_code
+    require_relative 'entity/get_location_by_postal_code_entity'
+    @get_location_by_postal_code ||= GetLocationByPostalCodeEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.get_location_by_postal_code instead.
   def GetLocationByPostalCode(data = nil)
     require_relative 'entity/get_location_by_postal_code_entity'
     GetLocationByPostalCodeEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.get_postal_codes_by_city.list / client.get_postal_codes_by_city.load({ "id" => ... })
+  def get_postal_codes_by_city
+    require_relative 'entity/get_postal_codes_by_city_entity'
+    @get_postal_codes_by_city ||= GetPostalCodesByCityEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.get_postal_codes_by_city instead.
   def GetPostalCodesByCity(data = nil)
     require_relative 'entity/get_postal_codes_by_city_entity'
     GetPostalCodesByCityEntity.new(self, data)

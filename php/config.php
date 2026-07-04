@@ -20,9 +20,6 @@ class ZippopotamusZipCodeConfig
             ],
             "options" => [
                 "base" => "https://api.zippopotam.us",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
@@ -88,6 +85,7 @@ class ZippopotamusZipCodeConfig
                         'orig' => 'country',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                       [
                         'active' => true,
@@ -97,6 +95,7 @@ class ZippopotamusZipCodeConfig
                         'orig' => 'postal_code',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 1,
                       ],
                     ],
                   ],
@@ -180,6 +179,7 @@ class ZippopotamusZipCodeConfig
                         'orig' => 'city',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                       [
                         'active' => true,
@@ -189,6 +189,7 @@ class ZippopotamusZipCodeConfig
                         'orig' => 'country',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 1,
                       ],
                       [
                         'active' => true,
@@ -198,6 +199,7 @@ class ZippopotamusZipCodeConfig
                         'orig' => 'state',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 2,
                       ],
                     ],
                   ],

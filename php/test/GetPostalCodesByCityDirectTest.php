@@ -48,7 +48,7 @@ class GetPostalCodesByCityDirectTest extends TestCase
             $params["state"] = "direct01";
         }
 
-        [$result, $err] = $client->direct([
+        $result = $client->direct([
             "path" => "{country}/{state}/{city}",
             "method" => "GET",
             "params" => $params,
@@ -57,8 +57,8 @@ class GetPostalCodesByCityDirectTest extends TestCase
             // Live mode is lenient: synthetic IDs frequently 4xx and the
             // list-response shape varies wildly across public APIs. Skip
             // rather than fail when the call doesn't return a usable list.
-            if ($err !== null) {
-                $this->markTestSkipped("list call failed (likely synthetic IDs against live API): " . (string)$err);
+            if (!empty($result["err"])) {
+                $this->markTestSkipped("list call failed (likely synthetic IDs against live API): " . (string)$result["err"]);
                 return;
             }
             if (empty($result["ok"])) {
@@ -71,7 +71,7 @@ class GetPostalCodesByCityDirectTest extends TestCase
                 return;
             }
         } else {
-            $this->assertNull($err);
+            $this->assertArrayNotHasKey("err", $result);
             $this->assertTrue($result["ok"]);
             $this->assertEquals(200, Helpers::to_int($result["status"]));
             $this->assertIsArray($result["data"]);
@@ -92,14 +92,12 @@ function get_postal_codes_by_city_direct_setup($mockres)
     $env = Runner::env_override([
         "ZIPPOPOTAMUSZIPCODE_TEST_GET_POSTAL_CODES_BY_CITY_ENTID" => [],
         "ZIPPOPOTAMUSZIPCODE_TEST_LIVE" => "FALSE",
-        "ZIPPOPOTAMUSZIPCODE_APIKEY" => "NONE",
     ]);
 
     $live = $env["ZIPPOPOTAMUSZIPCODE_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["ZIPPOPOTAMUSZIPCODE_APIKEY"],
         ];
         $client = new ZippopotamusZipCodeSDK($merged_opts);
         return [

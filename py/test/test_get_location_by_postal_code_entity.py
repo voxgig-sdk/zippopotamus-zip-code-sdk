@@ -53,8 +53,7 @@ class TestGetLocationByPostalCodeEntity:
             "postal_code": setup["idmap"]["postal_code01"],
         }
 
-        get_location_by_postal_code_ref01_list_result, err = get_location_by_postal_code_ref01_ent.list(get_location_by_postal_code_ref01_match, None)
-        assert err is None
+        get_location_by_postal_code_ref01_list_result = get_location_by_postal_code_ref01_ent.list(get_location_by_postal_code_ref01_match, None)
         assert isinstance(get_location_by_postal_code_ref01_list_result, list)
 
 
@@ -95,7 +94,6 @@ def _get_location_by_postal_code_basic_setup(extra):
         "ZIPPOPOTAMUSZIPCODE_TEST_GET_LOCATION_BY_POSTAL_CODE_ENTID": idmap,
         "ZIPPOPOTAMUSZIPCODE_TEST_LIVE": "FALSE",
         "ZIPPOPOTAMUSZIPCODE_TEST_EXPLAIN": "FALSE",
-        "ZIPPOPOTAMUSZIPCODE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -106,7 +104,6 @@ def _get_location_by_postal_code_basic_setup(extra):
     if env.get("ZIPPOPOTAMUSZIPCODE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ZIPPOPOTAMUSZIPCODE_APIKEY"),
             },
             extra or {},
         ])

@@ -15,9 +15,6 @@ module ZippopotamusZipCodeConfig
       },
       "options" => {
         "base" => "https://api.zippopotam.us",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -83,6 +80,7 @@ module ZippopotamusZipCodeConfig
                         "orig" => "country",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                       {
                         "active" => true,
@@ -92,6 +90,7 @@ module ZippopotamusZipCodeConfig
                         "orig" => "postal_code",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 1,
                       },
                     ],
                   },
@@ -175,6 +174,7 @@ module ZippopotamusZipCodeConfig
                         "orig" => "city",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                       {
                         "active" => true,
@@ -184,6 +184,7 @@ module ZippopotamusZipCodeConfig
                         "orig" => "country",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 1,
                       },
                       {
                         "active" => true,
@@ -193,6 +194,7 @@ module ZippopotamusZipCodeConfig
                         "orig" => "state",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 2,
                       },
                     ],
                   },

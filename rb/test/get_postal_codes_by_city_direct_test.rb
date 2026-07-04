@@ -43,7 +43,7 @@ class GetPostalCodesByCityDirectTest < Minitest::Test
       params["state"] = "direct01"
     end
 
-    result, err = client.direct({
+    result = client.direct({
       "path" => "{country}/{state}/{city}",
       "method" => "GET",
       "params" => params,
@@ -52,8 +52,8 @@ class GetPostalCodesByCityDirectTest < Minitest::Test
       # Live mode is lenient: synthetic IDs frequently 4xx and the list-
       # response shape varies wildly across public APIs. Skip rather than
       # fail when the call doesn't return a usable list.
-      if !err.nil?
-        skip("list call failed (likely synthetic IDs against live API): #{err}")
+      if !result["err"].nil?
+        skip("list call failed (likely synthetic IDs against live API): #{result["err"]}")
         return
       end
       unless result["ok"]
@@ -66,7 +66,7 @@ class GetPostalCodesByCityDirectTest < Minitest::Test
         return
       end
     else
-      assert_nil err
+      assert_nil result["err"]
       assert result["ok"]
       assert_equal 200, Helpers.to_int(result["status"])
       assert result["data"].is_a?(Array)
@@ -86,14 +86,12 @@ def get_postal_codes_by_city_direct_setup(mockres)
   env = Runner.env_override({
     "ZIPPOPOTAMUSZIPCODE_TEST_GET_POSTAL_CODES_BY_CITY_ENTID" => {},
     "ZIPPOPOTAMUSZIPCODE_TEST_LIVE" => "FALSE",
-    "ZIPPOPOTAMUSZIPCODE_APIKEY" => "NONE",
   })
 
   live = env["ZIPPOPOTAMUSZIPCODE_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["ZIPPOPOTAMUSZIPCODE_APIKEY"],
     }
     client = ZippopotamusZipCodeSDK.new(merged_opts)
     return {

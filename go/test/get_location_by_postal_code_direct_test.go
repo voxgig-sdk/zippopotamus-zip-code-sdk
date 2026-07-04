@@ -126,14 +126,12 @@ func get_location_by_postal_codeDirectSetup(mockres any) *get_location_by_postal
 	env := envOverride(map[string]any{
 		"ZIPPOPOTAMUSZIPCODE_TEST_GET_LOCATION_BY_POSTAL_CODE_ENTID": map[string]any{},
 		"ZIPPOPOTAMUSZIPCODE_TEST_LIVE":    "FALSE",
-		"ZIPPOPOTAMUSZIPCODE_APIKEY":       "NONE",
 	})
 
 	live := env["ZIPPOPOTAMUSZIPCODE_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["ZIPPOPOTAMUSZIPCODE_APIKEY"],
 		}
 		client := sdk.NewZippopotamusZipCodeSDK(mergedOpts)
 

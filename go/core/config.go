@@ -14,9 +14,6 @@ func MakeConfig() map[string]any {
 		},
 		"options": map[string]any{
 			"base": "https://api.zippopotam.us",
-			"auth": map[string]any{
-				"prefix": "Bearer",
-			},
 			"headers": map[string]any{
 				"content-type": "application/json",
 			},
@@ -82,6 +79,7 @@ func MakeConfig() map[string]any {
 											"orig": "country",
 											"reqd": true,
 											"type": "`$STRING`",
+											"index$": 0,
 										},
 										map[string]any{
 											"active": true,
@@ -91,6 +89,7 @@ func MakeConfig() map[string]any {
 											"orig": "postal_code",
 											"reqd": true,
 											"type": "`$STRING`",
+											"index$": 1,
 										},
 									},
 								},
@@ -174,6 +173,7 @@ func MakeConfig() map[string]any {
 											"orig": "city",
 											"reqd": true,
 											"type": "`$STRING`",
+											"index$": 0,
 										},
 										map[string]any{
 											"active": true,
@@ -183,6 +183,7 @@ func MakeConfig() map[string]any {
 											"orig": "country",
 											"reqd": true,
 											"type": "`$STRING`",
+											"index$": 1,
 										},
 										map[string]any{
 											"active": true,
@@ -192,6 +193,7 @@ func MakeConfig() map[string]any {
 											"orig": "state",
 											"reqd": true,
 											"type": "`$STRING`",
+											"index$": 2,
 										},
 									},
 								},

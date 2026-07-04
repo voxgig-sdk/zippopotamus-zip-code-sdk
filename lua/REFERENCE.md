@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -88,7 +87,7 @@ same parameters as `direct()`.
 ## GetLocationByPostalCodeEntity
 
 ```lua
-local get_location_by_postal_code = client:GetLocationByPostalCode(nil)
+local get_location_by_postal_code = client:get_location_by_postal_code(nil)
 ```
 
 ### Fields
@@ -108,7 +107,7 @@ local get_location_by_postal_code = client:GetLocationByPostalCode(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:GetLocationByPostalCode():list()
+local results, err = client:get_location_by_postal_code():list()
 ```
 
 ### Common Methods
@@ -144,7 +143,7 @@ Return the entity name.
 ## GetPostalCodesByCityEntity
 
 ```lua
-local get_postal_codes_by_city = client:GetPostalCodesByCity(nil)
+local get_postal_codes_by_city = client:get_postal_codes_by_city(nil)
 ```
 
 ### Fields
@@ -163,7 +162,7 @@ local get_postal_codes_by_city = client:GetPostalCodesByCity(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:GetPostalCodesByCity():list()
+local results, err = client:get_postal_codes_by_city():list()
 ```
 
 ### Common Methods

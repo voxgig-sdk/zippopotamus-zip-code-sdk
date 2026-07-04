@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  GetLocationByPostalCode,
+  GetLocationByPostalCodeListMatch,
+} from '../ZippopotamusZipCodeTypes'
 
 // TODO: needs Entity superclass
-class GetLocationByPostalCodeEntity extends ZippopotamusZipCodeEntityBase {
+class GetLocationByPostalCodeEntity extends ZippopotamusZipCodeEntityBase<GetLocationByPostalCode> {
 
   constructor(client: ZippopotamusZipCodeSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class GetLocationByPostalCodeEntity extends ZippopotamusZipCodeEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: GetLocationByPostalCodeListMatch, ctrl?: Control): Promise<GetLocationByPostalCode[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class GetLocationByPostalCodeEntity extends ZippopotamusZipCodeEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<GetLocationByPostalCode[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

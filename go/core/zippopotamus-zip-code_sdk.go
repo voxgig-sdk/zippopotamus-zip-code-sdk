@@ -245,11 +245,17 @@ func (sdk *ZippopotamusZipCodeSDK) Direct(fetchargs map[string]any) (map[string]
 }
 
 
+// GetLocationByPostalCode returns a GetLocationByPostalCode entity bound to this client.
+// Idiomatic usage: client.GetLocationByPostalCode(nil).List(nil, nil) or
+// client.GetLocationByPostalCode(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ZippopotamusZipCodeSDK) GetLocationByPostalCode(data map[string]any) ZippopotamusZipCodeEntity {
 	return NewGetLocationByPostalCodeEntityFunc(sdk, data)
 }
 
 
+// GetPostalCodesByCity returns a GetPostalCodesByCity entity bound to this client.
+// Idiomatic usage: client.GetPostalCodesByCity(nil).List(nil, nil) or
+// client.GetPostalCodesByCity(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ZippopotamusZipCodeSDK) GetPostalCodesByCity(data map[string]any) ZippopotamusZipCodeEntity {
 	return NewGetPostalCodesByCityEntityFunc(sdk, data)
 }

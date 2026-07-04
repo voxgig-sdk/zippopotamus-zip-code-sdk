@@ -89,14 +89,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'ZIPPOPOTAMUSZIPCODE_TEST_GET_LOCATION_BY_POSTAL_CODE_ENTID': {},
     'ZIPPOPOTAMUSZIPCODE_TEST_LIVE': 'FALSE',
-    'ZIPPOPOTAMUSZIPCODE_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.ZIPPOPOTAMUSZIPCODE_TEST_LIVE
 
   if (live) {
     const client = new ZippopotamusZipCodeSDK({
-      apikey: env.ZIPPOPOTAMUSZIPCODE_APIKEY,
     })
 
     let idmap: any = env['ZIPPOPOTAMUSZIPCODE_TEST_GET_LOCATION_BY_POSTAL_CODE_ENTID']

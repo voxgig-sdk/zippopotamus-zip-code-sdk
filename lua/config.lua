@@ -14,9 +14,6 @@ local function make_config()
     },
     options = {
       base = "https://api.zippopotam.us",
-      auth = {
-        prefix = "Bearer",
-      },
       headers = {
         ["content-type"] = "application/json",
       },
@@ -82,6 +79,7 @@ local function make_config()
                       ["orig"] = "country",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                     {
                       ["active"] = true,
@@ -91,6 +89,7 @@ local function make_config()
                       ["orig"] = "postal_code",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 1,
                     },
                   },
                 },
@@ -174,6 +173,7 @@ local function make_config()
                       ["orig"] = "city",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 0,
                     },
                     {
                       ["active"] = true,
@@ -183,6 +183,7 @@ local function make_config()
                       ["orig"] = "country",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 1,
                     },
                     {
                       ["active"] = true,
@@ -192,6 +193,7 @@ local function make_config()
                       ["orig"] = "state",
                       ["reqd"] = true,
                       ["type"] = "`$STRING`",
+                      ["index$"] = 2,
                     },
                   },
                 },

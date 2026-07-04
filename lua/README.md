@@ -9,12 +9,9 @@ The Lua SDK for the ZippopotamusZipCode API — an entity-oriented client using 
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-zippopotamus-zip-code
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/zippopotamus-zip-code-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("zippopotamus-zip-code_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("ZIPPOPOTAMUS-ZIP-CODE_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 2. List getlocationbypostalcodes
 
 ```lua
-local result, err = client:GetLocationByPostalCode():list()
+local result, err = client:getlocationbypostalcode():list()
 if err then error(err) end
 
 if type(result) == "table" then
@@ -93,7 +88,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:ZippopotamusZipCode():load({ id = "test01" })
+local result, err = client:getlocationbypostalcode():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -126,8 +121,7 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-ZIPPOPOTAMUS-ZIP-CODE_TEST_LIVE=TRUE
-ZIPPOPOTAMUS-ZIP-CODE_APIKEY=<your-key>
+ZIPPOPOTAMUS_ZIP_CODE_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -150,7 +144,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -245,7 +238,7 @@ API path: `/{country}/{state}/{city}`
 
 ### GetLocationByPostalCode
 
-Create an instance: `const get_location_by_postal_code = client.GetLocationByPostalCode()`
+Create an instance: `const get_location_by_postal_code = client.get_location_by_postal_code`
 
 #### Operations
 
@@ -266,13 +259,13 @@ Create an instance: `const get_location_by_postal_code = client.GetLocationByPos
 #### Example: List
 
 ```ts
-const get_location_by_postal_codes = await client.GetLocationByPostalCode().list()
+const get_location_by_postal_codes = await client.get_location_by_postal_code.list()
 ```
 
 
 ### GetPostalCodesByCity
 
-Create an instance: `const get_postal_codes_by_city = client.GetPostalCodesByCity()`
+Create an instance: `const get_postal_codes_by_city = client.get_postal_codes_by_city`
 
 #### Operations
 
@@ -292,7 +285,7 @@ Create an instance: `const get_postal_codes_by_city = client.GetPostalCodesByCit
 #### Example: List
 
 ```ts
-const get_postal_codes_by_citys = await client.GetPostalCodesByCity().list()
+const get_postal_codes_by_citys = await client.get_postal_codes_by_city.list()
 ```
 
 
@@ -367,11 +360,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local getlocationbypostalcode = client:getlocationbypostalcode()
+getlocationbypostalcode:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- getlocationbypostalcode:data_get() now returns the loaded getlocationbypostalcode data
+-- getlocationbypostalcode:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -122,7 +121,7 @@ Alias for `ZippopotamusZipCodeSDK.test()`.
 ## GetLocationByPostalCodeEntity
 
 ```ts
-const get_location_by_postal_code = client.GetLocationByPostalCode()
+const get_location_by_postal_code = client.get_location_by_postal_code
 ```
 
 ### Fields
@@ -142,7 +141,7 @@ const get_location_by_postal_code = client.GetLocationByPostalCode()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.GetLocationByPostalCode().list()
+const results = await client.get_location_by_postal_code.list()
 ```
 
 ### Common Methods
@@ -176,7 +175,7 @@ Return a copy of the entity options.
 ## GetPostalCodesByCityEntity
 
 ```ts
-const get_postal_codes_by_city = client.GetPostalCodesByCity()
+const get_postal_codes_by_city = client.get_postal_codes_by_city
 ```
 
 ### Fields
@@ -195,7 +194,7 @@ const get_postal_codes_by_city = client.GetPostalCodesByCity()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.GetPostalCodesByCity().list()
+const results = await client.get_postal_codes_by_city.list()
 ```
 
 ### Common Methods

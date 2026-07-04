@@ -3,6 +3,8 @@
 import { GetLocationByPostalCodeEntity } from './entity/GetLocationByPostalCodeEntity'
 import { GetPostalCodesByCityEntity } from './entity/GetPostalCodesByCityEntity'
 
+export type * from './ZippopotamusZipCodeTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -203,12 +205,28 @@ class ZippopotamusZipCodeSDK {
 
 
 
+  _get_location_by_postal_code?: GetLocationByPostalCodeEntity
+
+  // Idiomatic facade: `client.get_location_by_postal_code.list()` / `client.get_location_by_postal_code.load({ id })`.
+  get get_location_by_postal_code(): GetLocationByPostalCodeEntity {
+    return (this._get_location_by_postal_code ??= new GetLocationByPostalCodeEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.get_location_by_postal_code` instead. */
   GetLocationByPostalCode(data?: any) {
     const self = this
     return new GetLocationByPostalCodeEntity(self,data)
   }
 
 
+  _get_postal_codes_by_city?: GetPostalCodesByCityEntity
+
+  // Idiomatic facade: `client.get_postal_codes_by_city.list()` / `client.get_postal_codes_by_city.load({ id })`.
+  get get_postal_codes_by_city(): GetPostalCodesByCityEntity {
+    return (this._get_postal_codes_by_city ??= new GetPostalCodesByCityEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.get_postal_codes_by_city` instead. */
   GetPostalCodesByCity(data?: any) {
     const self = this
     return new GetPostalCodesByCityEntity(self,data)
