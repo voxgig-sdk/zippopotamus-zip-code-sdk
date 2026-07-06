@@ -8,7 +8,7 @@ Complete API reference for the ZippopotamusZipCode PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/zippopotamus-zip-code_sdk.php';
+require_once __DIR__ . '/zippopotamuszipcode_sdk.php';
 
 $client = new ZippopotamusZipCodeSDK($options);
 ```
@@ -49,11 +49,11 @@ Create a new `GetLocationByPostalCodeEntity` instance. Pass `null` for no initia
 
 Create a new `GetPostalCodesByCityEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): ZippopotamusZipCodeUtility`
 
 Return a copy of the SDK utility object.
 
@@ -96,37 +96,37 @@ $get_location_by_postal_code = $client->GetLocationByPostalCode();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `latitude` | ``$STRING`` | No |  |
-| `longitude` | ``$STRING`` | No |  |
-| `place_name` | ``$STRING`` | No |  |
-| `state` | ``$STRING`` | No |  |
-| `state_abbreviation` | ``$STRING`` | No |  |
+| `latitude` | `string` | No |  |
+| `longitude` | `string` | No |  |
+| `place_name` | `string` | No |  |
+| `state` | `string` | No |  |
+| `state_abbreviation` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->GetLocationByPostalCode()->list([]);
+$results = $client->GetLocationByPostalCode()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -135,7 +135,7 @@ Set the entity match criteria.
 Create a new `GetLocationByPostalCodeEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -152,36 +152,36 @@ $get_postal_codes_by_city = $client->GetPostalCodesByCity();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `latitude` | ``$STRING`` | No |  |
-| `longitude` | ``$STRING`` | No |  |
-| `place_name` | ``$STRING`` | No |  |
-| `post_code` | ``$STRING`` | No |  |
+| `latitude` | `string` | No |  |
+| `longitude` | `string` | No |  |
+| `place_name` | `string` | No |  |
+| `post_code` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->GetPostalCodesByCity()->list([]);
+$results = $client->GetPostalCodesByCity()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -190,7 +190,7 @@ Set the entity match criteria.
 Create a new `GetPostalCodesByCityEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

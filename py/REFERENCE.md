@@ -8,7 +8,7 @@ Complete API reference for the ZippopotamusZipCode Python SDK.
 ### Constructor
 
 ```python
-from zippopotamus-zip-code_sdk import ZippopotamusZipCodeSDK
+from zippopotamuszipcode_sdk import ZippopotamusZipCodeSDK
 
 client = ZippopotamusZipCodeSDK(options)
 ```
@@ -91,20 +91,20 @@ get_location_by_postal_code = client.GetLocationByPostalCode()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `latitude` | ``$STRING`` | No |  |
-| `longitude` | ``$STRING`` | No |  |
-| `place_name` | ``$STRING`` | No |  |
-| `state` | ``$STRING`` | No |  |
-| `state_abbreviation` | ``$STRING`` | No |  |
+| `latitude` | `str` | No |  |
+| `longitude` | `str` | No |  |
+| `place_name` | `str` | No |  |
+| `state` | `str` | No |  |
+| `state_abbreviation` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.GetLocationByPostalCode().list({})
+results = client.GetLocationByPostalCode().list()
 for get_location_by_postal_code in results:
     print(get_location_by_postal_code)
 ```
@@ -148,19 +148,19 @@ get_postal_codes_by_city = client.GetPostalCodesByCity()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `latitude` | ``$STRING`` | No |  |
-| `longitude` | ``$STRING`` | No |  |
-| `place_name` | ``$STRING`` | No |  |
-| `post_code` | ``$STRING`` | No |  |
+| `latitude` | `str` | No |  |
+| `longitude` | `str` | No |  |
+| `place_name` | `str` | No |  |
+| `post_code` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.GetPostalCodesByCity().list({})
+results = client.GetPostalCodesByCity().list()
 for get_postal_codes_by_city in results:
     print(get_postal_codes_by_city)
 ```

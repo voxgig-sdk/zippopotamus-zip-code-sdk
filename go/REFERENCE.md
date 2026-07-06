@@ -101,11 +101,11 @@ get_location_by_postal_code := client.GetLocationByPostalCode(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `latitude` | ``$STRING`` | No |  |
-| `longitude` | ``$STRING`` | No |  |
-| `place_name` | ``$STRING`` | No |  |
-| `state` | ``$STRING`` | No |  |
-| `state_abbreviation` | ``$STRING`` | No |  |
+| `latitude` | `string` | No |  |
+| `longitude` | `string` | No |  |
+| `place_name` | `string` | No |  |
+| `state` | `string` | No |  |
+| `state_abbreviation` | `string` | No |  |
 
 ### Operations
 
@@ -151,10 +151,10 @@ get_postal_codes_by_city := client.GetPostalCodesByCity(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `latitude` | ``$STRING`` | No |  |
-| `longitude` | ``$STRING`` | No |  |
-| `place_name` | ``$STRING`` | No |  |
-| `post_code` | ``$STRING`` | No |  |
+| `latitude` | `string` | No |  |
+| `longitude` | `string` | No |  |
+| `place_name` | `string` | No |  |
+| `post_code` | `string` | No |  |
 
 ### Operations
 

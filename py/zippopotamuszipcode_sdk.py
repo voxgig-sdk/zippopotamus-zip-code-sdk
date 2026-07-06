@@ -221,13 +221,13 @@ class ZippopotamusZipCodeSDK:
 
 
     def GetLocationByPostalCode(self, data=None) -> "GetLocationByPostalCodeEntity":
-        """Entity factory: client.GetLocationByPostalCode().list({}) / client.GetLocationByPostalCode().load({"id": ...})."""
+        """Entity factory: client.GetLocationByPostalCode().list() / client.GetLocationByPostalCode().load({"id": ...})."""
         from entity.get_location_by_postal_code_entity import GetLocationByPostalCodeEntity
         return GetLocationByPostalCodeEntity(self, data)
 
 
     def GetPostalCodesByCity(self, data=None) -> "GetPostalCodesByCityEntity":
-        """Entity factory: client.GetPostalCodesByCity().list({}) / client.GetPostalCodesByCity().load({"id": ...})."""
+        """Entity factory: client.GetPostalCodesByCity().list() / client.GetPostalCodesByCity().load({"id": ...})."""
         from entity.get_postal_codes_by_city_entity import GetPostalCodesByCityEntity
         return GetPostalCodesByCityEntity(self, data)
 

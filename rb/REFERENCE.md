@@ -8,7 +8,7 @@ Complete API reference for the ZippopotamusZipCode Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'zippopotamus-zip-code_sdk'
+require_relative 'ZippopotamusZipCode_sdk'
 
 client = ZippopotamusZipCodeSDK.new(options)
 ```
@@ -97,20 +97,20 @@ get_location_by_postal_code = client.GetLocationByPostalCode
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `latitude` | ``$STRING`` | No |  |
-| `longitude` | ``$STRING`` | No |  |
-| `place_name` | ``$STRING`` | No |  |
-| `state` | ``$STRING`` | No |  |
-| `state_abbreviation` | ``$STRING`` | No |  |
+| `latitude` | `String` | No |  |
+| `longitude` | `String` | No |  |
+| `place_name` | `String` | No |  |
+| `state` | `String` | No |  |
+| `state_abbreviation` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.GetLocationByPostalCode.list(nil)
+results = client.GetLocationByPostalCode.list
 ```
 
 ### Common Methods
@@ -153,19 +153,19 @@ get_postal_codes_by_city = client.GetPostalCodesByCity
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `latitude` | ``$STRING`` | No |  |
-| `longitude` | ``$STRING`` | No |  |
-| `place_name` | ``$STRING`` | No |  |
-| `post_code` | ``$STRING`` | No |  |
+| `latitude` | `String` | No |  |
+| `longitude` | `String` | No |  |
+| `place_name` | `String` | No |  |
+| `post_code` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.GetPostalCodesByCity.list(nil)
+results = client.GetPostalCodesByCity.list
 ```
 
 ### Common Methods
