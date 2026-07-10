@@ -50,12 +50,12 @@ import (
 func main() {
     client := sdk.New()
 
-    // List getlocationbypostalcode records — the value is the array of records itself.
-    getlocationbypostalcodes, err := client.GetLocationByPostalCode(nil).List(nil, nil)
+    // List getLocationByPostalCode records — the value is the array of records itself.
+    getLocationByPostalCodes, err := client.GetLocationByPostalCode(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-    for _, item := range getlocationbypostalcodes.([]any) {
+    for _, item := range getLocationByPostalCodes.([]any) {
         fmt.Println(item)
     }
 }
@@ -137,13 +137,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-getlocationbypostalcode, err := client.GetLocationByPostalCode(nil).List(
+getLocationByPostalCode, err := client.GetLocationByPostalCode(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(getlocationbypostalcode) // the returned mock data
+fmt.Println(getLocationByPostalCode) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -248,9 +248,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    getlocationbypostalcode, err := client.GetLocationByPostalCode(nil).List(map[string]any{/* fields */}, nil)
+    getLocationByPostalCode, err := client.GetLocationByPostalCode(nil).List(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // getlocationbypostalcode is the returned record
+    // getLocationByPostalCode is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -291,7 +291,7 @@ API path: `/{country}/{state}/{city}`
 
 ### GetLocationByPostalCode
 
-Create an instance: `get_location_by_postal_code := client.GetLocationByPostalCode(nil)`
+Create an instance: `getLocationByPostalCode := client.GetLocationByPostalCode(nil)`
 
 #### Operations
 
@@ -312,17 +312,17 @@ Create an instance: `get_location_by_postal_code := client.GetLocationByPostalCo
 #### Example: List
 
 ```go
-get_location_by_postal_codes, err := client.GetLocationByPostalCode(nil).List(nil, nil)
+getLocationByPostalCodes, err := client.GetLocationByPostalCode(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(get_location_by_postal_codes) // the array of records
+fmt.Println(getLocationByPostalCodes) // the array of records
 ```
 
 
 ### GetPostalCodesByCity
 
-Create an instance: `get_postal_codes_by_city := client.GetPostalCodesByCity(nil)`
+Create an instance: `getPostalCodesByCity := client.GetPostalCodesByCity(nil)`
 
 #### Operations
 
@@ -342,11 +342,11 @@ Create an instance: `get_postal_codes_by_city := client.GetPostalCodesByCity(nil
 #### Example: List
 
 ```go
-get_postal_codes_by_citys, err := client.GetPostalCodesByCity(nil).List(nil, nil)
+getPostalCodesByCitys, err := client.GetPostalCodesByCity(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(get_postal_codes_by_citys) // the array of records
+fmt.Println(getPostalCodesByCitys) // the array of records
 ```
 
 

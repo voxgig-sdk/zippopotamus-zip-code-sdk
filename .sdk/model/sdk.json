@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -376,14 +373,17 @@
           "url": "https://www.zippopotam.us/"
         },
         "description": "The Zippopotamus API provides postal and zip code data for over 60 countries, allowing users to easily access detailed location information. It is particularly useful for form auto-completion and supports JSON response format for seamless integration.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://api.zippopotam.us"
           }
         ],
+        "summary": "The Zippopotamus API provides postal and zip code data for over 60 countries, allowing users to easily access detailed location information.",
         "title": "Zippopotamus Zip Code API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://zippopotam.us"
       },
       "option": {},
       "target": {
@@ -436,6 +436,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -486,6 +489,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

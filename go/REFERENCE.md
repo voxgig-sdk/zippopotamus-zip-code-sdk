@@ -94,7 +94,8 @@ same parameters as `Direct()`.
 ## GetLocationByPostalCodeEntity
 
 ```go
-get_location_by_postal_code := client.GetLocationByPostalCode(nil)
+getLocationByPostalCode := client.GetLocationByPostalCode(nil)
+fmt.Println(getLocationByPostalCode.GetName()) // "get_location_by_postal_code"
 ```
 
 ### Fields
@@ -115,6 +116,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.GetLocationByPostalCode(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -144,7 +149,8 @@ Return the entity name.
 ## GetPostalCodesByCityEntity
 
 ```go
-get_postal_codes_by_city := client.GetPostalCodesByCity(nil)
+getPostalCodesByCity := client.GetPostalCodesByCity(nil)
+fmt.Println(getPostalCodesByCity.GetName()) // "get_postal_codes_by_city"
 ```
 
 ### Fields
@@ -164,6 +170,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.GetPostalCodesByCity(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods

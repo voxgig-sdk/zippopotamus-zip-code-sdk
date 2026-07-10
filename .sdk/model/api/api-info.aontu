@@ -16,9 +16,9 @@ main: {
           url: "https://api.zippopotam.us"
         }
       ]
+      summary: "The Zippopotamus API provides postal and zip code data for over 60 countries, allowing users to easily access detailed location information."
       title: "Zippopotamus Zip Code API"
       version: "1.0.0"
+      website: "https://zippopotam.us"
     }
   }
-}
-
