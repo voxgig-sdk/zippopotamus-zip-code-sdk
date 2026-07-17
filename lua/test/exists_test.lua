@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- ZippopotamusZipCode SDK exists test
 
 local sdk = require("zippopotamus-zip-code_sdk")
 
