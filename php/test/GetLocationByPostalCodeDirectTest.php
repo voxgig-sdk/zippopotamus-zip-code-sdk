@@ -85,11 +85,11 @@ function get_location_by_postal_code_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "ZIPPOPOTAMUSZIPCODE_TEST_GET_LOCATION_BY_POSTAL_CODE_ENTID" => [],
-        "ZIPPOPOTAMUSZIPCODE_TEST_LIVE" => "FALSE",
+        "ZIPPOPOTAMUS_ZIP_CODE_TEST_GET_LOCATION_BY_POSTAL_CODE_ENTID" => [],
+        "ZIPPOPOTAMUS_ZIP_CODE_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["ZIPPOPOTAMUSZIPCODE_TEST_LIVE"] === "TRUE";
+    $live = $env["ZIPPOPOTAMUS_ZIP_CODE_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

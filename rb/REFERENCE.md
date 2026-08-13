@@ -99,9 +99,9 @@ get_location_by_postal_code = client.GetLocationByPostalCode
 | --- | --- | --- | --- |
 | `latitude` | `String` | No |  |
 | `longitude` | `String` | No |  |
-| `place_name` | `String` | No |  |
+| `placename` | `String` | No |  |
 | `state` | `String` | No |  |
-| `state_abbreviation` | `String` | No |  |
+| `stateabbreviation` | `String` | No |  |
 
 ### Operations
 
@@ -155,8 +155,8 @@ get_postal_codes_by_city = client.GetPostalCodesByCity
 | --- | --- | --- | --- |
 | `latitude` | `String` | No |  |
 | `longitude` | `String` | No |  |
-| `place_name` | `String` | No |  |
-| `post_code` | `String` | No |  |
+| `placename` | `String` | No |  |
+| `postcode` | `String` | No |  |
 
 ### Operations
 

@@ -47,7 +47,7 @@ class ZippopotamusZipCodeConfig
             ],
             [
               'active' => true,
-              'name' => 'place_name',
+              'name' => 'placename',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 2,
@@ -61,7 +61,7 @@ class ZippopotamusZipCodeConfig
             ],
             [
               'active' => true,
-              'name' => 'state_abbreviation',
+              'name' => 'stateabbreviation',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 4,
@@ -99,6 +99,7 @@ class ZippopotamusZipCodeConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{country}/{postal-code}',
                   'parts' => [
@@ -118,7 +119,7 @@ class ZippopotamusZipCodeConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.places`',
                   ],
                   'index$' => 0,
                 ],
@@ -148,14 +149,14 @@ class ZippopotamusZipCodeConfig
             ],
             [
               'active' => true,
-              'name' => 'place_name',
+              'name' => 'placename',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 2,
             ],
             [
               'active' => true,
-              'name' => 'post_code',
+              'name' => 'postcode',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 3,
@@ -203,6 +204,7 @@ class ZippopotamusZipCodeConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{country}/{state}/{city}',
                   'parts' => [
@@ -219,7 +221,7 @@ class ZippopotamusZipCodeConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.places`',
                   ],
                   'index$' => 0,
                 ],

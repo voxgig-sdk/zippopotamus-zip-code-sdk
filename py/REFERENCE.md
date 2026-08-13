@@ -93,9 +93,9 @@ get_location_by_postal_code = client.GetLocationByPostalCode()
 | --- | --- | --- | --- |
 | `latitude` | `str` | No |  |
 | `longitude` | `str` | No |  |
-| `place_name` | `str` | No |  |
+| `placename` | `str` | No |  |
 | `state` | `str` | No |  |
-| `state_abbreviation` | `str` | No |  |
+| `stateabbreviation` | `str` | No |  |
 
 ### Operations
 
@@ -104,7 +104,7 @@ get_location_by_postal_code = client.GetLocationByPostalCode()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.GetLocationByPostalCode().list()
+results = client.GetLocationByPostalCode().list({"country": "example", "postal_code": "example"})
 for get_location_by_postal_code in results:
     print(get_location_by_postal_code)
 ```
@@ -150,8 +150,8 @@ get_postal_codes_by_city = client.GetPostalCodesByCity()
 | --- | --- | --- | --- |
 | `latitude` | `str` | No |  |
 | `longitude` | `str` | No |  |
-| `place_name` | `str` | No |  |
-| `post_code` | `str` | No |  |
+| `placename` | `str` | No |  |
+| `postcode` | `str` | No |  |
 
 ### Operations
 
@@ -160,7 +160,7 @@ get_postal_codes_by_city = client.GetPostalCodesByCity()
 List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.GetPostalCodesByCity().list()
+results = client.GetPostalCodesByCity().list({"city": "example", "country": "example", "state": "example"})
 for get_postal_codes_by_city in results:
     print(get_postal_codes_by_city)
 ```

@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import ZippopotamusZipCodeSDK
-from core.error import ZippopotamusZipCodeError
-from core.result import ZippopotamusZipCodeResult
-from core.response import ZippopotamusZipCodeResponse
-from core.spec import ZippopotamusZipCodeSpec
-from feature.base_feature import ZippopotamusZipCodeBaseFeature
+from projectname_sdk.core.error import ZippopotamusZipCodeError
+from projectname_sdk.core.result import ZippopotamusZipCodeResult
+from projectname_sdk.core.response import ZippopotamusZipCodeResponse
+from projectname_sdk.core.spec import ZippopotamusZipCodeSpec
+from projectname_sdk.feature.base_feature import ZippopotamusZipCodeBaseFeature
 
 
 def _client():

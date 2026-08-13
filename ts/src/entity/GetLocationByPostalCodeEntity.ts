@@ -37,7 +37,7 @@ class GetLocationByPostalCodeEntity extends ZippopotamusZipCodeEntityBase<GetLoc
 
 
 
-  async list(this: any, reqmatch?: GetLocationByPostalCodeListMatch, ctrl?: Control): Promise<GetLocationByPostalCode[]> {
+  async list(this: any, reqmatch?: GetLocationByPostalCodeListMatch, ctrl?: Control): Promise<GetLocationByPostalCodeEntity[]> {
 
     const utility = this._utility
 

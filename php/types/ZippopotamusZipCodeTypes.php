@@ -17,9 +17,9 @@ class GetLocationByPostalCode
 {
     public ?string $latitude = null;
     public ?string $longitude = null;
-    public ?string $place_name = null;
+    public ?string $placename = null;
     public ?string $state = null;
-    public ?string $state_abbreviation = null;
+    public ?string $stateabbreviation = null;
 }
 
 /** Request payload for GetLocationByPostalCode#list. */
@@ -34,8 +34,8 @@ class GetPostalCodesByCity
 {
     public ?string $latitude = null;
     public ?string $longitude = null;
-    public ?string $place_name = null;
-    public ?string $post_code = null;
+    public ?string $placename = null;
+    public ?string $postcode = null;
 }
 
 /** Request payload for GetPostalCodesByCity#list. */

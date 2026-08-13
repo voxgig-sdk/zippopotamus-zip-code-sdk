@@ -4,27 +4,27 @@
       "GET_LOCATION_BY_POSTAL_CODE00": {
         "latitude": "s32",
         "longitude": "s33",
-        "place_name": "s34",
+        "placename": "s34",
         "state": "s35",
-        "state_abbreviation": "s36",
+        "stateabbreviation": "s36",
         "country": "COUNTRY01",
         "postal_code": "POSTAL_CODE01"
       },
       "GET_LOCATION_BY_POSTAL_CODE01": {
         "latitude": "s64",
         "longitude": "s65",
-        "place_name": "s66",
+        "placename": "s66",
         "state": "s67",
-        "state_abbreviation": "s68",
+        "stateabbreviation": "s68",
         "country": "COUNTRY01",
         "postal_code": "POSTAL_CODE01"
       },
       "GET_LOCATION_BY_POSTAL_CODE02": {
         "latitude": "s96",
         "longitude": "s97",
-        "place_name": "s98",
+        "placename": "s98",
         "state": "s99",
-        "state_abbreviation": "s9a",
+        "stateabbreviation": "s9a",
         "country": "COUNTRY01",
         "postal_code": "POSTAL_CODE01"
       }
@@ -35,9 +35,9 @@
       "get_location_by_postal_code_ref01": {
         "latitude": "sc8",
         "longitude": "sc9",
-        "place_name": "sca",
+        "placename": "sca",
         "state": "scb",
-        "state_abbreviation": "scc"
+        "stateabbreviation": "scc"
       }
     }
   }

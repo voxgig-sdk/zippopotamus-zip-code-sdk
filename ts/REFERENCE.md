@@ -130,9 +130,9 @@ const get_location_by_postal_code = client.GetLocationByPostalCode()
 | --- | --- | --- | --- |
 | `latitude` | `string` | No |  |
 | `longitude` | `string` | No |  |
-| `place_name` | `string` | No |  |
+| `placename` | `string` | No |  |
 | `state` | `string` | No |  |
-| `state_abbreviation` | `string` | No |  |
+| `stateabbreviation` | `string` | No |  |
 
 ### Operations
 
@@ -141,7 +141,7 @@ const get_location_by_postal_code = client.GetLocationByPostalCode()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.GetLocationByPostalCode().list()
+const results = await client.GetLocationByPostalCode().list({ country: "example", postal_code: "example" })
 ```
 
 ### Common Methods
@@ -184,8 +184,8 @@ const get_postal_codes_by_city = client.GetPostalCodesByCity()
 | --- | --- | --- | --- |
 | `latitude` | `string` | No |  |
 | `longitude` | `string` | No |  |
-| `place_name` | `string` | No |  |
-| `post_code` | `string` | No |  |
+| `placename` | `string` | No |  |
+| `postcode` | `string` | No |  |
 
 ### Operations
 
@@ -194,7 +194,7 @@ const get_postal_codes_by_city = client.GetPostalCodesByCity()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.GetPostalCodesByCity().list()
+const results = await client.GetPostalCodesByCity().list({ city: "example", country: "example", state: "example" })
 ```
 
 ### Common Methods

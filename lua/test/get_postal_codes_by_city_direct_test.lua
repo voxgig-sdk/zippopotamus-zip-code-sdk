@@ -85,11 +85,11 @@ function get_postal_codes_by_city_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["ZIPPOPOTAMUSZIPCODE_TEST_GET_POSTAL_CODES_BY_CITY_ENTID"] = {},
-    ["ZIPPOPOTAMUSZIPCODE_TEST_LIVE"] = "FALSE",
+    ["ZIPPOPOTAMUS_ZIP_CODE_TEST_GET_POSTAL_CODES_BY_CITY_ENTID"] = {},
+    ["ZIPPOPOTAMUS_ZIP_CODE_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["ZIPPOPOTAMUSZIPCODE_TEST_LIVE"] == "TRUE"
+  local live = env["ZIPPOPOTAMUS_ZIP_CODE_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

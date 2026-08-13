@@ -41,7 +41,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "place_name",
+						"name": "placename",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 2,
@@ -55,7 +55,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "state_abbreviation",
+						"name": "stateabbreviation",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 4,
@@ -93,6 +93,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/{country}/{postal-code}",
 								"parts": []any{
@@ -112,12 +113,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.places`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{
@@ -142,14 +142,14 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "place_name",
+						"name": "placename",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 2,
 					},
 					map[string]any{
 						"active": true,
-						"name": "post_code",
+						"name": "postcode",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 3,
@@ -197,6 +197,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/{country}/{state}/{city}",
 								"parts": []any{
@@ -213,12 +214,11 @@ func MakeConfig() map[string]any {
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
-									"res": "`body`",
+									"res": "`body.places`",
 								},
 								"index$": 0,
 							},
 						},
-						"key$": "list",
 					},
 				},
 				"relations": map[string]any{

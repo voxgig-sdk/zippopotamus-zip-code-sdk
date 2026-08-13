@@ -23,7 +23,7 @@ support (`list`):
 
 ```ts
 const client = new ZippopotamusZipCodeSDK()
-const items = await client.GetLocationByPostalCode().list()
+const items = await client.GetLocationByPostalCode().list({ country: "example", postal_code: "example" })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = ZippopotamusZipCodeSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = ZippopotamusZipCodeSDK.test({
+  entity: {
+    get_location_by_postal_code: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const getlocationbypostalcodes = await client.GetLocationByPostalCode().list()
-// getlocationbypostalcodes is an array of bare GetLocationByPostalCode records populated with mock data
+// getlocationbypostalcodes is an array of GetLocationByPostalCode entities, populated with mock data
+// — call getlocationbypostalcodes[0].data() for the record itself
 console.log(getlocationbypostalcodes)
 ```
 
@@ -110,8 +119,8 @@ import { ZippopotamusZipCodeSDK } from '@voxgig-sdk/zippopotamus-zip-code'
 
 const client = new ZippopotamusZipCodeSDK()
 
-// List all getlocationbypostalcodes (returns GetLocationByPostalCode[])
-const getlocationbypostalcodes = await client.GetLocationByPostalCode().list()
+// List all getlocationbypostalcodes (returns GetLocationByPostalCodeEntity[] — .data() for the record)
+const getlocationbypostalcodes = await client.GetLocationByPostalCode().list({ country: "example", postal_code: "example" })
 for (const getlocationbypostalcode of getlocationbypostalcodes) {
   console.log(getlocationbypostalcode)
 }
@@ -171,7 +180,7 @@ from zippopotamuszipcode_sdk import ZippopotamusZipCodeSDK
 client = ZippopotamusZipCodeSDK()
 
 # List all getlocationbypostalcodes (returns a list, raises on error)
-getlocationbypostalcodes = client.GetLocationByPostalCode().list()
+getlocationbypostalcodes = client.GetLocationByPostalCode().list({"country": "example", "postal_code": "example"})
 for getlocationbypostalcode in getlocationbypostalcodes:
     print(getlocationbypostalcode)
 ```
@@ -344,6 +353,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://www.zippopotam.us/](https://www.zippopotam.us/)
 

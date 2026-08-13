@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# ZippopotamusZipCode SDK exists test
 
 import pytest
 from zippopotamuszipcode_sdk import ZippopotamusZipCodeSDK

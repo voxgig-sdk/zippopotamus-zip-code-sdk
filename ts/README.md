@@ -35,10 +35,12 @@ const client = new ZippopotamusZipCodeSDK()
 
 ### 2. List getlocationbypostalcode records
 
-`list()` resolves to an array of GetLocationByPostalCode objects — iterate it directly:
+`list()` resolves to an array of GetLocationByPostalCode ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
-const getlocationbypostalcodes = await client.GetLocationByPostalCode().list()
+const getlocationbypostalcodes = await client.GetLocationByPostalCode().list({ country: "example", postal_code: "example" })
 
 for (const getlocationbypostalcode of getlocationbypostalcodes) {
   console.log(getlocationbypostalcode)
@@ -120,7 +122,8 @@ Create a mock client for unit testing — no server required:
 const client = ZippopotamusZipCodeSDK.test()
 
 const getlocationbypostalcode = await client.GetLocationByPostalCode().list()
-// getlocationbypostalcode is a bare entity populated with mock response data
+// getlocationbypostalcode is the entity, populated with mock response data
+// — call getlocationbypostalcode.data() for the record itself
 console.log(getlocationbypostalcode)
 ```
 
@@ -287,9 +290,9 @@ The `prepare()` method returns:
 | --- | --- |
 | `latitude` |  |
 | `longitude` |  |
-| `place_name` |  |
+| `placename` |  |
 | `state` |  |
-| `state_abbreviation` |  |
+| `stateabbreviation` |  |
 
 Operations: list.
 
@@ -301,8 +304,8 @@ API path: `/{country}/{postal-code}`
 | --- | --- |
 | `latitude` |  |
 | `longitude` |  |
-| `place_name` |  |
-| `post_code` |  |
+| `placename` |  |
+| `postcode` |  |
 
 Operations: list.
 
@@ -329,14 +332,14 @@ Create an instance: `const get_location_by_postal_code = client.GetLocationByPos
 | --- | --- | --- |
 | `latitude` | `string` |  |
 | `longitude` | `string` |  |
-| `place_name` | `string` |  |
+| `placename` | `string` |  |
 | `state` | `string` |  |
-| `state_abbreviation` | `string` |  |
+| `stateabbreviation` | `string` |  |
 
 #### Example: List
 
 ```ts
-const get_location_by_postal_codes = await client.GetLocationByPostalCode().list()
+const get_location_by_postal_codes = await client.GetLocationByPostalCode().list({ country: "example", postal_code: "example" })
 ```
 
 
@@ -356,13 +359,13 @@ Create an instance: `const get_postal_codes_by_city = client.GetPostalCodesByCit
 | --- | --- | --- |
 | `latitude` | `string` |  |
 | `longitude` | `string` |  |
-| `place_name` | `string` |  |
-| `post_code` | `string` |  |
+| `placename` | `string` |  |
+| `postcode` | `string` |  |
 
 #### Example: List
 
 ```ts
-const get_postal_codes_by_citys = await client.GetPostalCodesByCity().list()
+const get_postal_codes_by_citys = await client.GetPostalCodesByCity().list({ city: "example", country: "example", state: "example" })
 ```
 
 

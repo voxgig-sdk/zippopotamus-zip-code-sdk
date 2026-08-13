@@ -43,7 +43,7 @@ error — iterate it directly.
 
 ```python
 try:
-    getlocationbypostalcodes = client.GetLocationByPostalCode().list()
+    getlocationbypostalcodes = client.GetLocationByPostalCode().list({"country": "example", "postal_code": "example"})
     for getlocationbypostalcode in getlocationbypostalcodes:
         print(getlocationbypostalcode)
 except Exception as err:
@@ -124,7 +124,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = ZippopotamusZipCodeSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 getlocationbypostalcode = client.GetLocationByPostalCode().list()
 # getlocationbypostalcode contains the mock response record
 ```
@@ -221,7 +222,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -245,9 +246,9 @@ On error, `ok` is `False` and `err` contains the error value.
 | --- | --- |
 | `latitude` |  |
 | `longitude` |  |
-| `place_name` |  |
+| `placename` |  |
 | `state` |  |
-| `state_abbreviation` |  |
+| `stateabbreviation` |  |
 
 Operations: List.
 
@@ -259,8 +260,8 @@ API path: `/{country}/{postal-code}`
 | --- | --- |
 | `latitude` |  |
 | `longitude` |  |
-| `place_name` |  |
-| `post_code` |  |
+| `placename` |  |
+| `postcode` |  |
 
 Operations: List.
 
@@ -287,14 +288,14 @@ Create an instance: `get_location_by_postal_code = client.GetLocationByPostalCod
 | --- | --- | --- |
 | `latitude` | `str` |  |
 | `longitude` | `str` |  |
-| `place_name` | `str` |  |
+| `placename` | `str` |  |
 | `state` | `str` |  |
-| `state_abbreviation` | `str` |  |
+| `stateabbreviation` | `str` |  |
 
 #### Example: List
 
 ```python
-get_location_by_postal_codes = client.GetLocationByPostalCode().list()
+get_location_by_postal_codes = client.GetLocationByPostalCode().list({"country": "example", "postal_code": "example"})
 ```
 
 
@@ -314,13 +315,13 @@ Create an instance: `get_postal_codes_by_city = client.GetPostalCodesByCity()`
 | --- | --- | --- |
 | `latitude` | `str` |  |
 | `longitude` | `str` |  |
-| `place_name` | `str` |  |
-| `post_code` | `str` |  |
+| `placename` | `str` |  |
+| `postcode` | `str` |  |
 
 #### Example: List
 
 ```python
-get_postal_codes_by_citys = client.GetPostalCodesByCity().list()
+get_postal_codes_by_citys = client.GetPostalCodesByCity().list({"city": "example", "country": "example", "state": "example"})
 ```
 
 

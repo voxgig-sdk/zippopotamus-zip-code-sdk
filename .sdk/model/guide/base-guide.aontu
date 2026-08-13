@@ -9,12 +9,14 @@ guide: {
     path: "/{country}/{postal-code}": {
       rename: param: "postal-code": *"postal_code"
       op: list: method: *GET
+      op: list: transform: res: *("`body.places`")|top
     }
   }
 
   entity: get_postal_codes_by_city: {
     path: "/{country}/{state}/{city}": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.places`")|top
     }
   }
 

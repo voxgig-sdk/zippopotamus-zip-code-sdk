@@ -43,8 +43,8 @@ class ZippopotamusZipCodeTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('ZIPPOPOTAMUSZIPCODE_TEST_LIVE');
-        $override = self::getenv('ZIPPOPOTAMUSZIPCODE_TEST_OVERRIDE');
+        $live = self::getenv('ZIPPOPOTAMUS_ZIP_CODE_TEST_LIVE');
+        $override = self::getenv('ZIPPOPOTAMUS_ZIP_CODE_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class ZippopotamusZipCodeTestRunner
             }
         }
 
-        $explain = self::getenv('ZIPPOPOTAMUSZIPCODE_TEST_EXPLAIN');
+        $explain = self::getenv('ZIPPOPOTAMUS_ZIP_CODE_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['ZIPPOPOTAMUSZIPCODE_TEST_EXPLAIN'] = $explain;
+            $m['ZIPPOPOTAMUS_ZIP_CODE_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

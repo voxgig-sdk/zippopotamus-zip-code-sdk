@@ -16,20 +16,20 @@
 # @!attribute [rw] longitude
 #   @return [String, nil]
 #
-# @!attribute [rw] place_name
+# @!attribute [rw] placename
 #   @return [String, nil]
 #
 # @!attribute [rw] state
 #   @return [String, nil]
 #
-# @!attribute [rw] state_abbreviation
+# @!attribute [rw] stateabbreviation
 #   @return [String, nil]
 GetLocationByPostalCode = Struct.new(
   :latitude,
   :longitude,
-  :place_name,
+  :placename,
   :state,
-  :state_abbreviation,
+  :stateabbreviation,
   keyword_init: true
 )
 
@@ -54,16 +54,16 @@ GetLocationByPostalCodeListMatch = Struct.new(
 # @!attribute [rw] longitude
 #   @return [String, nil]
 #
-# @!attribute [rw] place_name
+# @!attribute [rw] placename
 #   @return [String, nil]
 #
-# @!attribute [rw] post_code
+# @!attribute [rw] postcode
 #   @return [String, nil]
 GetPostalCodesByCity = Struct.new(
   :latitude,
   :longitude,
-  :place_name,
-  :post_code,
+  :placename,
+  :postcode,
   keyword_init: true
 )
 

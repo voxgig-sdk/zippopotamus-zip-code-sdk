@@ -8,9 +8,9 @@
 export interface GetLocationByPostalCode {
   latitude?: string
   longitude?: string
-  place_name?: string
+  placename?: string
   state?: string
-  state_abbreviation?: string
+  stateabbreviation?: string
 }
 
 export interface GetLocationByPostalCodeListMatch {
@@ -21,8 +21,8 @@ export interface GetLocationByPostalCodeListMatch {
 export interface GetPostalCodesByCity {
   latitude?: string
   longitude?: string
-  place_name?: string
-  post_code?: string
+  placename?: string
+  postcode?: string
 }
 
 export interface GetPostalCodesByCityListMatch {

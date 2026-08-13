@@ -219,9 +219,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local get_location_by_postal_code, err = client:GetLocationByPostalCode():load()
+    local get_location_by_postal_code, err = client:GetLocationByPostalCode():list()
     if err then error(err) end
-    -- get_location_by_postal_code is the loaded record
+    -- get_location_by_postal_code is the record list
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -234,9 +234,9 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | --- | --- |
 | `latitude` |  |
 | `longitude` |  |
-| `place_name` |  |
+| `placename` |  |
 | `state` |  |
-| `state_abbreviation` |  |
+| `stateabbreviation` |  |
 
 Operations: List.
 
@@ -248,8 +248,8 @@ API path: `/{country}/{postal-code}`
 | --- | --- |
 | `latitude` |  |
 | `longitude` |  |
-| `place_name` |  |
-| `post_code` |  |
+| `placename` |  |
+| `postcode` |  |
 
 Operations: List.
 
@@ -276,9 +276,9 @@ Create an instance: `local get_location_by_postal_code = client:GetLocationByPos
 | --- | --- | --- |
 | `latitude` | `string` |  |
 | `longitude` | `string` |  |
-| `place_name` | `string` |  |
+| `placename` | `string` |  |
 | `state` | `string` |  |
-| `state_abbreviation` | `string` |  |
+| `stateabbreviation` | `string` |  |
 
 #### Example: List
 
@@ -303,8 +303,8 @@ Create an instance: `local get_postal_codes_by_city = client:GetPostalCodesByCit
 | --- | --- | --- |
 | `latitude` | `string` |  |
 | `longitude` | `string` |  |
-| `place_name` | `string` |  |
-| `post_code` | `string` |  |
+| `placename` | `string` |  |
+| `postcode` | `string` |  |
 
 #### Example: List
 

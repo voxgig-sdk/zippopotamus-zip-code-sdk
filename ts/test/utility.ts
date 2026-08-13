@@ -62,8 +62,8 @@ function makeCtrl(explain: boolean) {
 // Overrides configuration values with environment variables if available
 function envOverride(m: Record<string, any>) {
   if (
-    'TRUE' === process.env.ZIPPOPOTAMUSZIPCODE_TEST_LIVE ||
-    'TRUE' === process.env.ZIPPOPOTAMUSZIPCODE_TEST_OVERRIDE
+    'TRUE' === process.env.ZIPPOPOTAMUS_ZIP_CODE_TEST_LIVE ||
+    'TRUE' === process.env.ZIPPOPOTAMUS_ZIP_CODE_TEST_OVERRIDE
   ) {
     Object.entries(m).map(n => {
       let envval = process.env[n[0]]
@@ -74,7 +74,7 @@ function envOverride(m: Record<string, any>) {
     })
   }
 
-  m.ZIPPOPOTAMUSZIPCODE_TEST_EXPLAIN = process.env.ZIPPOPOTAMUSZIPCODE_TEST_EXPLAIN || m.ZIPPOPOTAMUSZIPCODE_TEST_EXPLAIN
+  m.ZIPPOPOTAMUS_ZIP_CODE_TEST_EXPLAIN = process.env.ZIPPOPOTAMUS_ZIP_CODE_TEST_EXPLAIN || m.ZIPPOPOTAMUS_ZIP_CODE_TEST_EXPLAIN
 
   return m
 }

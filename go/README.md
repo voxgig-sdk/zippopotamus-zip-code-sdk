@@ -263,9 +263,9 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | --- | --- |
 | `"latitude"` |  |
 | `"longitude"` |  |
-| `"place_name"` |  |
+| `"placename"` |  |
 | `"state"` |  |
-| `"state_abbreviation"` |  |
+| `"stateabbreviation"` |  |
 
 Operations: List.
 
@@ -277,8 +277,8 @@ API path: `/{country}/{postal-code}`
 | --- | --- |
 | `"latitude"` |  |
 | `"longitude"` |  |
-| `"place_name"` |  |
-| `"post_code"` |  |
+| `"placename"` |  |
+| `"postcode"` |  |
 
 Operations: List.
 
@@ -305,9 +305,9 @@ Create an instance: `getLocationByPostalCode := client.GetLocationByPostalCode(n
 | --- | --- | --- |
 | `latitude` | `string` |  |
 | `longitude` | `string` |  |
-| `place_name` | `string` |  |
+| `placename` | `string` |  |
 | `state` | `string` |  |
-| `state_abbreviation` | `string` |  |
+| `stateabbreviation` | `string` |  |
 
 #### Example: List
 
@@ -336,8 +336,8 @@ Create an instance: `getPostalCodesByCity := client.GetPostalCodesByCity(nil)`
 | --- | --- | --- |
 | `latitude` | `string` |  |
 | `longitude` | `string` |  |
-| `place_name` | `string` |  |
-| `post_code` | `string` |  |
+| `placename` | `string` |  |
+| `postcode` | `string` |  |
 
 #### Example: List
 

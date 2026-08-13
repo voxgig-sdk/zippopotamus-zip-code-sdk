@@ -96,9 +96,9 @@ local get_location_by_postal_code = client:GetLocationByPostalCode(nil)
 | --- | --- | --- | --- |
 | `latitude` | `string` | No |  |
 | `longitude` | `string` | No |  |
-| `place_name` | `string` | No |  |
+| `placename` | `string` | No |  |
 | `state` | `string` | No |  |
-| `state_abbreviation` | `string` | No |  |
+| `stateabbreviation` | `string` | No |  |
 
 ### Operations
 
@@ -152,8 +152,8 @@ local get_postal_codes_by_city = client:GetPostalCodesByCity(nil)
 | --- | --- | --- | --- |
 | `latitude` | `string` | No |  |
 | `longitude` | `string` | No |  |
-| `place_name` | `string` | No |  |
-| `post_code` | `string` | No |  |
+| `placename` | `string` | No |  |
+| `postcode` | `string` | No |  |
 
 ### Operations
 

@@ -60,9 +60,10 @@ func TestGetPostalCodesByCityDirect(t *testing.T) {
 			"params": params,
 		})
 		if setup.live {
-			// Live mode is lenient: synthetic IDs frequently 4xx and the
-			// list-response shape varies wildly across public APIs. Skip
-			// rather than fail when the call doesn't return a usable list.
+			// Live-mode leniency is a model decision
+			// (main.kit.test.live.strict): synthetic IDs 4xx constantly
+			// against an arbitrary public API, so the default SKIPS here.
+			// A project that owns its test server sets strict and FAILS.
 			if err != nil {
 				t.Skipf("list call failed (likely synthetic IDs against live API): %v", err)
 			}
@@ -132,11 +133,11 @@ func get_postal_codes_by_cityDirectSetup(mockres any) *get_postal_codes_by_cityD
 	calls := &[]map[string]any{}
 
 	env := envOverride(map[string]any{
-		"ZIPPOPOTAMUSZIPCODE_TEST_GET_POSTAL_CODES_BY_CITY_ENTID": map[string]any{},
-		"ZIPPOPOTAMUSZIPCODE_TEST_LIVE":    "FALSE",
+		"ZIPPOPOTAMUS_ZIP_CODE_TEST_GET_POSTAL_CODES_BY_CITY_ENTID": map[string]any{},
+		"ZIPPOPOTAMUS_ZIP_CODE_TEST_LIVE":    "FALSE",
 	})
 
-	live := env["ZIPPOPOTAMUSZIPCODE_TEST_LIVE"] == "TRUE"
+	live := env["ZIPPOPOTAMUS_ZIP_CODE_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
@@ -144,7 +145,7 @@ func get_postal_codes_by_cityDirectSetup(mockres any) *get_postal_codes_by_cityD
 		client := sdk.NewZippopotamusZipCodeSDK(mergedOpts)
 
 		idmap := map[string]any{}
-		if entidRaw, ok := env["ZIPPOPOTAMUSZIPCODE_TEST_GET_POSTAL_CODES_BY_CITY_ENTID"]; ok {
+		if entidRaw, ok := env["ZIPPOPOTAMUS_ZIP_CODE_TEST_GET_POSTAL_CODES_BY_CITY_ENTID"]; ok {
 			if entidStr, ok := entidRaw.(string); ok && strings.HasPrefix(entidStr, "{") {
 				json.Unmarshal([]byte(entidStr), &idmap)
 			} else if entidMap, ok := entidRaw.(map[string]any); ok {

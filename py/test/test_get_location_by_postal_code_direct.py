@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from zippopotamuszipcode_sdk.utility.voxgig_struct import voxgig_struct as vs
 from zippopotamuszipcode_sdk import ZippopotamusZipCodeSDK
-from core import helpers
+from zippopotamuszipcode_sdk.core import helpers
 from test import runner
 
 
@@ -74,11 +74,11 @@ def _get_location_by_postal_code_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "ZIPPOPOTAMUSZIPCODE_TEST_GET_LOCATION_BY_POSTAL_CODE_ENTID": {},
-        "ZIPPOPOTAMUSZIPCODE_TEST_LIVE": "FALSE",
+        "ZIPPOPOTAMUS_ZIP_CODE_TEST_GET_LOCATION_BY_POSTAL_CODE_ENTID": {},
+        "ZIPPOPOTAMUS_ZIP_CODE_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("ZIPPOPOTAMUSZIPCODE_TEST_LIVE") == "TRUE"
+    live = env.get("ZIPPOPOTAMUS_ZIP_CODE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

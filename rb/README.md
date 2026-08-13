@@ -119,7 +119,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = ZippopotamusZipCodeSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 getlocationbypostalcode = client.GetLocationByPostalCode.list()
 puts getlocationbypostalcode
 ```
@@ -239,9 +240,9 @@ returns a result `Hash` with these keys:
 | --- | --- |
 | `latitude` |  |
 | `longitude` |  |
-| `place_name` |  |
+| `placename` |  |
 | `state` |  |
-| `state_abbreviation` |  |
+| `stateabbreviation` |  |
 
 Operations: List.
 
@@ -253,8 +254,8 @@ API path: `/{country}/{postal-code}`
 | --- | --- |
 | `latitude` |  |
 | `longitude` |  |
-| `place_name` |  |
-| `post_code` |  |
+| `placename` |  |
+| `postcode` |  |
 
 Operations: List.
 
@@ -281,9 +282,9 @@ Create an instance: `get_location_by_postal_code = client.GetLocationByPostalCod
 | --- | --- | --- |
 | `latitude` | `String` |  |
 | `longitude` | `String` |  |
-| `place_name` | `String` |  |
+| `placename` | `String` |  |
 | `state` | `String` |  |
-| `state_abbreviation` | `String` |  |
+| `stateabbreviation` | `String` |  |
 
 #### Example: List
 
@@ -309,8 +310,8 @@ Create an instance: `get_postal_codes_by_city = client.GetPostalCodesByCity`
 | --- | --- | --- |
 | `latitude` | `String` |  |
 | `longitude` | `String` |  |
-| `place_name` | `String` |  |
-| `post_code` | `String` |  |
+| `placename` | `String` |  |
+| `postcode` | `String` |  |
 
 #### Example: List
 

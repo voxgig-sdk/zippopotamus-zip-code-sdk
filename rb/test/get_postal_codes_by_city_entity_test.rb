@@ -62,7 +62,7 @@ class GetPostalCodesByCityEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set ZIPPOPOTAMUSZIPCODE_TEST_GET_POSTAL_CODES_BY_CITY_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set ZIPPOPOTAMUS_ZIP_CODE_TEST_GET_POSTAL_CODES_BY_CITY_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -115,22 +115,22 @@ def get_postal_codes_by_city_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["ZIPPOPOTAMUSZIPCODE_TEST_GET_POSTAL_CODES_BY_CITY_ENTID"]
+  entid_env_raw = ENV["ZIPPOPOTAMUS_ZIP_CODE_TEST_GET_POSTAL_CODES_BY_CITY_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "ZIPPOPOTAMUSZIPCODE_TEST_GET_POSTAL_CODES_BY_CITY_ENTID" => idmap,
-    "ZIPPOPOTAMUSZIPCODE_TEST_LIVE" => "FALSE",
-    "ZIPPOPOTAMUSZIPCODE_TEST_EXPLAIN" => "FALSE",
+    "ZIPPOPOTAMUS_ZIP_CODE_TEST_GET_POSTAL_CODES_BY_CITY_ENTID" => idmap,
+    "ZIPPOPOTAMUS_ZIP_CODE_TEST_LIVE" => "FALSE",
+    "ZIPPOPOTAMUS_ZIP_CODE_TEST_EXPLAIN" => "FALSE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["ZIPPOPOTAMUSZIPCODE_TEST_GET_POSTAL_CODES_BY_CITY_ENTID"])
+    env["ZIPPOPOTAMUS_ZIP_CODE_TEST_GET_POSTAL_CODES_BY_CITY_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["ZIPPOPOTAMUSZIPCODE_TEST_LIVE"] == "TRUE"
+  if env["ZIPPOPOTAMUS_ZIP_CODE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
       },
@@ -139,13 +139,13 @@ def get_postal_codes_by_city_basic_setup(extra)
     client = ZippopotamusZipCodeSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["ZIPPOPOTAMUSZIPCODE_TEST_LIVE"] == "TRUE"
+  live = env["ZIPPOPOTAMUS_ZIP_CODE_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["ZIPPOPOTAMUSZIPCODE_TEST_EXPLAIN"] == "TRUE",
+    explain: env["ZIPPOPOTAMUS_ZIP_CODE_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

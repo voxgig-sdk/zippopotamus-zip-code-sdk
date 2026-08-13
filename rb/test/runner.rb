@@ -23,8 +23,8 @@ module ZippopotamusZipCodeTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("ZIPPOPOTAMUSZIPCODE_TEST_LIVE")
-    override = getenv("ZIPPOPOTAMUSZIPCODE_TEST_OVERRIDE")
+    live = getenv("ZIPPOPOTAMUS_ZIP_CODE_TEST_LIVE")
+    override = getenv("ZIPPOPOTAMUS_ZIP_CODE_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module ZippopotamusZipCodeTestRunner
       end
     end
 
-    explain = getenv("ZIPPOPOTAMUSZIPCODE_TEST_EXPLAIN")
-    m["ZIPPOPOTAMUSZIPCODE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("ZIPPOPOTAMUS_ZIP_CODE_TEST_EXPLAIN")
+    m["ZIPPOPOTAMUS_ZIP_CODE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

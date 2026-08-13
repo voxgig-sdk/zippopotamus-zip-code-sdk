@@ -26,8 +26,8 @@ import {
 describe('GetPostalCodesByCityEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when ZIPPOPOTAMUSZIPCODE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('ZIPPOPOTAMUSZIPCODE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when ZIPPOPOTAMUS_ZIP_CODE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('ZIPPOPOTAMUS_ZIP_CODE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = ZippopotamusZipCodeSDK.test()
@@ -66,7 +66,7 @@ describe('GetPostalCodesByCityEntity', async () => {
     get_postal_codes_by_city_ref01_match['country'] = setup.idmap['country01']
     get_postal_codes_by_city_ref01_match['state'] = setup.idmap['state01']
 
-    const get_postal_codes_by_city_ref01_list = await get_postal_codes_by_city_ref01_ent.list(get_postal_codes_by_city_ref01_match)
+    const get_postal_codes_by_city_ref01_list = (await get_postal_codes_by_city_ref01_ent.list(get_postal_codes_by_city_ref01_match)).map((e: any) => e.data())
 
 
   })

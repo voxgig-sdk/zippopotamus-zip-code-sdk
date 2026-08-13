@@ -9,9 +9,9 @@
 ---@class GetLocationByPostalCode
 ---@field latitude? string
 ---@field longitude? string
----@field place_name? string
+---@field placename? string
 ---@field state? string
----@field state_abbreviation? string
+---@field stateabbreviation? string
 
 ---@class GetLocationByPostalCodeListMatch
 ---@field country string
@@ -20,8 +20,8 @@
 ---@class GetPostalCodesByCity
 ---@field latitude? string
 ---@field longitude? string
----@field place_name? string
----@field post_code? string
+---@field placename? string
+---@field postcode? string
 
 ---@class GetPostalCodesByCityListMatch
 ---@field city string

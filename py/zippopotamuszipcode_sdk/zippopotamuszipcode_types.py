@@ -1,0 +1,42 @@
+# Typed models for the ZippopotamusZipCode SDK.
+#
+# GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
+# params (op.<name>.points[].args.params[]). Field/param types come from the
+# canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
+# @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
+
+from __future__ import annotations
+
+from typing import TypedDict, Any
+
+
+class GetLocationByPostalCode(TypedDict, total=False):
+    latitude: str
+    longitude: str
+    placename: str
+    state: str
+    stateabbreviation: str
+
+
+class GetLocationByPostalCodeListMatch(TypedDict):
+    country: str
+    postal_code: str
+
+
+class GetPostalCodesByCity(TypedDict, total=False):
+    latitude: str
+    longitude: str
+    placename: str
+    postcode: str
+
+
+class GetPostalCodesByCityListMatch(TypedDict):
+    city: str
+    country: str
+    state: str

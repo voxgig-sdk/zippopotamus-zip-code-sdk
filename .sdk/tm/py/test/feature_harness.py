@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import ZippopotamusZipCodeControl
-from core.error import ZippopotamusZipCodeError
-from core.result import ZippopotamusZipCodeResult
-from core.spec import ZippopotamusZipCodeSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import ZippopotamusZipCodeControl
+from projectname_sdk.core.error import ZippopotamusZipCodeError
+from projectname_sdk.core.result import ZippopotamusZipCodeResult
+from projectname_sdk.core.spec import ZippopotamusZipCodeSpec
 
 
 # True when this SDK was generated with the named feature.

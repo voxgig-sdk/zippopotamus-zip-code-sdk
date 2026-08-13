@@ -42,7 +42,7 @@ module ZippopotamusZipCodeConfig
             },
             {
               "active" => true,
-              "name" => "place_name",
+              "name" => "placename",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 2,
@@ -56,7 +56,7 @@ module ZippopotamusZipCodeConfig
             },
             {
               "active" => true,
-              "name" => "state_abbreviation",
+              "name" => "stateabbreviation",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 4,
@@ -94,6 +94,7 @@ module ZippopotamusZipCodeConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{country}/{postal-code}",
                   "parts" => [
@@ -113,7 +114,7 @@ module ZippopotamusZipCodeConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.places`",
                   },
                   "index$" => 0,
                 },
@@ -143,14 +144,14 @@ module ZippopotamusZipCodeConfig
             },
             {
               "active" => true,
-              "name" => "place_name",
+              "name" => "placename",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 2,
             },
             {
               "active" => true,
-              "name" => "post_code",
+              "name" => "postcode",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 3,
@@ -198,6 +199,7 @@ module ZippopotamusZipCodeConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{country}/{state}/{city}",
                   "parts" => [
@@ -214,7 +216,7 @@ module ZippopotamusZipCodeConfig
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.places`",
                   },
                   "index$" => 0,
                 },

@@ -125,7 +125,8 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = ZippopotamusZipCodeSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $getlocationbypostalcode = $client->GetLocationByPostalCode()->list();
 print_r($getlocationbypostalcode);
 ```
@@ -225,7 +226,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -249,9 +250,9 @@ On error, `ok` is `false` and `$err` contains the error value.
 | --- | --- |
 | `latitude` |  |
 | `longitude` |  |
-| `place_name` |  |
+| `placename` |  |
 | `state` |  |
-| `state_abbreviation` |  |
+| `stateabbreviation` |  |
 
 Operations: List.
 
@@ -263,8 +264,8 @@ API path: `/{country}/{postal-code}`
 | --- | --- |
 | `latitude` |  |
 | `longitude` |  |
-| `place_name` |  |
-| `post_code` |  |
+| `placename` |  |
+| `postcode` |  |
 
 Operations: List.
 
@@ -291,9 +292,9 @@ Create an instance: `$get_location_by_postal_code = $client->GetLocationByPostal
 | --- | --- | --- |
 | `latitude` | `string` |  |
 | `longitude` | `string` |  |
-| `place_name` | `string` |  |
+| `placename` | `string` |  |
 | `state` | `string` |  |
-| `state_abbreviation` | `string` |  |
+| `stateabbreviation` | `string` |  |
 
 #### Example: List
 
@@ -319,8 +320,8 @@ Create an instance: `$get_postal_codes_by_city = $client->GetPostalCodesByCity()
 | --- | --- | --- |
 | `latitude` | `string` |  |
 | `longitude` | `string` |  |
-| `place_name` | `string` |  |
-| `post_code` | `string` |  |
+| `placename` | `string` |  |
+| `postcode` | `string` |  |
 
 #### Example: List
 
