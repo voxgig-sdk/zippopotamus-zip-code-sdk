@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://api.zippopotam.us',
+    base: "https://api.zippopotam.us",
 
     headers: {
       "content-type": "application/json"
@@ -58,39 +58,24 @@ class Config {
     "get_location_by_postal_code": {
       "fields": [
         {
-          "active": true,
           "name": "latitude",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "longitude",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "placename",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "state",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 3
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "stateabbreviation",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 4
+          "type": "`$STRING`"
         }
       ],
       "name": "get_location_by_postal_code",
@@ -100,28 +85,23 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "US",
                     "kind": "param",
                     "name": "country",
                     "orig": "country",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "90210",
                     "kind": "param",
                     "name": "postal_code",
                     "orig": "postal_code",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -146,11 +126,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.places`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         }
       },
       "relations": {
@@ -160,32 +138,20 @@ class Config {
     "get_postal_codes_by_city": {
       "fields": [
         {
-          "active": true,
           "name": "latitude",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 0
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "longitude",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "placename",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 2
+          "type": "`$STRING`"
         },
         {
-          "active": true,
           "name": "postcode",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 3
+          "type": "`$STRING`"
         }
       ],
       "name": "get_postal_codes_by_city",
@@ -195,38 +161,31 @@ class Config {
           "name": "list",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "Beverly Hills",
                     "kind": "param",
                     "name": "city",
                     "orig": "city",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "US",
                     "kind": "param",
                     "name": "country",
                     "orig": "country",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 1
+                    "type": "`$STRING`"
                   },
                   {
-                    "active": true,
                     "example": "CA",
                     "kind": "param",
                     "name": "state",
                     "orig": "state",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 2
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -248,11 +207,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.places`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "list"
+          ]
         }
       },
       "relations": {

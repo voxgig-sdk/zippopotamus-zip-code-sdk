@@ -40,7 +40,7 @@ class ZippopotamusZipCodeSDK
         $utility = new ZippopotamusZipCodeUtility();
         $this->_utility = $utility;
 
-        $config = ZippopotamusZipCodeConfig::make_config();
+        $config = ZippopotamusZipCodeConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

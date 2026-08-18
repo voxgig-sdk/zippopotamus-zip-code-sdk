@@ -5,6 +5,29 @@ declare(strict_types=1);
 
 class ZippopotamusZipCodeConfig
 {
+    /** @var array<string,mixed>|null */
+    private static ?array $shared_config = null;
+
+    /**
+     * Return the process-wide config, built once on first use. The SDK reads
+     * the config on every request and never writes to it, so one instance is
+     * shared by every client rather than rebuilt per client.
+     *
+     * PHP arrays are copy-on-write, so callers that do mutate the result get
+     * their own copy and cannot disturb the shared one.
+     */
+    public static function shared_config(): array
+    {
+        if (self::$shared_config === null) {
+            self::$shared_config = self::make_config();
+        }
+        return self::$shared_config;
+    }
+
+    /**
+     * Build a fresh, fully materialised config array. Every call rebuilds the
+     * whole structure, so prefer shared_config unless you need a private copy.
+     */
     public static function make_config(): array
     {
         return [
@@ -32,39 +55,24 @@ class ZippopotamusZipCodeConfig
         'get_location_by_postal_code' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'latitude',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'longitude',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'placename',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 2,
             ],
             [
-              'active' => true,
               'name' => 'state',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 3,
             ],
             [
-              'active' => true,
               'name' => 'stateabbreviation',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 4,
             ],
           ],
           'name' => 'get_location_by_postal_code',
@@ -74,28 +82,23 @@ class ZippopotamusZipCodeConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'example' => 'US',
                         'kind' => 'param',
                         'name' => 'country',
                         'orig' => 'country',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                       [
-                        'active' => true,
                         'example' => '90210',
                         'kind' => 'param',
                         'name' => 'postal_code',
                         'orig' => 'postal_code',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 1,
                       ],
                     ],
                   ],
@@ -121,10 +124,8 @@ class ZippopotamusZipCodeConfig
                     'req' => '`reqdata`',
                     'res' => '`body.places`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [
@@ -134,32 +135,20 @@ class ZippopotamusZipCodeConfig
         'get_postal_codes_by_city' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'latitude',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'longitude',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'placename',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 2,
             ],
             [
-              'active' => true,
               'name' => 'postcode',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 3,
             ],
           ],
           'name' => 'get_postal_codes_by_city',
@@ -169,38 +158,31 @@ class ZippopotamusZipCodeConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'example' => 'Beverly Hills',
                         'kind' => 'param',
                         'name' => 'city',
                         'orig' => 'city',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 0,
                       ],
                       [
-                        'active' => true,
                         'example' => 'US',
                         'kind' => 'param',
                         'name' => 'country',
                         'orig' => 'country',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 1,
                       ],
                       [
-                        'active' => true,
                         'example' => 'CA',
                         'kind' => 'param',
                         'name' => 'state',
                         'orig' => 'state',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'index$' => 2,
                       ],
                     ],
                   ],
@@ -223,10 +205,8 @@ class ZippopotamusZipCodeConfig
                     'req' => '`reqdata`',
                     'res' => '`body.places`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [

@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from zippopotamuszipcode_sdk.config import make_config
+from zippopotamuszipcode_sdk.config import shared_config
 from zippopotamuszipcode_sdk.features import _make_feature
 from zippopotamuszipcode_sdk.core.control import ZippopotamusZipCodeControl
 from zippopotamuszipcode_sdk.core.error import ZippopotamusZipCodeError
@@ -24,7 +24,7 @@ from zippopotamuszipcode_sdk.core.spec import ZippopotamusZipCodeSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 

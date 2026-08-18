@@ -1,6 +1,20 @@
 # ZippopotamusZipCode SDK configuration
 
 module ZippopotamusZipCodeConfig
+  # Return the process-wide config, built once on first use. The SDK reads
+  # the config on every request and never writes to it, so one instance is
+  # shared by every client rather than rebuilt per client.
+  #
+  # The returned hash is shared: treat it as read-only. Callers that need to
+  # mutate should use make_config, which always returns a fresh copy.
+  def self.shared_config
+    @shared_config ||= make_config
+  end
+
+
+  # Build a fresh, fully materialised config hash. Every call rebuilds the
+  # whole structure, so prefer shared_config unless you need a private copy
+  # you intend to mutate.
   def self.make_config
     {
       "main" => {
@@ -27,39 +41,24 @@ module ZippopotamusZipCodeConfig
         "get_location_by_postal_code" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "latitude",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "longitude",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "placename",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "state",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 3,
             },
             {
-              "active" => true,
               "name" => "stateabbreviation",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 4,
             },
           ],
           "name" => "get_location_by_postal_code",
@@ -69,28 +68,23 @@ module ZippopotamusZipCodeConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "params" => [
                       {
-                        "active" => true,
                         "example" => "US",
                         "kind" => "param",
                         "name" => "country",
                         "orig" => "country",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                       {
-                        "active" => true,
                         "example" => "90210",
                         "kind" => "param",
                         "name" => "postal_code",
                         "orig" => "postal_code",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 1,
                       },
                     ],
                   },
@@ -116,10 +110,8 @@ module ZippopotamusZipCodeConfig
                     "req" => "`reqdata`",
                     "res" => "`body.places`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {
@@ -129,32 +121,20 @@ module ZippopotamusZipCodeConfig
         "get_postal_codes_by_city" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "latitude",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "longitude",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "placename",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "postcode",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 3,
             },
           ],
           "name" => "get_postal_codes_by_city",
@@ -164,38 +144,31 @@ module ZippopotamusZipCodeConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "params" => [
                       {
-                        "active" => true,
                         "example" => "Beverly Hills",
                         "kind" => "param",
                         "name" => "city",
                         "orig" => "city",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                       {
-                        "active" => true,
                         "example" => "US",
                         "kind" => "param",
                         "name" => "country",
                         "orig" => "country",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 1,
                       },
                       {
-                        "active" => true,
                         "example" => "CA",
                         "kind" => "param",
                         "name" => "state",
                         "orig" => "state",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 2,
                       },
                     ],
                   },
@@ -218,10 +191,8 @@ module ZippopotamusZipCodeConfig
                     "req" => "`reqdata`",
                     "res" => "`body.places`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {

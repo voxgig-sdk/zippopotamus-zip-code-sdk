@@ -23,6 +23,7 @@ build = {
   modules = {
     ["zippopotamus-zip-code_sdk"] = "zippopotamus-zip-code_sdk.lua",
     ["config"] = "config.lua",
+    ["config_shared"] = "config_shared.lua",
     ["features"] = "features.lua",
   }
 }

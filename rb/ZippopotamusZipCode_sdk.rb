@@ -28,7 +28,7 @@ class ZippopotamusZipCodeSDK
     utility = ZippopotamusZipCodeUtility.new
     @_utility = utility
 
-    config = ZippopotamusZipCodeConfig.make_config
+    config = ZippopotamusZipCodeConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,
