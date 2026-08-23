@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "ZippopotamusZipCode",
+            "slug": "zippopotamus-zip-code",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -51,22 +54,27 @@ def make_config():
         "fields": [
           {
             "name": "latitude",
+            "short": "Latitude coordinate",
             "type": "`$STRING`",
           },
           {
             "name": "longitude",
+            "short": "Longitude coordinate",
             "type": "`$STRING`",
           },
           {
             "name": "placename",
+            "short": "Name of the place/city",
             "type": "`$STRING`",
           },
           {
             "name": "state",
+            "short": "Full state or province name",
             "type": "`$STRING`",
           },
           {
             "name": "stateabbreviation",
+            "short": "State or province abbreviation",
             "type": "`$STRING`",
           },
         ],
@@ -131,18 +139,22 @@ def make_config():
         "fields": [
           {
             "name": "latitude",
+            "short": "Latitude coordinate",
             "type": "`$STRING`",
           },
           {
             "name": "longitude",
+            "short": "Longitude coordinate",
             "type": "`$STRING`",
           },
           {
             "name": "placename",
+            "short": "Name of the place/city",
             "type": "`$STRING`",
           },
           {
             "name": "postcode",
+            "short": "Postal code for this location",
             "type": "`$STRING`",
           },
         ],

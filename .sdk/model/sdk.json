@@ -36,30 +36,35 @@
               "active": true,
               "name": "latitude",
               "req": false,
+              "short": "Latitude coordinate",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "longitude",
               "req": false,
+              "short": "Longitude coordinate",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "placename",
               "req": false,
+              "short": "Name of the place/city",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "state",
               "req": false,
+              "short": "Full state or province name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "stateabbreviation",
               "req": false,
+              "short": "State or province abbreviation",
               "type": "`$STRING`"
             }
           ],
@@ -133,24 +138,28 @@
               "active": true,
               "name": "latitude",
               "req": false,
+              "short": "Latitude coordinate",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "longitude",
               "req": false,
+              "short": "Longitude coordinate",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "placename",
               "req": false,
+              "short": "Name of the place/city",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "postcode",
               "req": false,
+              "short": "Postal code for this location",
               "type": "`$STRING`"
             }
           ],

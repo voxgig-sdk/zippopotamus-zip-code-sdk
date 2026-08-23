@@ -238,11 +238,11 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `latitude` |  |
-| `longitude` |  |
-| `placename` |  |
-| `state` |  |
-| `stateabbreviation` |  |
+| `latitude` | Latitude coordinate |
+| `longitude` | Longitude coordinate |
+| `placename` | Name of the place/city |
+| `state` | Full state or province name |
+| `stateabbreviation` | State or province abbreviation |
 
 Operations: List.
 
@@ -252,10 +252,10 @@ API path: `/{country}/{postal-code}`
 
 | Field | Description |
 | --- | --- |
-| `latitude` |  |
-| `longitude` |  |
-| `placename` |  |
-| `postcode` |  |
+| `latitude` | Latitude coordinate |
+| `longitude` | Longitude coordinate |
+| `placename` | Name of the place/city |
+| `postcode` | Postal code for this location |
 
 Operations: List.
 
@@ -280,11 +280,11 @@ Create an instance: `get_location_by_postal_code = client.GetLocationByPostalCod
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `latitude` | `String` |  |
-| `longitude` | `String` |  |
-| `placename` | `String` |  |
-| `state` | `String` |  |
-| `stateabbreviation` | `String` |  |
+| `latitude` | `String` | Latitude coordinate |
+| `longitude` | `String` | Longitude coordinate |
+| `placename` | `String` | Name of the place/city |
+| `state` | `String` | Full state or province name |
+| `stateabbreviation` | `String` | State or province abbreviation |
 
 #### Example: List
 
@@ -308,10 +308,10 @@ Create an instance: `get_postal_codes_by_city = client.GetPostalCodesByCity`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `latitude` | `String` |  |
-| `longitude` | `String` |  |
-| `placename` | `String` |  |
-| `postcode` | `String` |  |
+| `latitude` | `String` | Latitude coordinate |
+| `longitude` | `String` | Longitude coordinate |
+| `placename` | `String` | Name of the place/city |
+| `postcode` | `String` | Postal code for this location |
 
 #### Example: List
 

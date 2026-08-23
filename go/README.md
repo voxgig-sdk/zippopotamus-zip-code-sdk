@@ -6,7 +6,7 @@ The Golang SDK for the ZippopotamusZipCode API — an entity-oriented client usi
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.GetLocationByPostalCode(nil)` — each with the same small set of operations (`List`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -261,11 +261,11 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"latitude"` |  |
-| `"longitude"` |  |
-| `"placename"` |  |
-| `"state"` |  |
-| `"stateabbreviation"` |  |
+| `"latitude"` | Latitude coordinate |
+| `"longitude"` | Longitude coordinate |
+| `"placename"` | Name of the place/city |
+| `"state"` | Full state or province name |
+| `"stateabbreviation"` | State or province abbreviation |
 
 Operations: List.
 
@@ -275,10 +275,10 @@ API path: `/{country}/{postal-code}`
 
 | Field | Description |
 | --- | --- |
-| `"latitude"` |  |
-| `"longitude"` |  |
-| `"placename"` |  |
-| `"postcode"` |  |
+| `"latitude"` | Latitude coordinate |
+| `"longitude"` | Longitude coordinate |
+| `"placename"` | Name of the place/city |
+| `"postcode"` | Postal code for this location |
 
 Operations: List.
 
@@ -303,11 +303,11 @@ Create an instance: `getLocationByPostalCode := client.GetLocationByPostalCode(n
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `latitude` | `string` |  |
-| `longitude` | `string` |  |
-| `placename` | `string` |  |
-| `state` | `string` |  |
-| `stateabbreviation` | `string` |  |
+| `latitude` | `string` | Latitude coordinate |
+| `longitude` | `string` | Longitude coordinate |
+| `placename` | `string` | Name of the place/city |
+| `state` | `string` | Full state or province name |
+| `stateabbreviation` | `string` | State or province abbreviation |
 
 #### Example: List
 
@@ -334,10 +334,10 @@ Create an instance: `getPostalCodesByCity := client.GetPostalCodesByCity(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `latitude` | `string` |  |
-| `longitude` | `string` |  |
-| `placename` | `string` |  |
-| `postcode` | `string` |  |
+| `latitude` | `string` | Latitude coordinate |
+| `longitude` | `string` | Longitude coordinate |
+| `placename` | `string` | Name of the place/city |
+| `postcode` | `string` | Postal code for this location |
 
 #### Example: List
 

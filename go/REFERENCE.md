@@ -102,11 +102,11 @@ fmt.Println(getLocationByPostalCode.GetName()) // "get_location_by_postal_code"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `latitude` | `string` | No |  |
-| `longitude` | `string` | No |  |
-| `placename` | `string` | No |  |
-| `state` | `string` | No |  |
-| `stateabbreviation` | `string` | No |  |
+| `latitude` | `string` | No | Latitude coordinate |
+| `longitude` | `string` | No | Longitude coordinate |
+| `placename` | `string` | No | Name of the place/city |
+| `state` | `string` | No | Full state or province name |
+| `stateabbreviation` | `string` | No | State or province abbreviation |
 
 ### Operations
 
@@ -157,10 +157,10 @@ fmt.Println(getPostalCodesByCity.GetName()) // "get_postal_codes_by_city"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `latitude` | `string` | No |  |
-| `longitude` | `string` | No |  |
-| `placename` | `string` | No |  |
-| `postcode` | `string` | No |  |
+| `latitude` | `string` | No | Latitude coordinate |
+| `longitude` | `string` | No | Longitude coordinate |
+| `placename` | `string` | No | Name of the place/city |
+| `postcode` | `string` | No | Postal code for this location |
 
 ### Operations
 

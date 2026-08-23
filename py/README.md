@@ -244,11 +244,11 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `latitude` |  |
-| `longitude` |  |
-| `placename` |  |
-| `state` |  |
-| `stateabbreviation` |  |
+| `latitude` | Latitude coordinate |
+| `longitude` | Longitude coordinate |
+| `placename` | Name of the place/city |
+| `state` | Full state or province name |
+| `stateabbreviation` | State or province abbreviation |
 
 Operations: List.
 
@@ -258,10 +258,10 @@ API path: `/{country}/{postal-code}`
 
 | Field | Description |
 | --- | --- |
-| `latitude` |  |
-| `longitude` |  |
-| `placename` |  |
-| `postcode` |  |
+| `latitude` | Latitude coordinate |
+| `longitude` | Longitude coordinate |
+| `placename` | Name of the place/city |
+| `postcode` | Postal code for this location |
 
 Operations: List.
 
@@ -286,11 +286,11 @@ Create an instance: `get_location_by_postal_code = client.GetLocationByPostalCod
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `latitude` | `str` |  |
-| `longitude` | `str` |  |
-| `placename` | `str` |  |
-| `state` | `str` |  |
-| `stateabbreviation` | `str` |  |
+| `latitude` | `str` | Latitude coordinate |
+| `longitude` | `str` | Longitude coordinate |
+| `placename` | `str` | Name of the place/city |
+| `state` | `str` | Full state or province name |
+| `stateabbreviation` | `str` | State or province abbreviation |
 
 #### Example: List
 
@@ -313,10 +313,10 @@ Create an instance: `get_postal_codes_by_city = client.GetPostalCodesByCity()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `latitude` | `str` |  |
-| `longitude` | `str` |  |
-| `placename` | `str` |  |
-| `postcode` | `str` |  |
+| `latitude` | `str` | Latitude coordinate |
+| `longitude` | `str` | Longitude coordinate |
+| `placename` | `str` | Name of the place/city |
+| `postcode` | `str` | Postal code for this location |
 
 #### Example: List
 

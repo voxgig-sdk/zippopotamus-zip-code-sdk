@@ -8,26 +8,31 @@ main: kit: entity: get_location_by_postal_code: {
     {
       name: "latitude"
       req: false
+      short: "Latitude coordinate"
       type: "`$STRING`"
     }
     {
       name: "longitude"
       req: false
+      short: "Longitude coordinate"
       type: "`$STRING`"
     }
     {
       name: "placename"
       req: false
+      short: "Name of the place/city"
       type: "`$STRING`"
     }
     {
       name: "state"
       req: false
+      short: "Full state or province name"
       type: "`$STRING`"
     }
     {
       name: "stateabbreviation"
       req: false
+      short: "State or province abbreviation"
       type: "`$STRING`"
     }
   ]

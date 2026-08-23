@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'ZippopotamusZipCode',
+        slug: "zippopotamus-zip-code",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -59,22 +70,27 @@ class Config {
       "fields": [
         {
           "name": "latitude",
+          "short": "Latitude coordinate",
           "type": "`$STRING`"
         },
         {
           "name": "longitude",
+          "short": "Longitude coordinate",
           "type": "`$STRING`"
         },
         {
           "name": "placename",
+          "short": "Name of the place/city",
           "type": "`$STRING`"
         },
         {
           "name": "state",
+          "short": "Full state or province name",
           "type": "`$STRING`"
         },
         {
           "name": "stateabbreviation",
+          "short": "State or province abbreviation",
           "type": "`$STRING`"
         }
       ],
@@ -139,18 +155,22 @@ class Config {
       "fields": [
         {
           "name": "latitude",
+          "short": "Latitude coordinate",
           "type": "`$STRING`"
         },
         {
           "name": "longitude",
+          "short": "Longitude coordinate",
           "type": "`$STRING`"
         },
         {
           "name": "placename",
+          "short": "Name of the place/city",
           "type": "`$STRING`"
         },
         {
           "name": "postcode",
+          "short": "Postal code for this location",
           "type": "`$STRING`"
         }
       ],

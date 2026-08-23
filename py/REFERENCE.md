@@ -91,11 +91,11 @@ get_location_by_postal_code = client.GetLocationByPostalCode()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `latitude` | `str` | No |  |
-| `longitude` | `str` | No |  |
-| `placename` | `str` | No |  |
-| `state` | `str` | No |  |
-| `stateabbreviation` | `str` | No |  |
+| `latitude` | `str` | No | Latitude coordinate |
+| `longitude` | `str` | No | Longitude coordinate |
+| `placename` | `str` | No | Name of the place/city |
+| `state` | `str` | No | Full state or province name |
+| `stateabbreviation` | `str` | No | State or province abbreviation |
 
 ### Operations
 
@@ -148,10 +148,10 @@ get_postal_codes_by_city = client.GetPostalCodesByCity()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `latitude` | `str` | No |  |
-| `longitude` | `str` | No |  |
-| `placename` | `str` | No |  |
-| `postcode` | `str` | No |  |
+| `latitude` | `str` | No | Latitude coordinate |
+| `longitude` | `str` | No | Longitude coordinate |
+| `placename` | `str` | No | Name of the place/city |
+| `postcode` | `str` | No | Postal code for this location |
 
 ### Operations
 

@@ -232,11 +232,11 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `latitude` |  |
-| `longitude` |  |
-| `placename` |  |
-| `state` |  |
-| `stateabbreviation` |  |
+| `latitude` | Latitude coordinate |
+| `longitude` | Longitude coordinate |
+| `placename` | Name of the place/city |
+| `state` | Full state or province name |
+| `stateabbreviation` | State or province abbreviation |
 
 Operations: List.
 
@@ -246,10 +246,10 @@ API path: `/{country}/{postal-code}`
 
 | Field | Description |
 | --- | --- |
-| `latitude` |  |
-| `longitude` |  |
-| `placename` |  |
-| `postcode` |  |
+| `latitude` | Latitude coordinate |
+| `longitude` | Longitude coordinate |
+| `placename` | Name of the place/city |
+| `postcode` | Postal code for this location |
 
 Operations: List.
 
@@ -274,11 +274,11 @@ Create an instance: `local get_location_by_postal_code = client:GetLocationByPos
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `latitude` | `string` |  |
-| `longitude` | `string` |  |
-| `placename` | `string` |  |
-| `state` | `string` |  |
-| `stateabbreviation` | `string` |  |
+| `latitude` | `string` | Latitude coordinate |
+| `longitude` | `string` | Longitude coordinate |
+| `placename` | `string` | Name of the place/city |
+| `state` | `string` | Full state or province name |
+| `stateabbreviation` | `string` | State or province abbreviation |
 
 #### Example: List
 
@@ -301,10 +301,10 @@ Create an instance: `local get_postal_codes_by_city = client:GetPostalCodesByCit
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `latitude` | `string` |  |
-| `longitude` | `string` |  |
-| `placename` | `string` |  |
-| `postcode` | `string` |  |
+| `latitude` | `string` | Latitude coordinate |
+| `longitude` | `string` | Longitude coordinate |
+| `placename` | `string` | Name of the place/city |
+| `postcode` | `string` | Postal code for this location |
 
 #### Example: List
 

@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -288,11 +288,11 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `latitude` |  |
-| `longitude` |  |
-| `placename` |  |
-| `state` |  |
-| `stateabbreviation` |  |
+| `latitude` | Latitude coordinate |
+| `longitude` | Longitude coordinate |
+| `placename` | Name of the place/city |
+| `state` | Full state or province name |
+| `stateabbreviation` | State or province abbreviation |
 
 Operations: list.
 
@@ -302,10 +302,10 @@ API path: `/{country}/{postal-code}`
 
 | Field | Description |
 | --- | --- |
-| `latitude` |  |
-| `longitude` |  |
-| `placename` |  |
-| `postcode` |  |
+| `latitude` | Latitude coordinate |
+| `longitude` | Longitude coordinate |
+| `placename` | Name of the place/city |
+| `postcode` | Postal code for this location |
 
 Operations: list.
 
@@ -330,11 +330,11 @@ Create an instance: `const get_location_by_postal_code = client.GetLocationByPos
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `latitude` | `string` |  |
-| `longitude` | `string` |  |
-| `placename` | `string` |  |
-| `state` | `string` |  |
-| `stateabbreviation` | `string` |  |
+| `latitude` | `string` | Latitude coordinate |
+| `longitude` | `string` | Longitude coordinate |
+| `placename` | `string` | Name of the place/city |
+| `state` | `string` | Full state or province name |
+| `stateabbreviation` | `string` | State or province abbreviation |
 
 #### Example: List
 
@@ -357,10 +357,10 @@ Create an instance: `const get_postal_codes_by_city = client.GetPostalCodesByCit
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `latitude` | `string` |  |
-| `longitude` | `string` |  |
-| `placename` | `string` |  |
-| `postcode` | `string` |  |
+| `latitude` | `string` | Latitude coordinate |
+| `longitude` | `string` | Longitude coordinate |
+| `placename` | `string` | Name of the place/city |
+| `postcode` | `string` | Postal code for this location |
 
 #### Example: List
 

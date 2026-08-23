@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "ZippopotamusZipCode",
+			"slug": "zippopotamus-zip-code",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -34,22 +37,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "latitude",
+						"short": "Latitude coordinate",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "longitude",
+						"short": "Longitude coordinate",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "placename",
+						"short": "Name of the place/city",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "state",
+						"short": "Full state or province name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "stateabbreviation",
+						"short": "State or province abbreviation",
 						"type": "`$STRING`",
 					},
 				},
@@ -114,18 +122,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "latitude",
+						"short": "Latitude coordinate",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "longitude",
+						"short": "Longitude coordinate",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "placename",
+						"short": "Name of the place/city",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "postcode",
+						"short": "Postal code for this location",
 						"type": "`$STRING`",
 					},
 				},
