@@ -114,13 +114,17 @@ class ZippopotamusZipCodeConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{country}/{postal-code}',
-                  'parts' => [
-                    '{country}',
-                    '{postal_code}',
-                  ],
                   'rename' => [
                     'param' => [
                       'postal-code' => 'postal_code',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'var' => 'country',
+                    ],
+                    [
+                      'var' => 'postal_code',
                     ],
                   ],
                   'select' => [
@@ -132,6 +136,10 @@ class ZippopotamusZipCodeConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.places`',
+                  ],
+                  'parts' => [
+                    '{country}',
+                    '{postal_code}',
                   ],
                 ],
               ],
@@ -202,10 +210,16 @@ class ZippopotamusZipCodeConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{country}/{state}/{city}',
-                  'parts' => [
-                    '{country}',
-                    '{state}',
-                    '{city}',
+                  'segments' => [
+                    [
+                      'var' => 'country',
+                    ],
+                    [
+                      'var' => 'state',
+                    ],
+                    [
+                      'var' => 'city',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -217,6 +231,11 @@ class ZippopotamusZipCodeConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.places`',
+                  ],
+                  'parts' => [
+                    '{country}',
+                    '{state}',
+                    '{city}',
                   ],
                 ],
               ],

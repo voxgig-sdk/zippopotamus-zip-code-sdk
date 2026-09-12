@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -125,15 +136,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/{country}/{postal-code}",
-              "parts": [
-                "{country}",
-                "{postal_code}"
-              ],
               "rename": {
                 "param": {
                   "postal-code": "postal_code"
                 }
               },
+              "segments": [
+                {
+                  "var": "country"
+                },
+                {
+                  "var": "postal_code"
+                }
+              ],
               "select": {
                 "exist": [
                   "country",
@@ -143,7 +158,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.places`"
-              }
+              },
+              "parts": [
+                "{country}",
+                "{postal_code}"
+              ]
             }
           ]
         }
@@ -213,10 +232,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/{country}/{state}/{city}",
-              "parts": [
-                "{country}",
-                "{state}",
-                "{city}"
+              "segments": [
+                {
+                  "var": "country"
+                },
+                {
+                  "var": "state"
+                },
+                {
+                  "var": "city"
+                }
               ],
               "select": {
                 "exist": [
@@ -228,7 +253,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.places`"
-              }
+              },
+              "parts": [
+                "{country}",
+                "{state}",
+                "{city}"
+              ]
             }
           ]
         }
@@ -244,6 +274,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

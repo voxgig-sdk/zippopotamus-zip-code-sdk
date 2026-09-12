@@ -85,8 +85,11 @@ def _get_postal_codes_by_city_direct_setup(mockres):
     live = env.get("ZIPPOPOTAMUS_ZIP_CODE_TEST_LIVE") == "TRUE"
 
     if live:
-        merged_opts = {
-        }
+        # sdk-test-control.json's test.client.options seeds the live
+        # client; the generated fields below overwrite anything they name.
+        merged_opts = dict(runner.live_client_options())
+        merged_opts.update({
+        })
         client = ZippopotamusZipCodeSDK(merged_opts)
         return {
             "client": client,

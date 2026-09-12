@@ -92,13 +92,17 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/{country}/{postal-code}",
-								"parts": []any{
-									"{country}",
-									"{postal_code}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"postal-code": "postal_code",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"var": "country",
+									},
+									map[string]any{
+										"var": "postal_code",
 									},
 								},
 								"select": map[string]any{
@@ -110,6 +114,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.places`",
+								},
+								"parts": []any{
+									"{country}",
+									"{postal_code}",
 								},
 							},
 						},
@@ -180,10 +188,16 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/{country}/{state}/{city}",
-								"parts": []any{
-									"{country}",
-									"{state}",
-									"{city}",
+								"segments": []any{
+									map[string]any{
+										"var": "country",
+									},
+									map[string]any{
+										"var": "state",
+									},
+									map[string]any{
+										"var": "city",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -196,6 +210,11 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body.places`",
 								},
+								"parts": []any{
+									"{country}",
+									"{state}",
+									"{city}",
+								},
 							},
 						},
 					},
@@ -206,6 +225,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

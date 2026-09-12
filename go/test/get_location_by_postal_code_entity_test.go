@@ -98,7 +98,7 @@ func TestGetLocationByPostalCodeEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		getLocationByPostalCodeRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.get_location_by_postal_code", setup.data)))
+		getLocationByPostalCodeRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.get_location_by_postal_code")))
 		var getLocationByPostalCodeRef01Data map[string]any
 		if len(getLocationByPostalCodeRef01DataRaw) > 0 {
 			getLocationByPostalCodeRef01Data = core.ToMapAny(getLocationByPostalCodeRef01DataRaw[0][1])
@@ -150,7 +150,7 @@ func get_location_by_postal_codeBasicSetup(extra map[string]any) *entityTestSetu
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"get_location_by_postal_code01", "get_location_by_postal_code02", "get_location_by_postal_code03", "country01", "postal_code01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -178,10 +178,22 @@ func get_location_by_postal_codeBasicSetup(extra map[string]any) *entityTestSetu
 	}
 
 	if env["ZIPPOPOTAMUS_ZIP_CODE_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewZippopotamusZipCodeSDK(core.ToMapAny(mergedOpts))
 	}

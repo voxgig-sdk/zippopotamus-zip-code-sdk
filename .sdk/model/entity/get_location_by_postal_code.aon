@@ -65,15 +65,19 @@ main: kit: entity: get_location_by_postal_code: {
           }
           method: "GET"
           orig: "/{country}/{postal-code}"
-          parts: [
-            "{country}"
-            "{postal_code}"
-          ]
           rename: {
             param: {
               "postal-code": "postal_code"
             }
           }
+          segments: [
+            {
+              var: "country"
+            }
+            {
+              var: "postal_code"
+            }
+          ]
           select: {
             exist: [
               "country"

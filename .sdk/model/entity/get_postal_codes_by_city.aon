@@ -67,10 +67,16 @@ main: kit: entity: get_postal_codes_by_city: {
           }
           method: "GET"
           orig: "/{country}/{state}/{city}"
-          parts: [
-            "{country}"
-            "{state}"
-            "{city}"
+          segments: [
+            {
+              var: "country"
+            }
+            {
+              var: "state"
+            }
+            {
+              var: "city"
+            }
           ]
           select: {
             exist: [

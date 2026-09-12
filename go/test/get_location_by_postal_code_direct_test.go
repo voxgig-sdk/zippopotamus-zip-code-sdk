@@ -132,7 +132,15 @@ func get_location_by_postal_codeDirectSetup(mockres any) *get_location_by_postal
 	live := env["ZIPPOPOTAMUS_ZIP_CODE_TEST_LIVE"] == "TRUE"
 
 	if live {
-		mergedOpts := map[string]any{
+		// sdk-test-control.json's test.client.options seeds the live
+		// client; the generated fields below overwrite anything they name.
+		mergedOpts := map[string]any{}
+		for k, v := range liveClientOptions() {
+			mergedOpts[k] = v
+		}
+		for k, v := range map[string]any{
+		} {
+			mergedOpts[k] = v
 		}
 		client := sdk.NewZippopotamusZipCodeSDK(mergedOpts)
 
