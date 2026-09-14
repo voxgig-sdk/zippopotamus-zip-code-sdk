@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { ZippopotamusZipCodeSDK } from '@voxgig-sdk/zippopotamus-zip-code'
+import { ZippopotamusZipCodeSDK } from '@voxgig-sdk/zippopotamus-zip-code-sdk'
 
 const client = new ZippopotamusZipCodeSDK()
 ```
@@ -451,7 +451,7 @@ zippopotamus-zip-code/
 Import the SDK from the package root:
 
 ```ts
-import { ZippopotamusZipCodeSDK } from '@voxgig-sdk/zippopotamus-zip-code'
+import { ZippopotamusZipCodeSDK } from '@voxgig-sdk/zippopotamus-zip-code-sdk'
 ```
 
 ### Entity state

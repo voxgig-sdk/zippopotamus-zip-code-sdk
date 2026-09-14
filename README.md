@@ -105,7 +105,7 @@ local results, err = client:GetLocationByPostalCode():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/zippopotamus-zip-code` | publish pending — [install from git tag](https://github.com/voxgig-sdk/zippopotamus-zip-code-sdk/releases) |
+| TypeScript | `@voxgig-sdk/zippopotamus-zip-code-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/zippopotamus-zip-code-sdk/releases) |
 | Python | `voxgig-sdk-zippopotamus-zip-code` | publish pending — [install from git tag](https://github.com/voxgig-sdk/zippopotamus-zip-code-sdk/releases) |
 | PHP | `voxgig-sdk/zippopotamus-zip-code` | publish pending — [install from git tag](https://github.com/voxgig-sdk/zippopotamus-zip-code-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go` | `go get github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:GetLocationByPostalCode():list()
 ### TypeScript
 
 ```ts
-import { ZippopotamusZipCodeSDK } from '@voxgig-sdk/zippopotamus-zip-code'
+import { ZippopotamusZipCodeSDK } from '@voxgig-sdk/zippopotamus-zip-code-sdk'
 
 const client = new ZippopotamusZipCodeSDK()
 
