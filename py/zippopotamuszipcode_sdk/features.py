@@ -1,12 +1,18 @@
 # ZippopotamusZipCode SDK feature factory
 
 from zippopotamuszipcode_sdk.feature.base_feature import ZippopotamusZipCodeBaseFeature
+from zippopotamuszipcode_sdk.feature.ratelimit_feature import ZippopotamusZipCodeRatelimitFeature
+from zippopotamuszipcode_sdk.feature.retry_feature import ZippopotamusZipCodeRetryFeature
 from zippopotamuszipcode_sdk.feature.test_feature import ZippopotamusZipCodeTestFeature
+from zippopotamuszipcode_sdk.feature.timeout_feature import ZippopotamusZipCodeTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: ZippopotamusZipCodeBaseFeature(),
+    "ratelimit": lambda: ZippopotamusZipCodeRatelimitFeature(),
+    "retry": lambda: ZippopotamusZipCodeRetryFeature(),
     "test": lambda: ZippopotamusZipCodeTestFeature(),
+    "timeout": lambda: ZippopotamusZipCodeTimeoutFeature(),
 }
 
 
