@@ -1,4 +1,4 @@
 # Flows
 
-@"BasicGetLocationByPostalCodeFlow.aon"
-@"BasicGetPostalCodesByCityFlow.aon"
+@"./BasicGetLocationByPostalCodeFlow.aon"
+@"./BasicGetPostalCodesByCityFlow.aon"

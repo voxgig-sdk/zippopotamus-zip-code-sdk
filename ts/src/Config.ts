@@ -127,12 +127,12 @@ class Config {
 
     entity: {
       
-      get_location_by_postal_code: {
-      },
-
-      get_postal_codes_by_city: {
-      },
-
+        get_location_by_postal_code: {
+        },
+  
+        get_postal_codes_by_city: {
+        },
+  
     }
   }
 

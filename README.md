@@ -105,12 +105,12 @@ local results, err = client:GetLocationByPostalCode():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/zippopotamus-zip-code-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/zippopotamus-zip-code-sdk/releases) |
-| Python | `voxgig-sdk-zippopotamus-zip-code` | publish pending — [install from git tag](https://github.com/voxgig-sdk/zippopotamus-zip-code-sdk/releases) |
-| PHP | `voxgig-sdk/zippopotamus-zip-code` | publish pending — [install from git tag](https://github.com/voxgig-sdk/zippopotamus-zip-code-sdk/releases) |
+| TypeScript | `@voxgig-sdk/zippopotamus-zip-code-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/zippopotamus-zip-code-sdk/tags) |
+| Python | `voxgig-sdk-zippopotamus-zip-code` | publish pending — [install from git tag](https://github.com/voxgig-sdk/zippopotamus-zip-code-sdk/tags) |
+| PHP | `voxgig-sdk/zippopotamus-zip-code` | publish pending — [install from git tag](https://github.com/voxgig-sdk/zippopotamus-zip-code-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go` | `go get github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go@latest` |
-| Ruby | `voxgig-sdk-zippopotamus-zip-code` | publish pending — [install from git tag](https://github.com/voxgig-sdk/zippopotamus-zip-code-sdk/releases) |
-| Lua | `voxgig-sdk-zippopotamus-zip-code` | publish pending — [install from git tag](https://github.com/voxgig-sdk/zippopotamus-zip-code-sdk/releases) |
+| Ruby | `voxgig-sdk-zippopotamus-zip-code` | publish pending — [install from git tag](https://github.com/voxgig-sdk/zippopotamus-zip-code-sdk/tags) |
+| Lua | `voxgig-sdk-zippopotamus-zip-code` | publish pending — [install from git tag](https://github.com/voxgig-sdk/zippopotamus-zip-code-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go-cli` | `go install github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go-cli/cmd/zippopotamus-zip-code@latest` |
 | Go MCP server | `github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go-mcp` | `go get github.com/voxgig-sdk/zippopotamus-zip-code-sdk/go-mcp@latest` |
 
