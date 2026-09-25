@@ -1,7 +1,7 @@
 // Typed models for the ZippopotamusZipCode SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,11 +14,6 @@ import (
 
 // GetLocationByPostalCode is the typed data model for the get_location_by_postal_code entity.
 type GetLocationByPostalCode struct {
-	Latitude *string `json:"latitude,omitempty"`
-	Longitude *string `json:"longitude,omitempty"`
-	Placename *string `json:"placename,omitempty"`
-	State *string `json:"state,omitempty"`
-	Stateabbreviation *string `json:"stateabbreviation,omitempty"`
 }
 
 // GetLocationByPostalCodeListMatch is the typed request payload for GetLocationByPostalCode.ListTyped.
@@ -29,10 +24,6 @@ type GetLocationByPostalCodeListMatch struct {
 
 // GetPostalCodesByCity is the typed data model for the get_postal_codes_by_city entity.
 type GetPostalCodesByCity struct {
-	Latitude *string `json:"latitude,omitempty"`
-	Longitude *string `json:"longitude,omitempty"`
-	Placename *string `json:"placename,omitempty"`
-	Postcode *string `json:"postcode,omitempty"`
 }
 
 // GetPostalCodesByCityListMatch is the typed request payload for GetPostalCodesByCity.ListTyped.

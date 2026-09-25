@@ -1,0 +1,108 @@
+# Entity: get_location_by_postal_code
+
+main: kit: entity: get_location_by_postal_code: {
+
+  alias: field: {}
+
+  fields: {
+    latitude: {
+      h: "Latitude"
+      n: "latitude"
+      r: false
+      sh: "Latitude coordinate"
+      t: "`$STRING`"
+    }
+    longitude: {
+      h: "Longitude"
+      n: "longitude"
+      r: false
+      sh: "Longitude coordinate"
+      t: "`$STRING`"
+    }
+    placename: {
+      h: "Placename"
+      n: "placename"
+      r: false
+      sh: "Name of the place/city"
+      t: "`$STRING`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: false
+      sh: "Full state or province name"
+      t: "`$STRING`"
+    }
+    stateabbreviation: {
+      h: "Stateabbreviation"
+      n: "stateabbreviation"
+      r: false
+      sh: "State or province abbreviation"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "get_location_by_postal_code"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /{country}/{postal-code}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "US"
+                k: "param"
+                n: "country"
+                or: "country"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "90210"
+                k: "param"
+                n: "postal_code"
+                or: "postal_code"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/{country}/{postal-code}"
+          q: {
+            exist: [
+              "country"
+              "postal_code"
+            ]
+          }
+          r: {
+            param: {
+              "postal-code": "postal_code"
+            }
+          }
+          s: [
+            {
+              var: "country"
+            }
+            {
+              var: "postal_code"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.places`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

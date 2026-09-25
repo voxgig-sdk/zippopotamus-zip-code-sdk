@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GetLocationByPostalCodeEntity = void 0;
 const ZippopotamusZipCodeEntityBase_1 = require("../ZippopotamusZipCodeEntityBase");
-// TODO: needs Entity superclass
 class GetLocationByPostalCodeEntity extends ZippopotamusZipCodeEntityBase_1.ZippopotamusZipCodeEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

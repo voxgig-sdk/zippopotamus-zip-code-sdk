@@ -24,49 +24,120 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "get_location_by_postal_code": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "latitude",
-              "req": false,
-              "short": "Latitude coordinate",
-              "type": "`$STRING`"
+          "fields": {
+            "latitude": {
+              "a": true,
+              "h": "Latitude",
+              "n": "latitude",
+              "r": false,
+              "sh": "Latitude coordinate",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "longitude",
-              "req": false,
-              "short": "Longitude coordinate",
-              "type": "`$STRING`"
+            "longitude": {
+              "a": true,
+              "h": "Longitude",
+              "n": "longitude",
+              "r": false,
+              "sh": "Longitude coordinate",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "placename",
-              "req": false,
-              "short": "Name of the place/city",
-              "type": "`$STRING`"
+            "placename": {
+              "a": true,
+              "h": "Placename",
+              "n": "placename",
+              "r": false,
+              "sh": "Name of the place/city",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "state",
-              "req": false,
-              "short": "Full state or province name",
-              "type": "`$STRING`"
+            "state": {
+              "a": true,
+              "h": "State",
+              "n": "state",
+              "r": false,
+              "sh": "Full state or province name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "stateabbreviation",
-              "req": false,
-              "short": "State or province abbreviation",
-              "type": "`$STRING`"
+            "stateabbreviation": {
+              "a": true,
+              "h": "Stateabbreviation",
+              "n": "stateabbreviation",
+              "r": false,
+              "sh": "State or province abbreviation",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "get_location_by_postal_code",
           "op": {
             "list": {
@@ -74,44 +145,49 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /{country}/{postal-code}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "example": "US",
-                        "kind": "param",
-                        "name": "country",
-                        "orig": "country",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "US",
+                        "k": "param",
+                        "n": "country",
+                        "or": "country",
+                        "r": true,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "90210",
-                        "kind": "param",
-                        "name": "postal_code",
-                        "orig": "postal_code",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "90210",
+                        "k": "param",
+                        "n": "postal_code",
+                        "or": "postal_code",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /{country}/{postal-code}",
-                    "json": "{\"operationId\":\"getLocationByPostalCode\",\"parameters\":[{\"description\":\"ISO 3166-1 alpha-2 country code (e.g., US, GB, DE, FR, CA)\",\"in\":\"path\",\"name\":\"country\",\"required\":true,\"schema\":{\"example\":\"US\",\"pattern\":\"^[A-Z]{2}$\",\"type\":\"string\"}},{\"description\":\"Postal code or zip code to query\",\"in\":\"path\",\"name\":\"postal-code\",\"required\":true,\"schema\":{\"example\":\"90210\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"country\":\"United States\",\"country abbreviation\":\"US\",\"places\":[{\"latitude\":\"34.0901\",\"longitude\":\"-118.4065\",\"place name\":\"Beverly Hills\",\"state\":\"California\",\"state abbreviation\":\"CA\"}],\"post code\":\"90210\"},\"schema\":{\"properties\":{\"country\":{\"description\":\"Full country name\",\"type\":\"string\"},\"country abbreviation\":{\"description\":\"ISO 3166-1 alpha-2 country code\",\"type\":\"string\"},\"places\":{\"description\":\"Array of places associated with this postal code\",\"items\":{\"properties\":{\"latitude\":{\"description\":\"Latitude coordinate\",\"type\":\"string\"},\"longitude\":{\"description\":\"Longitude coordinate\",\"type\":\"string\"},\"place name\":{\"description\":\"Name of the place/city\",\"type\":\"string\"},\"state\":{\"description\":\"Full state or province name\",\"type\":\"string\"},\"state abbreviation\":{\"description\":\"State or province abbreviation\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"post code\":{\"description\":\"The postal code that was queried\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with location data\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Postal code not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/{country}/{postal-code}",
+                  "q": {
+                    "exist": [
+                      "country",
+                      "postal_code"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/{country}/{postal-code}",
-                  "rename": {
+                  "r": {
                     "param": {
                       "postal-code": "postal_code"
                     }
                   },
-                  "segments": [
+                  "s": [
                     {
                       "var": "country"
                     },
@@ -119,13 +195,7 @@
                       "var": "postal_code"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "country",
-                      "postal_code"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.places`"
                   }
@@ -142,36 +212,40 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "latitude",
-              "req": false,
-              "short": "Latitude coordinate",
-              "type": "`$STRING`"
+          "fields": {
+            "latitude": {
+              "a": true,
+              "h": "Latitude",
+              "n": "latitude",
+              "r": false,
+              "sh": "Latitude coordinate",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "longitude",
-              "req": false,
-              "short": "Longitude coordinate",
-              "type": "`$STRING`"
+            "longitude": {
+              "a": true,
+              "h": "Longitude",
+              "n": "longitude",
+              "r": false,
+              "sh": "Longitude coordinate",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "placename",
-              "req": false,
-              "short": "Name of the place/city",
-              "type": "`$STRING`"
+            "placename": {
+              "a": true,
+              "h": "Placename",
+              "n": "placename",
+              "r": false,
+              "sh": "Name of the place/city",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "postcode",
-              "req": false,
-              "short": "Postal code for this location",
-              "type": "`$STRING`"
+            "postcode": {
+              "a": true,
+              "h": "Postcode",
+              "n": "postcode",
+              "r": false,
+              "sh": "Postal code for this location",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "get_postal_codes_by_city",
           "op": {
             "list": {
@@ -179,48 +253,55 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /{country}/{state}/{city}",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "example": "Beverly Hills",
-                        "kind": "param",
-                        "name": "city",
-                        "orig": "city",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "Beverly Hills",
+                        "k": "param",
+                        "n": "city",
+                        "or": "city",
+                        "r": true,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "US",
-                        "kind": "param",
-                        "name": "country",
-                        "orig": "country",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "US",
+                        "k": "param",
+                        "n": "country",
+                        "or": "country",
+                        "r": true,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "CA",
-                        "kind": "param",
-                        "name": "state",
-                        "orig": "state",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "CA",
+                        "k": "param",
+                        "n": "state",
+                        "or": "state",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /{country}/{state}/{city}",
-                    "json": "{\"operationId\":\"getPostalCodesByCity\",\"parameters\":[{\"description\":\"ISO 3166-1 alpha-2 country code (e.g., US, GB, DE, FR, CA)\",\"in\":\"path\",\"name\":\"country\",\"required\":true,\"schema\":{\"example\":\"US\",\"pattern\":\"^[A-Z]{2}$\",\"type\":\"string\"}},{\"description\":\"State or province name/abbreviation\",\"in\":\"path\",\"name\":\"state\",\"required\":true,\"schema\":{\"example\":\"CA\",\"type\":\"string\"}},{\"description\":\"City name\",\"in\":\"path\",\"name\":\"city\",\"required\":true,\"schema\":{\"example\":\"Beverly Hills\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"example\":{\"country\":\"United States\",\"country abbreviation\":\"US\",\"places\":[{\"latitude\":\"34.0901\",\"longitude\":\"-118.4065\",\"place name\":\"Beverly Hills\",\"post code\":\"90210\"},{\"latitude\":\"34.0901\",\"longitude\":\"-118.4065\",\"place name\":\"Beverly Hills\",\"post code\":\"90211\"}],\"state\":\"California\",\"state abbreviation\":\"CA\"},\"schema\":{\"properties\":{\"country\":{\"description\":\"Full country name\",\"type\":\"string\"},\"country abbreviation\":{\"description\":\"ISO 3166-1 alpha-2 country code\",\"type\":\"string\"},\"places\":{\"description\":\"Array of postal codes for this city\",\"items\":{\"properties\":{\"latitude\":{\"description\":\"Latitude coordinate\",\"type\":\"string\"},\"longitude\":{\"description\":\"Longitude coordinate\",\"type\":\"string\"},\"place name\":{\"description\":\"Name of the place/city\",\"type\":\"string\"},\"post code\":{\"description\":\"Postal code for this location\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"state\":{\"description\":\"Full state or province name\",\"type\":\"string\"},\"state abbreviation\":{\"description\":\"State or province abbreviation\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with postal codes for the city\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"City not found\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/{country}/{state}/{city}",
+                  "q": {
+                    "exist": [
+                      "city",
+                      "country",
+                      "state"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/{country}/{state}/{city}",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "var": "country"
                     },
@@ -231,14 +312,7 @@
                       "var": "city"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "city",
-                      "country",
-                      "state"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.places`"
                   }
@@ -667,16 +741,16 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {
                 "country": "country01",
                 "postal_code": "postal_code01"
               },
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -696,17 +770,17 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {
                 "city": "city01",
                 "country": "country01",
                 "state": "state01"
               },
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {

@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -142,28 +135,33 @@ class Config {
       "fields": [
         {
           "name": "latitude",
-          "short": "Latitude coordinate",
-          "type": "`$STRING`"
+          "title": "Latitude",
+          "type": "`$STRING`",
+          "short": "Latitude coordinate"
         },
         {
           "name": "longitude",
-          "short": "Longitude coordinate",
-          "type": "`$STRING`"
+          "title": "Longitude",
+          "type": "`$STRING`",
+          "short": "Longitude coordinate"
         },
         {
           "name": "placename",
-          "short": "Name of the place/city",
-          "type": "`$STRING`"
+          "title": "Placename",
+          "type": "`$STRING`",
+          "short": "Name of the place/city"
         },
         {
           "name": "state",
-          "short": "Full state or province name",
-          "type": "`$STRING`"
+          "title": "State",
+          "type": "`$STRING`",
+          "short": "Full state or province name"
         },
         {
           "name": "stateabbreviation",
-          "short": "State or province abbreviation",
-          "type": "`$STRING`"
+          "title": "Stateabbreviation",
+          "type": "`$STRING`",
+          "short": "State or province abbreviation"
         }
       ],
       "name": "get_location_by_postal_code",
@@ -173,34 +171,9 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "example": "US",
-                    "kind": "param",
-                    "name": "country",
-                    "orig": "country",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "90210",
-                    "kind": "param",
-                    "name": "postal_code",
-                    "orig": "postal_code",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/{country}/{postal-code}",
-              "rename": {
-                "param": {
-                  "postal-code": "postal_code"
-                }
-              },
               "segments": [
                 {
                   "var": "country"
@@ -209,20 +182,45 @@ class Config {
                   "var": "postal_code"
                 }
               ],
-              "select": {
-                "exist": [
-                  "country",
-                  "postal_code"
-                ]
+              "parts": [
+                "{country}",
+                "{postal_code}"
+              ],
+              "rename": {
+                "param": {
+                  "postal-code": "postal_code"
+                }
               },
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.places`"
               },
-              "parts": [
-                "{country}",
-                "{postal_code}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "country",
+                    "orig": "country",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true,
+                    "example": "US"
+                  },
+                  {
+                    "name": "postal_code",
+                    "orig": "postal_code",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true,
+                    "example": "90210"
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "country",
+                  "postal_code"
+                ]
+              }
             }
           ]
         }
@@ -235,23 +233,27 @@ class Config {
       "fields": [
         {
           "name": "latitude",
-          "short": "Latitude coordinate",
-          "type": "`$STRING`"
+          "title": "Latitude",
+          "type": "`$STRING`",
+          "short": "Latitude coordinate"
         },
         {
           "name": "longitude",
-          "short": "Longitude coordinate",
-          "type": "`$STRING`"
+          "title": "Longitude",
+          "type": "`$STRING`",
+          "short": "Longitude coordinate"
         },
         {
           "name": "placename",
-          "short": "Name of the place/city",
-          "type": "`$STRING`"
+          "title": "Placename",
+          "type": "`$STRING`",
+          "short": "Name of the place/city"
         },
         {
           "name": "postcode",
-          "short": "Postal code for this location",
-          "type": "`$STRING`"
+          "title": "Postcode",
+          "type": "`$STRING`",
+          "short": "Postal code for this location"
         }
       ],
       "name": "get_postal_codes_by_city",
@@ -261,34 +263,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "example": "Beverly Hills",
-                    "kind": "param",
-                    "name": "city",
-                    "orig": "city",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "US",
-                    "kind": "param",
-                    "name": "country",
-                    "orig": "country",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "CA",
-                    "kind": "param",
-                    "name": "state",
-                    "orig": "state",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/{country}/{state}/{city}",
@@ -303,22 +277,51 @@ class Config {
                   "var": "city"
                 }
               ],
+              "parts": [
+                "{country}",
+                "{state}",
+                "{city}"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body.places`"
+              },
+              "args": {
+                "params": [
+                  {
+                    "name": "city",
+                    "orig": "city",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true,
+                    "example": "Beverly Hills"
+                  },
+                  {
+                    "name": "country",
+                    "orig": "country",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true,
+                    "example": "US"
+                  },
+                  {
+                    "name": "state",
+                    "orig": "state",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true,
+                    "example": "CA"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "city",
                   "country",
                   "state"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body.places`"
-              },
-              "parts": [
-                "{country}",
-                "{state}",
-                "{city}"
-              ]
+              }
             }
           ]
         }

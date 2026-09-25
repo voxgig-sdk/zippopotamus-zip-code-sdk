@@ -19,7 +19,6 @@ import type {
   GetPostalCodesByCityListMatch,
 } from '../ZippopotamusZipCodeTypes'
 
-// TODO: needs Entity superclass
 class GetPostalCodesByCityEntity extends ZippopotamusZipCodeEntityBase<GetPostalCodesByCity> {
 
   constructor(client: ZippopotamusZipCodeSDK, entopts: any) {

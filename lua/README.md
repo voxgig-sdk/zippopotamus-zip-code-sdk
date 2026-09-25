@@ -43,7 +43,7 @@ local getlocationbypostalcodes, err = client:GetLocationByPostalCode():list()
 if err then error(err) end
 
 for _, item in ipairs(getlocationbypostalcodes) do
-  print(item["latitude"])
+  print(item)
 end
 ```
 

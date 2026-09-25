@@ -92,28 +92,33 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "latitude",
-						"short": "Latitude coordinate",
+						"title": "Latitude",
 						"type": "`$STRING`",
+						"short": "Latitude coordinate",
 					},
 					map[string]any{
 						"name": "longitude",
-						"short": "Longitude coordinate",
+						"title": "Longitude",
 						"type": "`$STRING`",
+						"short": "Longitude coordinate",
 					},
 					map[string]any{
 						"name": "placename",
-						"short": "Name of the place/city",
+						"title": "Placename",
 						"type": "`$STRING`",
+						"short": "Name of the place/city",
 					},
 					map[string]any{
 						"name": "state",
-						"short": "Full state or province name",
+						"title": "State",
 						"type": "`$STRING`",
+						"short": "Full state or province name",
 					},
 					map[string]any{
 						"name": "stateabbreviation",
-						"short": "State or province abbreviation",
+						"title": "Stateabbreviation",
 						"type": "`$STRING`",
+						"short": "State or province abbreviation",
 					},
 				},
 				"name": "get_location_by_postal_code",
@@ -123,34 +128,9 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": "US",
-											"kind": "param",
-											"name": "country",
-											"orig": "country",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "90210",
-											"kind": "param",
-											"name": "postal_code",
-											"orig": "postal_code",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/{country}/{postal-code}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"postal-code": "postal_code",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"var": "country",
@@ -159,19 +139,44 @@ func MakeConfig() map[string]any {
 										"var": "postal_code",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"country",
-										"postal_code",
+								"parts": []any{
+									"{country}",
+									"{postal_code}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"postal-code": "postal_code",
 									},
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.places`",
 								},
-								"parts": []any{
-									"{country}",
-									"{postal_code}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "country",
+											"orig": "country",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": "US",
+										},
+										map[string]any{
+											"name": "postal_code",
+											"orig": "postal_code",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": "90210",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"country",
+										"postal_code",
+									},
 								},
 							},
 						},
@@ -185,23 +190,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "latitude",
-						"short": "Latitude coordinate",
+						"title": "Latitude",
 						"type": "`$STRING`",
+						"short": "Latitude coordinate",
 					},
 					map[string]any{
 						"name": "longitude",
-						"short": "Longitude coordinate",
+						"title": "Longitude",
 						"type": "`$STRING`",
+						"short": "Longitude coordinate",
 					},
 					map[string]any{
 						"name": "placename",
-						"short": "Name of the place/city",
+						"title": "Placename",
 						"type": "`$STRING`",
+						"short": "Name of the place/city",
 					},
 					map[string]any{
 						"name": "postcode",
-						"short": "Postal code for this location",
+						"title": "Postcode",
 						"type": "`$STRING`",
+						"short": "Postal code for this location",
 					},
 				},
 				"name": "get_postal_codes_by_city",
@@ -211,34 +220,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": "Beverly Hills",
-											"kind": "param",
-											"name": "city",
-											"orig": "city",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "US",
-											"kind": "param",
-											"name": "country",
-											"orig": "country",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "CA",
-											"kind": "param",
-											"name": "state",
-											"orig": "state",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/{country}/{state}/{city}",
@@ -253,21 +234,50 @@ func MakeConfig() map[string]any {
 										"var": "city",
 									},
 								},
+								"parts": []any{
+									"{country}",
+									"{state}",
+									"{city}",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.places`",
+								},
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "city",
+											"orig": "city",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": "Beverly Hills",
+										},
+										map[string]any{
+											"name": "country",
+											"orig": "country",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": "US",
+										},
+										map[string]any{
+											"name": "state",
+											"orig": "state",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": "CA",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"city",
 										"country",
 										"state",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.places`",
-								},
-								"parts": []any{
-									"{country}",
-									"{state}",
-									"{city}",
 								},
 							},
 						},
